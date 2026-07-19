@@ -44,6 +44,14 @@
     background:var(--paper); border:1px solid var(--line); border-radius:2px; color:var(--rain);
     cursor:pointer; white-space:nowrap; }
   .now-btn:hover { color:var(--moss); border-color:var(--moss); }
+  @media (max-width:480px) {
+    /* iOS Safariのネイティブdate/time入力はflexboxの縮小計算に従わず、
+       指定した幅を無視して独自の幅で描画され隣接要素に重なることがある。
+       横並びの幅の奪い合い自体をやめ、縦積みにして確実に回避する。 */
+    .when { flex-direction:column; align-items:stretch; }
+    .when .field { flex:none; min-width:0; width:100%; }
+    .now-btn { width:100%; }
+  }
   .map-btn { display:flex; align-items:center; justify-content:center; gap:6px; width:100%;
     box-sizing:border-box; margin:0 0 14px; padding:11px 12px;
     font-family:var(--sans); font-size:13px; text-align:center; text-decoration:none;
