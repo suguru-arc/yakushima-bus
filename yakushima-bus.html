@@ -506,7 +506,7 @@ function run(){
     const first=journeys(from,to,tmr,-1)[0]; strip.className="status stop";
     strip.innerHTML=`<span class="tag">${t.stopTag}</span><span>${t.none}`+(first?` ${t.nextDay} <b>${fmt(first.dep)}</b>${t.nextDayAfter}`:"")+`</span>`;
   } else if(upcoming.length<=2){ strip.className="status warn";
-    strip.innerHTML=`<span class="tag">${t.warnTag}</span><span>${t.few} <b>${upcoming.length}</b>${LANG==="ja"?t.min:" bus"} ${t.fewAfter}</span><span class="meta">${t.lastOf} <b>${fmt(lastJ.dep)}</b></span>`;
+    strip.innerHTML=`<span class="tag">${t.warnTag}</span><span>${t.few} <b>${upcoming.length}</b>${LANG==="ja"?"":" bus"} ${t.fewAfter}</span><span class="meta">${t.lastOf} <b>${fmt(lastJ.dep)}</b></span>`;
   } else { strip.className="status ok";
     strip.innerHTML=`<span class="tag">${t.okTag}</span><span>${t.lastOf} <b>${fmt(lastJ.dep)}</b></span>`; }
   status.appendChild(strip);
