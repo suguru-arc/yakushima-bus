@@ -1,6 +1,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>屋久島バス乗換 / Yakushima Bus</title>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#232A26">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+JP:wght@400;500;600&display=swap" rel="stylesheet">
@@ -186,6 +188,8 @@ const STOPS = [
   {id:"s24",ja:"宮之浦支所前",en:"Miyanoura Shisho-mae",roma:"miyanoura shisho"},
   {id:"s25",ja:"小原町",en:"Oharamachi",roma:"oharamachi"},
   {id:"s26",ja:"牛床公園",en:"Ushitoko Koen",roma:"ushitoko koen"},
+  {id:"s27",ja:"森の展望台",en:"Mori-no-tenbodai",roma:"mori no tenbodai"},
+  {id:"s28",ja:"雲の展望台",en:"Kumo-no-tenbodai",roma:"kumo no tenbodai"},
   {id:"s29",ja:"白谷雲水峡",en:"Shiratani Unsuikyo",roma:"shiratani unsuikyo"},
   {id:"s30",ja:"Ａコープ前",en:"A-coop mae",roma:"a-coop acoop"},
   {id:"s31",ja:"宮浦小前",en:"Miyaurasho-mae",roma:"miyaurasho"},
@@ -550,4 +554,13 @@ $("swapBtn").onclick=()=>{const a=fromBox.get(),b=toBox.get();fromBox.set(b);toB
 $("nowBtn").onclick=()=>{setNow();run();};
 $("goBtn").onclick=run; $("dateInput").onchange=run; $("timeInput").onchange=run;
 labels(); setNow(); fromBox.set("s20"); toBox.set("s129"); run();
+
+// オフライン対応: 一度開けば電波の入らない山間部でもそのまま使えるようにする。
+// file://で開いた場合やhttpの非localhostではService Workerは動作しないため、
+// その場合は何もしない(エラーは出さない)。
+if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch(() => {});
+  });
+}
 </script>

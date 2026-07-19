@@ -1,0 +1,773 @@
+{
+  "segments": {
+    "100_101": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 20
+      }
+    },
+    "101_102": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 20
+      }
+    },
+    "102_103": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 20
+      }
+    },
+    "103_104": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 20
+      }
+    },
+    "104_105": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 20
+      }
+    },
+    "105_106": {
+      "confidence": "high",
+      "minutes": 0,
+      "samples": {
+        "0": 20
+      }
+    },
+    "106_107": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 20
+      }
+    },
+    "107_108": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 20
+      }
+    },
+    "108_109": {
+      "confidence": "high",
+      "minutes": 0,
+      "samples": {
+        "0": 20
+      }
+    },
+    "109_110": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 20
+      }
+    },
+    "10_11": {
+      "confidence": "high",
+      "minutes": 2,
+      "samples": {
+        "2": 12
+      }
+    },
+    "110_111": {
+      "confidence": "high",
+      "minutes": 0,
+      "samples": {
+        "0": 20
+      }
+    },
+    "111_112": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 20
+      }
+    },
+    "112_113": {
+      "confidence": "high",
+      "minutes": 0,
+      "samples": {
+        "0": 20
+      }
+    },
+    "113_114": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 20
+      }
+    },
+    "114_115": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 20
+      }
+    },
+    "115_116": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 20
+      }
+    },
+    "116_117": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 20
+      }
+    },
+    "117_118": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 20
+      }
+    },
+    "118_119": {
+      "confidence": "high",
+      "minutes": 0,
+      "samples": {
+        "0": 20
+      }
+    },
+    "119_120": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 20
+      }
+    },
+    "11_12": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 12
+      }
+    },
+    "120_121": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 20
+      }
+    },
+    "121_122": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 20
+      }
+    },
+    "122_123": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 20
+      }
+    },
+    "123_124": {
+      "confidence": "high",
+      "minutes": 2,
+      "samples": {
+        "2": 20
+      }
+    },
+    "124_125": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 20
+      }
+    },
+    "125_126": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 20
+      }
+    },
+    "126_127": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 20
+      }
+    },
+    "127_128": {
+      "confidence": "high",
+      "minutes": 3,
+      "samples": {
+        "3": 6
+      }
+    },
+    "128_129": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 6
+      }
+    },
+    "12_13": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 12
+      }
+    },
+    "13_14": {
+      "confidence": "high",
+      "minutes": 3,
+      "samples": {
+        "3": 12
+      }
+    },
+    "14_15": {
+      "confidence": "high",
+      "minutes": 4,
+      "samples": {
+        "4": 12
+      }
+    },
+    "15_16": {
+      "confidence": "high",
+      "minutes": 2,
+      "samples": {
+        "2": 12
+      }
+    },
+    "16_17": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 12
+      }
+    },
+    "17_18": {
+      "confidence": "low",
+      "minutes": 2,
+      "samples": {
+        "1": 6,
+        "2": 6
+      }
+    },
+    "1_2": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 12
+      }
+    },
+    "21_22": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "22_23": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "23_24": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "24_25": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "2_3": {
+      "confidence": "high",
+      "minutes": 0,
+      "samples": {
+        "0": 12
+      }
+    },
+    "31_32": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "32_33": {
+      "confidence": "high",
+      "minutes": 0,
+      "samples": {
+        "0": 28
+      }
+    },
+    "33_34": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "34_35": {
+      "confidence": "high",
+      "minutes": 0,
+      "samples": {
+        "0": 28
+      }
+    },
+    "35_36": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "36_37": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "37_38": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "38_39": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "39_40": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "3_4": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 12
+      }
+    },
+    "40_41": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "41_42": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "42_43": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "43_44": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "44_45": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "45_46": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "46_47": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "47_48": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "49_50": {
+      "confidence": "high",
+      "minutes": 0,
+      "samples": {
+        "0": 27
+      }
+    },
+    "4_5": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 12
+      }
+    },
+    "50_51": {
+      "confidence": "medium",
+      "minutes": 1,
+      "samples": {
+        "0": 1,
+        "1": 27
+      }
+    },
+    "51_52": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "52_53": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "53_54": {
+      "confidence": "high",
+      "minutes": 0,
+      "samples": {
+        "0": 28
+      }
+    },
+    "54_55": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "55_56": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "56_57": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "57_58": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "58_59": {
+      "confidence": "high",
+      "minutes": 2,
+      "samples": {
+        "2": 28
+      }
+    },
+    "59_60": {
+      "confidence": "medium",
+      "minutes": 1,
+      "samples": {
+        "1": 24,
+        "2": 4
+      }
+    },
+    "5_6": {
+      "confidence": "high",
+      "minutes": 2,
+      "samples": {
+        "2": 12
+      }
+    },
+    "60_61": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "61_62": {
+      "confidence": "medium",
+      "minutes": 1,
+      "samples": {
+        "1": 24,
+        "2": 4
+      }
+    },
+    "64_65": {
+      "confidence": "low",
+      "minutes": 1,
+      "samples": {
+        "1": 10,
+        "2": 10
+      }
+    },
+    "65_66": {
+      "confidence": "low",
+      "minutes": 1,
+      "samples": {
+        "1": 10,
+        "2": 10
+      }
+    },
+    "6_7": {
+      "confidence": "high",
+      "minutes": 2,
+      "samples": {
+        "2": 12
+      }
+    },
+    "73_74": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 27
+      }
+    },
+    "74_75": {
+      "confidence": "high",
+      "minutes": 0,
+      "samples": {
+        "0": 27
+      }
+    },
+    "75_76": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 27
+      }
+    },
+    "76_77": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 27
+      }
+    },
+    "77_78": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 27
+      }
+    },
+    "78_79": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 27
+      }
+    },
+    "79_80": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 27
+      }
+    },
+    "7_8": {
+      "confidence": "high",
+      "minutes": 3,
+      "samples": {
+        "3": 12
+      }
+    },
+    "80_81": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 27
+      }
+    },
+    "81_82": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 27
+      }
+    },
+    "82_83": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 27
+      }
+    },
+    "83_84": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 27
+      }
+    },
+    "84_85": {
+      "confidence": "high",
+      "minutes": 2,
+      "samples": {
+        "2": 27
+      }
+    },
+    "86_87": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 27
+      }
+    },
+    "87_88": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 27
+      }
+    },
+    "88_89": {
+      "confidence": "high",
+      "minutes": 0,
+      "samples": {
+        "0": 27
+      }
+    },
+    "89_90": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 27
+      }
+    },
+    "8_801": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 12
+      }
+    },
+    "90_91": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 27
+      }
+    },
+    "91_92": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 27
+      }
+    },
+    "92_93": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 27
+      }
+    },
+    "93_94": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 27
+      }
+    },
+    "94_95": {
+      "confidence": "high",
+      "minutes": 0,
+      "samples": {
+        "0": 27
+      }
+    },
+    "95_96": {
+      "confidence": "high",
+      "minutes": 0,
+      "samples": {
+        "0": 27
+      }
+    },
+    "96_97": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 27
+      }
+    },
+    "97_98": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 28
+      }
+    },
+    "98_99": {
+      "confidence": "high",
+      "minutes": 5,
+      "samples": {
+        "5": 28
+      }
+    },
+    "99_100": {
+      "confidence": "high",
+      "minutes": 3,
+      "samples": {
+        "3": 20
+      }
+    },
+    "9_10": {
+      "confidence": "high",
+      "minutes": 2,
+      "samples": {
+        "2": 12
+      }
+    },
+    "9_801": {
+      "confidence": "high",
+      "minutes": 1,
+      "samples": {
+        "1": 12
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "屋久島バス乗換 / Yakushima Bus",
+  "short_name": "屋久島バス",
+  "start_url": "./yakushima-bus.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#E4E8E4",
+  "theme_color": "#232A26",
+  "lang": "ja"
+}
