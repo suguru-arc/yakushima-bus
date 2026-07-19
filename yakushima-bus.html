@@ -44,9 +44,11 @@
     background:var(--paper); border:1px solid var(--line); border-radius:2px; color:var(--rain);
     cursor:pointer; white-space:nowrap; }
   .now-btn:hover { color:var(--moss); border-color:var(--moss); }
-  .map-btn { display:block; width:100%; box-sizing:border-box; margin:0 0 14px; padding:11px 12px;
+  .map-btn { display:flex; align-items:center; justify-content:center; gap:6px; width:100%;
+    box-sizing:border-box; margin:0 0 14px; padding:11px 12px;
     font-family:var(--sans); font-size:13px; text-align:center; text-decoration:none;
     background:var(--paper); border:1px solid var(--line); border-radius:2px; color:var(--rain); }
+  .map-btn svg { flex:0 0 auto; width:15px; height:15px; }
   .map-btn:hover { color:var(--moss); border-color:var(--moss); }
   .go { width:100%; margin-top:14px; padding:13px; font-family:var(--sans); font-size:15px;
     font-weight:500; background:var(--granite); color:var(--paper); border:0; border-radius:2px; cursor:pointer; }
@@ -130,7 +132,7 @@
     </div>
   </header>
   <section class="panel">
-    <a class="map-btn" id="mapBtn" href="https://www.google.com/maps/d/u/2/edit?mid=1FV98ZXThOqz_OiEvPw13L0h3IsTk_Z0&amp;usp=sharing" target="_blank" rel="noopener">マップからバス停を探す</a>
+    <a class="map-btn" id="mapBtn" href="https://www.google.com/maps/d/u/2/edit?mid=1FV98ZXThOqz_OiEvPw13L0h3IsTk_Z0&amp;usp=sharing" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span id="mapBtnText">マップからバス停を探す</span></a>
     <div class="field">
       <label for="fromInput" id="lblFrom">FROM</label>
       <input type="text" id="fromInput" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="fromList">
@@ -490,7 +492,7 @@ const toBox=combobox($("toInput"),$("toList"),()=>run());
 function labels(){ const t=T(); document.documentElement.lang=LANG;
   $("title").textContent=t.title; $("lblFrom").textContent=t.from; $("lblTo").textContent=t.to;
   $("lblDate").textContent=t.date; $("lblTime").textContent=t.time; $("nowBtn").textContent=t.now;
-  $("goBtn").textContent=t.go; $("ribbonHead").textContent=t.ribbon; $("mapBtn").textContent=t.mapBtn;
+  $("goBtn").textContent=t.go; $("ribbonHead").textContent=t.ribbon; $("mapBtnText").textContent=t.mapBtn;
   $("footer").textContent=`${t.foot}  ${t.updated}: ${CONFIG.updated}`;
   $("langJa").ariaPressed=LANG==="ja"; $("langEn").ariaPressed=LANG==="en"; }
 function setNow(){ const d=new Date(); $("dateInput").value=d.toISOString().slice(0,10);
