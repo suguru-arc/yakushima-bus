@@ -416,7 +416,9 @@ const UI = {
 let LANG = (navigator.language||"").toLowerCase().startsWith("ja") ? "ja" : "en";
 const T = () => UI[LANG];
 const S = {}; STOPS.forEach(s => S[s.id]=s);
-const nameOf = id => S[id] ? (LANG==="ja"?S[id].ja:S[id].en) : id;
+// 公式路線図・時刻表に印字されている停留所番号("s20"->"20")を名前の先頭に付与する
+const dispNameOf = s => `${s.id.slice(1)} ${LANG==="ja"?s.ja:s.en}`;
+const nameOf = id => S[id] ? dispNameOf(S[id]) : id;
 const routeOf = id => ROUTES.find(r=>r.id===id) || {ja:id,en:id};
 const routeName = id => LANG==="ja"?routeOf(id).ja:routeOf(id).en;
 const routeNote = id => LANG==="ja"?routeOf(id).note_ja:routeOf(id).note_en;
@@ -457,7 +459,7 @@ function journeys(from,to,date,after){
 
 function combobox(inputEl,listEl,onPick){
   let picked=null,cursor=-1,shown=[];
-  const match=q=>{ q=q.trim().toLowerCase(); if(!q) return STOPS.slice();
+  const match=q=>{ q=q.trim().toLowerCase().replace(/^\d+\s+/,""); if(!q) return STOPS.slice();
     // score: 3=en/roma word starts with q, 2=ja starts with q, 1=any substring
     const scored=[];
     for(const s of STOPS){
@@ -474,11 +476,11 @@ function combobox(inputEl,listEl,onPick){
     if(!shown.length){ const li=document.createElement("li"); li.className="none"; li.textContent=T().noStop; listEl.appendChild(li); return; }
     shown.forEach((s,i)=>{ const li=document.createElement("li"); li.role="option";
       li.setAttribute("aria-selected",i===cursor);
-      li.innerHTML=`${LANG==="ja"?s.ja:s.en}<span class="en">${LANG==="ja"?s.en:s.ja}</span>`;
+      li.innerHTML=`${dispNameOf(s)}<span class="en">${LANG==="ja"?s.en:s.ja}</span>`;
       li.onmousedown=e=>{e.preventDefault();choose(s);}; listEl.appendChild(li); }); };
   const open=()=>{ shown=match(inputEl.value); cursor=-1; render(); listEl.hidden=false; inputEl.ariaExpanded="true"; };
   const close=()=>{ listEl.hidden=true; inputEl.ariaExpanded="false"; };
-  const choose=s=>{ picked=s.id; inputEl.value=LANG==="ja"?s.ja:s.en; close(); onPick&&onPick(); };
+  const choose=s=>{ picked=s.id; inputEl.value=dispNameOf(s); close(); onPick&&onPick(); };
   inputEl.addEventListener("focus",open);
   inputEl.addEventListener("input",()=>{picked=null;open();});
   inputEl.addEventListener("blur",()=>setTimeout(close,120));
@@ -489,8 +491,8 @@ function combobox(inputEl,listEl,onPick){
     else if(e.key==="Enter"&&cursor>=0&&shown[cursor]){e.preventDefault();choose(shown[cursor]);}
     else if(e.key==="Escape")close(); });
   return { get:()=>picked,
-    set:id=>{const s=S[id]; if(s){picked=id;inputEl.value=LANG==="ja"?s.ja:s.en;}},
-    refresh:()=>{if(picked){const s=S[picked];inputEl.value=LANG==="ja"?s.ja:s.en;}} };
+    set:id=>{const s=S[id]; if(s){picked=id;inputEl.value=dispNameOf(s);}},
+    refresh:()=>{if(picked){const s=S[picked];inputEl.value=dispNameOf(s);}} };
 }
 
 const $=id=>document.getElementById(id);
