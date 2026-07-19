@@ -109,6 +109,8 @@
   .meta { margin-left:auto; font-family:var(--mono); font-size:11px; color:var(--rain); }
   .badge { font-family:var(--mono); font-size:9.5px; letter-spacing:.08em; text-transform:uppercase;
     padding:2px 5px; border-radius:2px; background:var(--alert); color:#fff; }
+  .beta-tag { font-family:var(--mono); font-size:9.5px; letter-spacing:.08em;
+    padding:2px 6px; border-radius:2px; background:var(--amber); color:#fff; vertical-align:middle; margin-left:6px; }
   .leg { display:flex; gap:9px; padding:3px 0; }
   .leg-bar { flex:0 0 3px; background:var(--moss); border-radius:2px; }
   .leg-body { flex:1; min-width:0; font-size:13px; }
@@ -126,13 +128,14 @@
     text-align:center; color:var(--rain); font-size:13.5px; }
   footer { margin-top:26px; padding-top:14px; border-top:1px solid var(--line); font-size:11.5px;
     color:var(--rain); line-height:1.7; }
+  footer .credit { margin-top:8px; font-family:var(--mono); font-size:10.5px; letter-spacing:.03em; }
   @media (max-width:560px) { .ribbon { flex:0 0 78px; } .dep { font-size:11px; padding:1px 3px; } .board { gap:10px; } }
   @media (prefers-reduced-motion:reduce) { * { animation:none !important; transition:none !important; } }
 </style>
 
 <div class="wrap">
   <header>
-    <h1><span id="title">屋久島バス乗換</span>
+    <h1><span id="title">屋久島バス乗換</span><span class="beta-tag">BETA</span>
       <small>Yakushima Bus · Route Finder</small></h1>
     <div class="langs">
       <button id="langJa" aria-pressed="true">日本語</button>
@@ -399,7 +402,7 @@ const UI = {
     emptyPick:"乗車地と降車地を選んでください。",
     emptyNone:"この区間を結ぶ便が見つかりませんでした。日付を変えてお試しください。",
     ribbon:"本日の便", min:"分", est:"(目安)", mapBtn:"マップからバス停を探す",
-    foot:"※公式時刻表に基づく非公式ツールです。ダイヤは変更される場合があります。（目安）表示の時刻は、公式時刻表に記載のない停留所を所要時間表から推計したものです。運賃（≈）は公式運賃表の主要区間から推計した目安で、乗換時は各乗車分を合算しています（大人片道）。乗車前に必ず公式時刻表・運賃表でご確認ください。",
+    foot:"このツールは屋久島におけるバス情報がめっちゃ分かりづらいというツーリストの悩みを解消するため、Årc yakushimaにて勝手に開発したものです。公式情報を元にしていますが、バス会社による公式情報が反映されていない場合や、検証不十分のため、実際の情報と異なる場合やエラーがあるかもしれません。より確実な情報が必要な場合は、公式の時刻表等を確認ください。まちがっていても責任はとれませんが、間違いを教えてもらえたら、本ツールの今後の改善に活かさせていただきます！ - 更新日：2026-07-19",
     updated:"データ改正日" },
   en:{ title:"Yakushima Bus", from:"From", to:"To", date:"Date", time:"Departing after",
     now:"Current time", go:"Find buses", noStop:"No matching stop",
@@ -410,7 +413,7 @@ const UI = {
     emptyPick:"Choose where you\'re starting and where you\'re going.",
     emptyNone:"No bus connects these stops. Try another date.",
     ribbon:"Today", min:"min", est:"(est)", mapBtn:"Find stops on the map",
-    foot:"Unofficial tool based on the official timetable. Schedules may change. Times marked (est) are estimated for stops not printed in the official timetable, using published inter-stop durations. Fares (\u2248) are estimated from the official fare chart\u2019s major sections and summed per boarding for transfers (adult, one way). Always confirm with the official timetable and fare chart before you travel.",
+    foot:"This tool was put together independently by \u00c5rc yakushima to fix how confusing Yakushima's bus information is for tourists. It's based on official sources, but updates from the bus company aren't always reflected here and it hasn't been fully verified, so it may differ from the real timetable or contain errors. For anything important, please check the official timetable. We can't take responsibility for mistakes, but if you spot one, please let us know \u2014 it'll help us improve this tool! - Last updated: 2026-07-19",
     updated:"Timetable revised" }
 };
 let LANG = (navigator.language||"").toLowerCase().startsWith("ja") ? "ja" : "en";
@@ -503,7 +506,7 @@ function labels(){ const t=T(); document.documentElement.lang=LANG;
   $("title").textContent=t.title; $("lblFrom").textContent=t.from; $("lblTo").textContent=t.to;
   $("lblDate").textContent=t.date; $("lblTime").textContent=t.time; $("nowBtn").textContent=t.now;
   $("goBtn").textContent=t.go; $("ribbonHead").textContent=t.ribbon; $("mapBtnText").textContent=t.mapBtn;
-  $("footer").textContent=`${t.foot}  ${t.updated}: ${CONFIG.updated}`;
+  $("footer").innerHTML=`<div>${t.foot}  ${t.updated}: ${CONFIG.updated}</div><div class="credit">Made by Årc yakushima</div>`;
   $("langJa").ariaPressed=LANG==="ja"; $("langEn").ariaPressed=LANG==="en"; }
 function setNow(){ const d=new Date(); $("dateInput").value=d.toISOString().slice(0,10);
   $("timeInput").value=String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0"); }
