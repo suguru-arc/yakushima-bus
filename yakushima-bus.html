@@ -40,8 +40,8 @@
   .swap:hover { color:var(--moss); border-color:var(--moss); }
   .when { display:flex; flex-wrap:wrap; gap:8px; align-items:flex-end; }
   .when .field { flex:1 1 132px; min-width:132px; margin-bottom:0; }
-  .now-btn { flex:0 0 auto; font-family:var(--mono); font-size:11px; letter-spacing:.06em; padding:11px 12px;
-    background:var(--paper); border:1px solid var(--line); border-radius:2px; color:var(--rain);
+  .now-btn { flex:0 0 auto; font-family:var(--mono); font-size:10px; letter-spacing:.06em; padding:6px 10px;
+    background:var(--paper); border:1px solid #d9dbd9; border-radius:2px; color:#adb0ad;
     cursor:pointer; white-space:nowrap; }
   .now-btn:hover { color:var(--moss); border-color:var(--moss); }
   @media (max-width:480px) {
@@ -50,7 +50,7 @@
        横並びの幅の奪い合い自体をやめ、縦積みにして確実に回避する。 */
     .when { flex-direction:column; align-items:stretch; }
     .when .field { flex:none; min-width:0; width:100%; }
-    .now-btn { width:100%; }
+    .now-btn { align-self:flex-end; width:auto; }
   }
   .map-btn { display:flex; align-items:center; justify-content:center; gap:6px; width:100%;
     box-sizing:border-box; margin:0 0 14px; padding:11px 12px;
@@ -391,7 +391,7 @@ const CAL = { everyday:[0,1,2,3,4,5,6], weekday:[1,2,3,4,5], weekend:[0,6] };
 
 const UI = {
   ja:{ title:"屋久島バス乗換", from:"乗車地", to:"降車地", date:"日付", time:"出発時刻以降",
-    now:"現在", go:"経路を調べる", noStop:"該当する停留所がありません",
+    now:"現在時刻", go:"経路を調べる", noStop:"該当する停留所がありません",
     direct:"直通", transfer:"乗換", change:"乗換", last:"最終", lastBadge:"最終",
     okTag:"運行中", warnTag:"残りわずか", stopTag:"終了",
     lastOf:"この区間の最終は", few:"本日この区間はあと", fewAfter:"本。乗り遅れにご注意ください。",
@@ -402,7 +402,7 @@ const UI = {
     foot:"※公式時刻表に基づく非公式ツールです。ダイヤは変更される場合があります。（目安）表示の時刻は、公式時刻表に記載のない停留所を所要時間表から推計したものです。運賃（≈）は公式運賃表の主要区間から推計した目安で、乗換時は各乗車分を合算しています（大人片道）。乗車前に必ず公式時刻表・運賃表でご確認ください。",
     updated:"データ改正日" },
   en:{ title:"Yakushima Bus", from:"From", to:"To", date:"Date", time:"Departing after",
-    now:"Now", go:"Find buses", noStop:"No matching stop",
+    now:"Current time", go:"Find buses", noStop:"No matching stop",
     direct:"Direct", transfer:"change", change:"Change at", last:"Last", lastBadge:"Last",
     okTag:"Running", warnTag:"Few left", stopTag:"Finished",
     lastOf:"Last bus departs", few:"Only", fewAfter:"left today. Don\'t miss it.",
