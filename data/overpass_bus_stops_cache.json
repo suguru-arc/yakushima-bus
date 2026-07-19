@@ -1,0 +1,1640 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-07-19T02:42:44Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 2579982418,
+  "lat": 30.3805805,
+  "lon": 130.5749978,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "白谷雲水峽",
+    "name:en": "Shiratani Unsuikyo",
+    "name:ja": "白谷雲水峽",
+    "name:ko": "29. 시라타니운스이쿄협곡",
+    "source": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 2698241997,
+  "lat": 30.4299852,
+  "lon": 130.5692066,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "宮之浦港入口",
+    "name:en": "Miyanourako Iriguchi",
+    "name:ja": "宮之浦港入口",
+    "name:ko": "21. 미야노우라 입구",
+    "name:zh": "21.宮之浦港入口",
+    "public_transport": "platform",
+    "ref": "21"
+  }
+},
+{
+  "type": "node",
+  "id": 4317740531,
+  "lat": 30.3783718,
+  "lon": 130.6636602,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "大川",
+    "name:en": "Okawa",
+    "name:ja": "大川",
+    "public_transport": "platform",
+    "ref": "51",
+    "source:ref": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 4317741303,
+  "lat": 30.3806932,
+  "lon": 130.6610636,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "長峰",
+    "name:en": "Nagamine",
+    "name:ja": "長峰",
+    "public_transport": "platform",
+    "ref": "50",
+    "source:ref": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 4317742165,
+  "lat": 30.3740601,
+  "lon": 130.6633692,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "早崎",
+    "name:en": "Hayasaki",
+    "name:ja": "早崎",
+    "public_transport": "platform",
+    "ref": "52",
+    "shelter": "no",
+    "source:ref": "survey",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4317744251,
+  "lat": 30.3703781,
+  "lon": 130.6618246,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "高見橋",
+    "name:en": "Takamibashi",
+    "name:ja": "高見橋",
+    "public_transport": "platform",
+    "ref": "53",
+    "source:ref": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 4317744834,
+  "lat": 30.3831096,
+  "lon": 130.6589878,
+  "tags": {
+    "bench": "yes",
+    "bin": "no",
+    "bus": "yes",
+    "check_date:shelter": "2026-01-14",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "空港",
+    "name:en": "Airport",
+    "name:ja": "空港",
+    "name:ko": "공항",
+    "public_transport": "platform",
+    "ref": "49",
+    "shelter": "yes",
+    "source:ref": "survey",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4317747476,
+  "lat": 30.3830142,
+  "lon": 130.6584139,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "塩の道",
+    "name:en": "Shionomichi",
+    "name:ja": "塩の道",
+    "public_transport": "platform",
+    "ref": "48",
+    "shelter": "no",
+    "source:ref": "survey",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4317748246,
+  "lat": 30.3871333,
+  "lon": 130.6548863,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "長峰北",
+    "name:en": "Nagamine Kita",
+    "name:ja": "長峰北",
+    "public_transport": "platform",
+    "ref": "47",
+    "source:ref": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 4317748247,
+  "lat": 30.3893247,
+  "lon": 130.6526230,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "診療所前",
+    "name:en": "Koseda Shinryojo-mae",
+    "name:ja": "診療所前",
+    "public_transport": "platform",
+    "ref": "46",
+    "source:ref": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 4317748758,
+  "lat": 30.3938911,
+  "lon": 130.6475320,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "女川",
+    "name:en": "Onnagawa",
+    "name:ja": "女川",
+    "public_transport": "platform",
+    "ref": "45",
+    "source:ref": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 4423100445,
+  "lat": 30.3941164,
+  "lon": 130.5678530,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "雲の展望台",
+    "name:en": "Kumo-no-Tenbodai",
+    "name:ja": "雲の展望台"
+  }
+},
+{
+  "type": "node",
+  "id": 4423100446,
+  "lat": 30.4326809,
+  "lon": 130.5713756,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "宮之浦港",
+    "name:en": "Miyanoura Port",
+    "name:ja": "宮之浦港",
+    "name:ko": "20. 미야노우라 항구",
+    "name:zh": "20.宮之浦港",
+    "public_transport": "platform",
+    "ref": "20",
+    "shelter": "yes",
+    "wikidata": "Q30928962",
+    "wikipedia": "ja:宮之浦港 (屋久島町)"
+  }
+},
+{
+  "type": "node",
+  "id": 4423155777,
+  "lat": 30.3987728,
+  "lon": 130.6382609,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "西小瀬田",
+    "name:en": "Nishi Koseda",
+    "name:ja": "西小瀬田",
+    "public_transport": "platform",
+    "ref": "43",
+    "source:ref": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 4423158832,
+  "lat": 30.3975994,
+  "lon": 130.6412623,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "小瀬田",
+    "name:en": "Koseda",
+    "name:ja": "小瀬田",
+    "public_transport": "platform",
+    "ref": "44",
+    "source:ref": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 4423159240,
+  "lat": 30.4354077,
+  "lon": 130.5594462,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "深川",
+    "name:en": "Fukagawa",
+    "name:ja": "深川",
+    "public_transport": "platform",
+    "ref": "17"
+  }
+},
+{
+  "type": "node",
+  "id": 4423159241,
+  "lat": 30.4392263,
+  "lon": 130.5524635,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "振腰橋",
+    "name:en": "Furikoshibashi",
+    "name:ja": "振腰橋",
+    "ref": "16"
+  }
+},
+{
+  "type": "node",
+  "id": 4423160117,
+  "lat": 30.4003984,
+  "lon": 130.6323114,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "男川",
+    "name:en": "Otokogawa",
+    "name:ja": "男川",
+    "public_transport": "platform",
+    "ref": "42",
+    "source:ref": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 4423160127,
+  "lat": 30.4040857,
+  "lon": 130.6178997,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "下牧野",
+    "name:en": "Shimomakino",
+    "name:ja": "下牧野",
+    "public_transport": "platform",
+    "ref": "40",
+    "shelter": "no",
+    "source:ref": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 4423160790,
+  "lat": 30.4023225,
+  "lon": 130.6221694,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "椨川",
+    "name:en": "Tabugawa",
+    "name:ja": "椨川",
+    "public_transport": "platform",
+    "ref": "41",
+    "source:ref": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 4423161529,
+  "lat": 30.4064313,
+  "lon": 130.6062604,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "湯ノ川温泉",
+    "name:en": "Yunokawa Onsen",
+    "name:ja": "湯ノ川温泉",
+    "public_transport": "platform",
+    "ref": "38",
+    "source:ref": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 4423162067,
+  "lat": 30.4051084,
+  "lon": 130.6145243,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "牧ノ川",
+    "name:en": "Makinokawa",
+    "name:ja": "牧ノ川",
+    "public_transport": "platform",
+    "ref": "39",
+    "source:ref": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 4423162078,
+  "lat": 30.4126875,
+  "lon": 130.5948760,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "楠川",
+    "name:en": "Kusugawa",
+    "name:ja": "楠川",
+    "public_transport": "platform",
+    "ref": "37",
+    "source:ref": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 4423162685,
+  "lat": 30.4173063,
+  "lon": 130.5915652,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "楠川入口",
+    "name:en": "Kusugawa Iriguchi",
+    "name:ja": "楠川入口",
+    "public_transport": "platform",
+    "ref": "36",
+    "source:ref": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 4423162840,
+  "lat": 30.4184163,
+  "lon": 130.5879005,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "鳥越",
+    "name:en": "Torigoe",
+    "name:ja": "鳥越",
+    "public_transport": "platform",
+    "ref": "35",
+    "source:ref": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 4423162856,
+  "lat": 30.4189862,
+  "lon": 130.5858642,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "旭町",
+    "name:en": "Asahimachi",
+    "name:ja": "旭町",
+    "public_transport": "platform",
+    "ref": "34",
+    "source:ref": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 4423163694,
+  "lat": 30.4198110,
+  "lon": 130.5831526,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "営団",
+    "name:en": "Eidan",
+    "name:ja": "営団",
+    "public_transport": "platform",
+    "ref": "33",
+    "source:ref": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 4423163706,
+  "lat": 30.4209365,
+  "lon": 130.5801960,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "高校前",
+    "name:en": "Koko-mae",
+    "name:ja": "高校前",
+    "public_transport": "platform",
+    "ref": "32",
+    "source:ref": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 4423164076,
+  "lat": 30.4216988,
+  "lon": 130.5742454,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "宮浦小前",
+    "name:en": "Miyaurasho-mae",
+    "name:ja": "宮浦小前",
+    "name:ko": "31. 미야노우라소 앞",
+    "public_transport": "platform",
+    "ref": "31",
+    "source:ref": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 4423164117,
+  "lat": 30.4194506,
+  "lon": 130.5714263,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Aコープ前",
+    "name:en": "A-Coop mae",
+    "name:ja": "Aコープ前",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 4423165903,
+  "lat": 30.3971703,
+  "lon": 130.5617221,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "森の展望台",
+    "name:en": "Mori-no-Tenbodai",
+    "name:ja": "森の展望台",
+    "ref": "27"
+  }
+},
+{
+  "type": "node",
+  "id": 4423165966,
+  "lat": 30.4327497,
+  "lon": 130.5687240,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "シーサイドホテル前",
+    "name:en": "Seaside Hotel",
+    "name:ja": "シーサイドホテル",
+    "public_transport": "platform",
+    "ref": "19"
+  }
+},
+{
+  "type": "node",
+  "id": 4423166888,
+  "lat": 30.4101549,
+  "lon": 130.5669309,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "牛床公園",
+    "name:en": "Ushitoko Koen",
+    "name:ja": "牛床公園",
+    "public_transport": "platform",
+    "ref": "26"
+  }
+},
+{
+  "type": "node",
+  "id": 4423167081,
+  "lat": 30.4210574,
+  "lon": 130.5692322,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "宮之浦支所前",
+    "name:en": "Miyanoura Shisho-mae",
+    "name:ja": "宮之浦支所前",
+    "name:zh": "24.宮之浦支所前",
+    "public_transport": "platform",
+    "ref": "24"
+  }
+},
+{
+  "type": "node",
+  "id": 4423167172,
+  "lat": 30.4188934,
+  "lon": 130.5675901,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "小原町",
+    "name:en": "Oharamachi",
+    "name:ja": "小原町",
+    "name:ko": "28. 오하라마치 버스정류장",
+    "public_transport": "platform",
+    "ref": "25"
+  }
+},
+{
+  "type": "node",
+  "id": 4423167536,
+  "lat": 30.4245297,
+  "lon": 130.5702299,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "宮之浦",
+    "name:en": "Miyanoura",
+    "name:ja": "宮之浦",
+    "public_transport": "platform",
+    "ref": "23"
+  }
+},
+{
+  "type": "node",
+  "id": 4423168883,
+  "lat": 30.4273063,
+  "lon": 130.5706395,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "登上",
+    "name:en": "Noboriagari",
+    "name:ja": "登上",
+    "name:ko": "22. 노보리아가리",
+    "name:zh": "22.登上",
+    "public_transport": "platform",
+    "ref": "22"
+  }
+},
+{
+  "type": "node",
+  "id": 4423170647,
+  "lat": 30.4328687,
+  "lon": 130.5643134,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "屋久電前",
+    "name:en": "Yakuden-mae",
+    "name:ja": "屋久電前",
+    "public_transport": "platform",
+    "ref": "18"
+  }
+},
+{
+  "type": "node",
+  "id": 4423172401,
+  "lat": 30.4409408,
+  "lon": 130.5476045,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "泊川",
+    "name:en": "Tomarigawa",
+    "name:ja": "泊川",
+    "ref": "15"
+  }
+},
+{
+  "type": "node",
+  "id": 4423172454,
+  "lat": 30.4471396,
+  "lon": 130.5194979,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "志戸子",
+    "name:en": "Shitoko",
+    "name:ja": "志戸子",
+    "name:ko": "14. 시토코 버스정류장",
+    "ref": "14"
+  }
+},
+{
+  "type": "node",
+  "id": 4423172456,
+  "lat": 30.4542136,
+  "lon": 130.4963429,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "矢筈",
+    "name:en": "Yahazu (Isso Beach)",
+    "name:ja": "矢筈",
+    "name:ko": "13. 야하즈 버스정류장",
+    "ref": "13"
+  }
+},
+{
+  "type": "node",
+  "id": 4423172809,
+  "lat": 30.4523718,
+  "lon": 130.4913762,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "departures_board": "timetable",
+    "highway": "bus_stop",
+    "name": "一湊入口",
+    "name:en": "Isso Iriguchi",
+    "name:ja": "一湊入口",
+    "ref": "12",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4423175223,
+  "lat": 30.4515218,
+  "lon": 130.4871154,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "一湊",
+    "name:en": "Isso",
+    "name:ja": "一湊",
+    "ref": "11"
+  }
+},
+{
+  "type": "node",
+  "id": 4423175932,
+  "lat": 30.4535024,
+  "lon": 130.4760585,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "大浦",
+    "name:en": "Oura",
+    "name:ja": "大浦",
+    "name:ko": "oura 버스정류장",
+    "public_transport": "platform",
+    "ref": "10"
+  }
+},
+{
+  "type": "node",
+  "id": 4423177145,
+  "lat": 30.4471118,
+  "lon": 130.4701627,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "白河",
+    "name:en": "Shirakawa",
+    "name:ja": "白河",
+    "name:ko": "9. shirakawa bus",
+    "ref": "9"
+  }
+},
+{
+  "type": "node",
+  "id": 4423178009,
+  "lat": 30.4328229,
+  "lon": 130.4616892,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "吉田",
+    "name:en": "Yoshida",
+    "name:ja": "吉田",
+    "name:ko": "8. yoshida bus",
+    "ref": "8"
+  }
+},
+{
+  "type": "node",
+  "id": 4423181322,
+  "lat": 30.4186709,
+  "lon": 130.4414424,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "四ツ瀬",
+    "name:en": "Yotsuse",
+    "name:ja": "四ツ瀬",
+    "name:ko": "7. yotsuse bus",
+    "ref": "7"
+  }
+},
+{
+  "type": "node",
+  "id": 4423181600,
+  "lat": 30.4112353,
+  "lon": 130.4373386,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "中野口",
+    "name:en": "Nakanoguchi",
+    "name:ja": "中野口",
+    "ref": "6"
+  }
+},
+{
+  "type": "node",
+  "id": 4423183290,
+  "lat": 30.4072573,
+  "lon": 130.4344560,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "中野橋",
+    "name:en": "Nakanobashi",
+    "name:ja": "中野橋",
+    "public_transport": "platform",
+    "ref": "5"
+  }
+},
+{
+  "type": "node",
+  "id": 4423183464,
+  "lat": 30.4049932,
+  "lon": 130.4302894,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "田舎浜",
+    "name:en": "Inakahama",
+    "name:ja": "田舎浜",
+    "name:ko": "4. 이나카하마 버스정류장",
+    "public_transport": "platform",
+    "ref": "4"
+  }
+},
+{
+  "type": "node",
+  "id": 4423183786,
+  "lat": 30.3991813,
+  "lon": 130.4261764,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "永田入口",
+    "name:en": "Nagata Iriguchi",
+    "name:ja": "永田入口",
+    "public_transport": "platform",
+    "ref": "2"
+  }
+},
+{
+  "type": "node",
+  "id": 4423183809,
+  "lat": 30.4016110,
+  "lon": 130.4270577,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "エビス町",
+    "name:en": "Ebisumachi",
+    "name:ja": "エビス町",
+    "public_transport": "platform",
+    "ref": "3"
+  }
+},
+{
+  "type": "node",
+  "id": 4423184096,
+  "lat": 30.3962763,
+  "lon": 130.4262866,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "永田",
+    "name:en": "Nagata",
+    "name:ja": "永田",
+    "name:ko": "1. 나가타 버스정류장",
+    "public_transport": "platform",
+    "ref": "1"
+  }
+},
+{
+  "type": "node",
+  "id": 4435165390,
+  "lat": 30.3399211,
+  "lon": 130.5951974,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "荒川登山口",
+    "name:en": "Arakawa Trail Entrance",
+    "name:ja": "荒川登山口",
+    "name:ko": "아라카와등산로",
+    "network": "荒川登山バス",
+    "operator": "種子島・屋久島交通",
+    "public_transport": "platform",
+    "ref": "70"
+  }
+},
+{
+  "type": "node",
+  "id": 4435927693,
+  "lat": 30.2389222,
+  "lon": 130.5528403,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "尾の間温泉入口",
+    "name:en": "Onoaida Onsen Iriguchi",
+    "name:ja": "尾の間温泉入口",
+    "ref": "98",
+    "source:ref": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 4435959489,
+  "lat": 30.2349184,
+  "lon": 130.4801558,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "湯泊",
+    "name:en": "Yudomari",
+    "name:ja": "湯泊",
+    "ref": "114",
+    "shelter": "no",
+    "source:ref": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 4435959490,
+  "lat": 30.2554466,
+  "lon": 130.4309913,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "中間",
+    "name:en": "Nakama",
+    "name:ja": "中間",
+    "name:ko": "123. 나카마 버스정류장"
+  }
+},
+{
+  "type": "node",
+  "id": 4867355499,
+  "lat": 30.3148834,
+  "lon": 130.6554763,
+  "tags": {
+    "bench": "yes",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "安房",
+    "name:en": "Anbō",
+    "name:ja": "安房",
+    "name:ko": "안보 버스정류장 (야쿠스기자연관행)",
+    "operator": "種子島・屋久島交通",
+    "public_transport": "platform",
+    "ref": "66",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4867355500,
+  "lat": 30.3112362,
+  "lon": 130.6475275,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "盛久神社",
+    "name:en": "Morihisa Jinja",
+    "name:ja": "盛久神社",
+    "operator": "種子島・屋久島交通",
+    "public_transport": "platform",
+    "ref": "73"
+  }
+},
+{
+  "type": "node",
+  "id": 4867355501,
+  "lat": 30.2968164,
+  "lon": 130.6352363,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "SakaemachiI",
+    "name:en": "SakaemachiI",
+    "ref": "77",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4867357587,
+  "lat": 30.2801683,
+  "lon": 130.6230827,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "Shochugawa",
+    "name:en": "Shochugawa",
+    "ref": "80"
+  }
+},
+{
+  "type": "node",
+  "id": 4867357588,
+  "lat": 30.2692200,
+  "lon": 130.6127925,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "Takahira",
+    "name:en": "Takahira",
+    "ref": "83"
+  }
+},
+{
+  "type": "node",
+  "id": 4867365757,
+  "lat": 30.3211443,
+  "lon": 130.6558658,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "合庁前",
+    "name:en": "Gōchōmae",
+    "name:ja": "合庁前",
+    "public_transport": "platform",
+    "ref": "62",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4867372912,
+  "lat": 30.3173093,
+  "lon": 130.6596175,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "安房港",
+    "name:en": "Anbō Port",
+    "name:ja": "安房港",
+    "operator": "種子島・屋久島交通",
+    "public_transport": "platform",
+    "ref": "64",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4867373888,
+  "lat": 30.3618263,
+  "lon": 130.6631532,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "大迫",
+    "name:en": "Osako",
+    "name:ja": "大迫",
+    "public_transport": "platform",
+    "ref": "55"
+  }
+},
+{
+  "type": "node",
+  "id": 4867373889,
+  "lat": 30.3432327,
+  "lon": 130.6543002,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "竜天",
+    "name:en": "Ryuten",
+    "name:ja": "竜天",
+    "public_transport": "platform",
+    "ref": "58",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4867373890,
+  "lat": 30.3275900,
+  "lon": 130.6583534,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "中央",
+    "name:en": "Chuo",
+    "name:ja": "中央",
+    "public_transport": "platform",
+    "ref": "61",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4867373891,
+  "lat": 30.2760012,
+  "lon": 130.6181084,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "Nakabashi",
+    "name:en": "Nakabashi",
+    "ref": "81",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4867373892,
+  "lat": 30.2637169,
+  "lon": 130.6058879,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "Hotogawa",
+    "name:en": "Hotogawa",
+    "ref": "84"
+  }
+},
+{
+  "type": "node",
+  "id": 4867373893,
+  "lat": 30.2485223,
+  "lon": 130.5844190,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Hara Iriguchi",
+    "name:en": "Hara Iriguchi",
+    "public_transport": "platform",
+    "ref": "88"
+  }
+},
+{
+  "type": "node",
+  "id": 4867373894,
+  "lat": 30.2379929,
+  "lon": 130.5568123,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "Onoaida",
+    "name:en": "Onoaida",
+    "name:ko": "94. 오노아이다 버스정류장",
+    "ref": "94"
+  }
+},
+{
+  "type": "node",
+  "id": 4867373895,
+  "lat": 30.2369420,
+  "lon": 130.5502018,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "Hotel Iriguchi",
+    "name:en": "Hotel Iriguchi",
+    "ref": "100"
+  }
+},
+{
+  "type": "node",
+  "id": 4867373896,
+  "lat": 30.2349871,
+  "lon": 130.5464067,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "Yaishi",
+    "name:en": "Yaishi",
+    "ref": "101"
+  }
+},
+{
+  "type": "node",
+  "id": 4867373897,
+  "lat": 30.2346184,
+  "lon": 130.4859817,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "Nishikaikon",
+    "name:en": "Nishikaikon",
+    "name:ko": "113. nishikaikon bus",
+    "ref": "113"
+  }
+},
+{
+  "type": "node",
+  "id": 4867374100,
+  "lat": 30.3550823,
+  "lon": 130.6615958,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Nagakubo",
+    "name:en": "Nagakubo",
+    "name:ja": "永久保",
+    "public_transport": "platform",
+    "ref": "56",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4867374101,
+  "lat": 30.3381205,
+  "lon": 130.6574391,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "船行",
+    "name:en": "Funayuki",
+    "name:ja": "船行",
+    "public_transport": "platform",
+    "ref": "59"
+  }
+},
+{
+  "type": "node",
+  "id": 4867374102,
+  "lat": 30.3142646,
+  "lon": 130.6552395,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "安房",
+    "name:en": "Anbo",
+    "name:ja": "安房",
+    "name:ko": "66. 안보 버스정류장 (미야노우라, 나가타행)",
+    "operator": "種子島・屋久島交通",
+    "public_transport": "platform",
+    "ref": "66"
+  }
+},
+{
+  "type": "node",
+  "id": 4867374103,
+  "lat": 30.3042940,
+  "lon": 130.6394601,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Yokomine",
+    "name:en": "Yokomine",
+    "public_transport": "platform",
+    "ref": "75",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4867374104,
+  "lat": 30.2896889,
+  "lon": 130.6330721,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "平野",
+    "name:en": "Hirano",
+    "name:ja": "平野",
+    "operator": "種子島・屋久島交通",
+    "public_transport": "platform",
+    "ref": "78"
+  }
+},
+{
+  "type": "node",
+  "id": 4867374105,
+  "lat": 30.2734194,
+  "lon": 130.6154011,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "Odakumi",
+    "name:en": "Odakumi",
+    "ref": "82",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4867374106,
+  "lat": 30.2560577,
+  "lon": 130.6000159,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "麦生",
+    "name:en": "Mugio",
+    "name:ja": "麦生",
+    "operator": "種子島・屋久島交通",
+    "public_transport": "platform",
+    "ref": "85"
+  }
+},
+{
+  "type": "node",
+  "id": 4867374107,
+  "lat": 30.2435206,
+  "lon": 130.5760337,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "Dorobuchigawa",
+    "name:en": "Dorobuchigawa",
+    "ref": "91"
+  }
+},
+{
+  "type": "node",
+  "id": 4867374108,
+  "lat": 30.2374140,
+  "lon": 130.5557013,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "Onoaida Shisho-mae",
+    "name:en": "Onoaida Shisho-mae",
+    "name:ko": "98. 오노아이다 온천 앞",
+    "ref": "95"
+  }
+},
+{
+  "type": "node",
+  "id": 4867374109,
+  "lat": 30.2344315,
+  "lon": 130.5564520,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "Onoaida Shinryojo-mae",
+    "name:en": "Onoaida Shinryojo-mae",
+    "ref": "96"
+  }
+},
+{
+  "type": "node",
+  "id": 4867374110,
+  "lat": 30.2346754,
+  "lon": 130.5353276,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "Koshima",
+    "name:en": "Koshima",
+    "ref": "102"
+  }
+},
+{
+  "type": "node",
+  "id": 4867374111,
+  "lat": 30.2858305,
+  "lon": 130.6304401,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "Hinokuchi",
+    "name:en": "Hinokuchi",
+    "ref": "79"
+  }
+},
+{
+  "type": "node",
+  "id": 4867374187,
+  "lat": 30.3517801,
+  "lon": 130.6592490,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "桑野",
+    "name:en": "Kuwano",
+    "name:ja": "桑野",
+    "name:ko": "쿠와노 버스정류장",
+    "public_transport": "platform",
+    "ref": "57"
+  }
+},
+{
+  "type": "node",
+  "id": 4867374188,
+  "lat": 30.3305821,
+  "lon": 130.6594696,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "磯辺",
+    "name:en": "Isobe",
+    "name:ja": "磯辺",
+    "public_transport": "platform",
+    "ref": "60",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4867374189,
+  "lat": 30.3162915,
+  "lon": 130.6553077,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "警察署前",
+    "name:en": "Keisatsusho-mae",
+    "name:ja": "警察署前",
+    "public_transport": "platform",
+    "ref": "63",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4867374190,
+  "lat": 30.3122540,
+  "lon": 130.6499901,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "牧野",
+    "name:en": "Makino",
+    "name:ja": "牧野",
+    "operator": "種子島・屋久島交通",
+    "public_transport": "platform",
+    "ref": "67"
+  }
+},
+{
+  "type": "node",
+  "id": 4867374191,
+  "lat": 30.3005264,
+  "lon": 130.6361700,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "Naka-aza",
+    "name:en": "Naka-aza",
+    "ref": "76",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4867374402,
+  "lat": 30.2518493,
+  "lon": 130.5939198,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "ボタニカルリサーチパーク",
+    "name:en": "Botanical Research Park",
+    "name:ja": "ボタニカルリサーチパーク",
+    "operator": "種子島・屋久島交通",
+    "public_transport": "platform",
+    "ref": "86"
+  }
+},
+{
+  "type": "node",
+  "id": 4867374403,
+  "lat": 30.2416180,
+  "lon": 130.5636517,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "Nakano",
+    "name:en": "Nakano",
+    "ref": "92"
+  }
+},
+{
+  "type": "node",
+  "id": 4867374404,
+  "lat": 30.2338307,
+  "lon": 130.5561368,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "JR Hotel",
+    "name:en": "JR Hotel",
+    "public_transport": "platform",
+    "ref": "97"
+  }
+},
+{
+  "type": "node",
+  "id": 4867374405,
+  "lat": 30.2393596,
+  "lon": 130.5464141,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "Iwasaki Hotel",
+    "name:en": "Iwasaki Hotel",
+    "ref": "99",
+    "source:ref": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 4867374406,
+  "lat": 30.2356819,
+  "lon": 130.5242286,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "Koidomari",
+    "name:en": "Koidomari",
+    "ref": "105"
+  }
+},
+{
+  "type": "node",
+  "id": 4867387428,
+  "lat": 30.3191985,
+  "lon": 130.6578222,
+  "tags": {
+    "bench": "no",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "仲医院前",
+    "name:en": "Naka Iin-mae",
+    "name:ja": "仲医院前",
+    "public_transport": "platform",
+    "ref": "65",
+    "shelter": "no",
+    "source": "survey",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4869290755,
+  "lat": 30.3100652,
+  "lon": 130.6314444,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name:en": "shizenkan",
+    "name:ko": "68. 야쿠스기자연관 버스정류장",
+    "public_transport": "platform",
+    "source": "survey, Bing"
+  }
+},
+{
+  "type": "node",
+  "id": 4872507022,
+  "lat": 30.4240852,
+  "lon": 130.5704278,
+  "tags": {
+    "bench": "yes",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "宮之浦",
+    "name:ko": "23. 미야노우라",
+    "name:zh": "23.宮之浦",
+    "public_transport": "platform",
+    "shelter": "yes",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5219667721,
+  "lat": 30.2512165,
+  "lon": 130.5909871,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "鯛ノ川",
+    "name:en": "Tainokawa",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 5474941223,
+  "lat": 30.2330444,
+  "lon": 130.4889558,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "海中温泉",
+    "name:en": "Kaichu Onsen"
+  }
+},
+{
+  "type": "node",
+  "id": 5475001921,
+  "lat": 30.2959596,
+  "lon": 130.4149967,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name:en": "Oko no taki",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 6054689752,
+  "lat": 30.3026963,
+  "lon": 130.5445719,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "紀元杉",
+    "name:en": "Kigensugi Cedar",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 6054689753,
+  "lat": 30.3046276,
+  "lon": 130.5754855,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "ヤクスギランド",
+    "name:en": "Yakusugi Cedar Land"
+  }
+},
+{
+  "type": "node",
+  "id": 6158749385,
+  "lat": 30.2365906,
+  "lon": 130.5106451,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "平内入口",
+    "name:en": "Hirauchi Iriguchi"
+  }
+},
+{
+  "type": "node",
+  "id": 12167096946,
+  "lat": 30.4140859,
+  "lon": 130.5958897,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "麦生",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 12167710702,
+  "lat": 30.3811915,
+  "lon": 130.6602560,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "長峰",
+    "public_transport": "platform"
+  }
+},
+{
+  "type": "node",
+  "id": 13012978358,
+  "lat": 30.3006995,
+  "lon": 130.6359060,
+  "tags": {
+    "highway": "bus_stop"
+  }
+},
+{
+  "type": "node",
+  "id": 13137727901,
+  "lat": 30.2449032,
+  "lon": 130.5815511,
+  "tags": {
+    "highway": "bus_stop",
+    "name": "Hara"
+  }
+},
+{
+  "type": "node",
+  "id": 13747757928,
+  "lat": 30.3801167,
+  "lon": 130.5741196,
+  "tags": {
+    "bus": "yes",
+    "departures_board": "yes",
+    "highway": "bus_stop",
+    "name": "Shiratani Unsuikyo",
+    "public_transport": "platform",
+    "shelter": "no"
+  }
+}
+
+  ]
+}

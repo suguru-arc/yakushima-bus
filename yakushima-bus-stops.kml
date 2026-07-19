@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+  <name>屋久島バス停 / Yakushima Bus Stops</name>
+  <Placemark>
+    <name>永田 / Nagata</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.426285,30.396061,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>永田入口 / Nagata Iriguchi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.426178,30.399027,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>エビス町 / Ebisumachi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.426987,30.40196,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>いなか浜西 / Inakahama-nishi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.4302894,30.4049932,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>いなか浜 / Inakahama</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.434456,30.4072573,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>中野口 / Nakanoguchi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.437515,30.41144,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>一里川展望所 / Ichirigawa Tenbozyo</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.4414424,30.4186709,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>吉田 / Yoshida</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.461685,30.432777,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>白河 / Shirakawa</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.47049,30.447163,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>大浦 / Oura</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.476151,30.453362,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>一湊 / Isso</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.487137,30.451326,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>一湊入口 / Isso Iriguchi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.49144,30.452404,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>矢筈 / Yahazu</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.496094,30.454317,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>志戸子 / Shitoko</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.519073,30.447449,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>クリーンセンター入口 / Clean Center Iriguchi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.5476045,30.4409408,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>振腰橋 / Furikoshibashi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.55249,30.439198,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>深川 / Fukagawa</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.559326,30.435358,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>ヤクデン前 / Yakuden-mae</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.5643134,30.4328687,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>シーサイドホテル / Seaside Hotel</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.568802,30.43276,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>宮之浦港 / Miyanoura Port</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.571548,30.432644,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>宮之浦港入口 / Miyanourako Iriguchi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.569183,30.430096,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>登上 / Noboriagari</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.57074,30.426731,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>宮之浦 / Miyanoura</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.570251,30.424568,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>宮之浦支所前 / Miyanoura Shisho-mae</name>
+    <description>medium</description>
+    <Point><coordinates>130.569031,30.420948,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>小原町 / Oharamachi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.567627,30.418615,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>牛床公園 / Ushitoko Koen</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.567184,30.410246,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>森の展望台 / Mori-no-tenbodai</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.561874,30.397142,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>雲の展望台 / Kumo-no-tenbodai</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.567719,30.393969,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>白谷雲水峡 / Shiratani Unsuikyo</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.574799,30.380386,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>Ａコープ前 / A-coop mae</name>
+    <description>medium</description>
+    <Point><coordinates>130.571198,30.419271,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>宮浦小前 / Miyaurasho-mae</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.574081,30.421736,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>高校前 / Koko-mae</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.580185,30.420818,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>営団 / Eidan</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.583527,30.419689,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>旭町 / Asahimachi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.58606,30.418852,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>鳥越 / Torigoe</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.588043,30.41832,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>屋久島大社前 / Yakushima Taisha-mae</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.5915652,30.4173063,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>楠川 / Kusugawa</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.594803,30.412592,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>楠川温泉入口 / Kusugawa Onsen Iriguchi</name>
+    <description>medium</description>
+    <Point><coordinates>130.594803,30.412592,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>牧ノ川 / Makinokawa</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.613419,30.405407,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>下牧野 / Shimomakino</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.617935,30.40406,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>椨川 / Tabugawa</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.622635,30.401974,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>男川 / Otokogawa</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.632874,30.40023,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>西小瀬田 / Nishikoseda</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.637924,30.398851,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>小瀬田 / Koseda</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.641052,30.39761,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>女川 / Onnagawa</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.647369,30.393917,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>小瀬田診療所前 / Koseda Shinryojo-mae</name>
+    <description>medium</description>
+    <Point><coordinates>130.652573,30.389439,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>長峰北 / Nagamine-kita</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.655182,30.386833,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>塩ノ道 / Shionomichi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.658493,30.382957,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>屋久島空港 / Yakushima Airport</name>
+    <description>medium</description>
+    <Point><coordinates>130.658768,30.383293,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>長峰 / Nagamine</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.661636,30.380098,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>大川 / Okawa</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.663803,30.37834,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>早崎 / Hayasaki</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.663193,30.374029,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>高見橋 / Takamibashi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.661758,30.370577,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>農道入口 / Nodo Iriguchi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.663177,30.364605,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>大迫 / Osako</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.663071,30.361948,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>永久保 / Nagakubo</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.661057,30.354683,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>桑野 / Kuwano</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.659149,30.351866,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>竜天 / Ryuten</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.654236,30.343233,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>船行 / Funayuki</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.657455,30.337749,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>磯辺 / Isobe</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.659195,30.331348,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>中央 / Chuo</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.658401,30.327509,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>合庁前 / Gochomae</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.655991,30.321604,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>警察署前 / Keisatsusho-mae</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.65509,30.31638,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>安房港 / Anbo Port</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.659561,30.317377,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>仲医院前 / Naka Iin-mae</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.657913,30.319237,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>安房 / Anbo</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.655426,30.314905,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>牧野 / Makino</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.649567,30.312338,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>屋久杉自然館 / Yakusugi Museum</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.631622,30.310726,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>荒川三叉路 / Arakawa Sansaro</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.586472,30.316769,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>荒川登山口 / Arakawa Trailhead</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.594894,30.340418,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>ヤクスギランド / Yakusugi Cedar Land</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.575409,30.304873,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>紀元杉 / Kigensugi Cedar</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.544266,30.302538,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>盛久神社 / Morihisa Jinja</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.647415,30.311165,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>春田 / Haruta</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.64325,30.307463,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>横峯 / Yokomine</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.639114,30.304062,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>中字 / Naka-aza</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.636108,30.300533,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>栄町 / Sakaemachi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.635101,30.296892,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>平野 / Hirano</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.63298,30.289717,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>樋之口 / Hinokuchi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.63031,30.285538,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>焼酎川 / Shochugawa</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.623077,30.280399,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>中橋 / Nakabashi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.618057,30.276091,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>小田汲 / Odakumi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.615326,30.273451,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>高平 / Takahira</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.61235,30.2691,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>ホトー川 / Hotogawa</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.606049,30.263929,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>麦生 / Mugio</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.599823,30.256145,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>ボタニカルリサーチパーク / Botanical Research Park</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.593124,30.251886,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>鯛ノ川 / Tainokawa</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.590469,30.251125,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>原入口 / Hara Iriguchi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.584641,30.248751,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>原 / Hara</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.581619,30.244913,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>神山 / Kamiyama</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.579208,30.244127,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>泥淵川 / Dorobuchigawa</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.576416,30.243788,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>中野 / Nakano</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.563599,30.241711,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>二又川 / Futamatagawa</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.55928,30.239902,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>尾之間 / Onoaida</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.556671,30.238077,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>尾之間支所前 / Onoaida Shisho-mae</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.555969,30.236938,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>尾之間診療所前 / Onoaida Shinryojo-mae</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.556564,30.234396,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>サマナホテルヤクシマ / samana hotel Yakushima</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.5561368,30.2338307,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>尾之間温泉入口 / Onoaida Onsen Iriguchi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.552826,30.238869,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>いわさきホテル / Iwasaki Hotel</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.546036,30.239059,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>いわさきホテル入口 / Hotel Iriguchi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.550018,30.236795,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>矢石 / Yaishi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.546371,30.235142,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>小島 / Koshima</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.535309,30.234726,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>岳南中前 / Gakunan chu-mae</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.53418,30.235806,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>彼岸野 / Higanno</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.529755,30.236967,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>恋泊 / Koidomari</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.524155,30.235697,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>上ノ牧 / Kaminomaki</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.516632,30.237448,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>平内入口 / Hirauchi Iriguchi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.510468,30.236612,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>八幡小前 / Hachiman sho-mae</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.508377,30.236448,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>八幡神社 / Hachiman Jinja</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.505722,30.236212,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>平内 / Hirauchi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.502609,30.236385,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>大崎橋 / Osakibashi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.496857,30.235207,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>平内海中温泉 / Hirauchi Kaichu Onsen</name>
+    <description>medium</description>
+    <Point><coordinates>130.488831,30.233065,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>西開墾 / Nishikaikon</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.485977,30.234612,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>湯泊 / Yudomari</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.480453,30.23481,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>夕陽ヶ丘 / Yuhigaoka</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.477005,30.235788,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>湯泊西 / Yudomari-nishi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.473846,30.236464,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>花揚川 / Hanaagegawa</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.46701,30.239384,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>旭 / Asahi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.46312,30.239115,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>城下 / Shiroshita</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.459732,30.239086,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>平家ノ城 / Heikenojo</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.450989,30.239946,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>黒崎 / Kurosaki</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.438202,30.244015,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>綱掛橋 / Tsunakakebashi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.431641,30.252951,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>中間 / Nakama</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.430923,30.255379,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>栗生入口 / Kurio Iriguchi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.422546,30.267454,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>栗生 / Kurio</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.424347,30.271095,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>栗生小前 / Kurio sho-mae</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.424927,30.273514,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>栗生橋 / Kuriobashi</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.423187,30.274969,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>青少年村 / Seishonen mura</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.417633,30.272772,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>大川の滝 / Oko-no-taki Waterfall</name>
+    <description>高精度(OSM実測バス停データ)</description>
+    <Point><coordinates>130.414749,30.295988,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>吉田橋 / Yoshida-bashi</name>
+    <description>medium</description>
+    <Point><coordinates>130.461685,30.432777,0</coordinates></Point>
+  </Placemark>
+</Document>
+</kml>

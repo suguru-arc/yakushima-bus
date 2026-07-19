@@ -1,0 +1,782 @@
+{
+  "s1": {
+    "confidence": "high",
+    "lat": 30.396061,
+    "lon": 130.426285,
+    "source": "busteins"
+  },
+  "s10": {
+    "confidence": "high",
+    "lat": 30.453362,
+    "lon": 130.476151,
+    "source": "busteins"
+  },
+  "s100": {
+    "confidence": "high",
+    "lat": 30.236795,
+    "lon": 130.550018,
+    "source": "busteins"
+  },
+  "s101": {
+    "confidence": "high",
+    "lat": 30.235142,
+    "lon": 130.546371,
+    "source": "busteins"
+  },
+  "s102": {
+    "confidence": "high",
+    "lat": 30.234726,
+    "lon": 130.535309,
+    "source": "busteins"
+  },
+  "s103": {
+    "confidence": "high",
+    "lat": 30.235806,
+    "lon": 130.53418,
+    "source": "busteins"
+  },
+  "s104": {
+    "confidence": "high",
+    "lat": 30.236967,
+    "lon": 130.529755,
+    "source": "busteins"
+  },
+  "s105": {
+    "confidence": "high",
+    "lat": 30.235697,
+    "lon": 130.524155,
+    "source": "busteins"
+  },
+  "s106": {
+    "confidence": "high",
+    "lat": 30.237448,
+    "lon": 130.516632,
+    "source": "busteins"
+  },
+  "s107": {
+    "confidence": "high",
+    "lat": 30.236612,
+    "lon": 130.510468,
+    "source": "busteins"
+  },
+  "s108": {
+    "confidence": "high",
+    "lat": 30.236448,
+    "lon": 130.508377,
+    "source": "busteins"
+  },
+  "s109": {
+    "confidence": "high",
+    "lat": 30.236212,
+    "lon": 130.505722,
+    "source": "busteins"
+  },
+  "s11": {
+    "confidence": "high",
+    "lat": 30.451326,
+    "lon": 130.487137,
+    "source": "busteins"
+  },
+  "s110": {
+    "confidence": "high",
+    "lat": 30.236385,
+    "lon": 130.502609,
+    "source": "busteins"
+  },
+  "s111": {
+    "confidence": "high",
+    "lat": 30.235207,
+    "lon": 130.496857,
+    "source": "busteins"
+  },
+  "s112": {
+    "confidence": "medium",
+    "lat": 30.233065,
+    "lon": 130.488831,
+    "source": "busteins"
+  },
+  "s113": {
+    "confidence": "high",
+    "lat": 30.234612,
+    "lon": 130.485977,
+    "source": "busteins"
+  },
+  "s114": {
+    "confidence": "high",
+    "lat": 30.23481,
+    "lon": 130.480453,
+    "source": "busteins"
+  },
+  "s115": {
+    "confidence": "high",
+    "lat": 30.235788,
+    "lon": 130.477005,
+    "source": "busteins"
+  },
+  "s116": {
+    "confidence": "high",
+    "lat": 30.236464,
+    "lon": 130.473846,
+    "source": "busteins"
+  },
+  "s117": {
+    "confidence": "high",
+    "lat": 30.239384,
+    "lon": 130.46701,
+    "source": "busteins"
+  },
+  "s118": {
+    "confidence": "high",
+    "lat": 30.239115,
+    "lon": 130.46312,
+    "source": "busteins"
+  },
+  "s119": {
+    "confidence": "high",
+    "lat": 30.239086,
+    "lon": 130.459732,
+    "source": "busteins"
+  },
+  "s12": {
+    "confidence": "high",
+    "lat": 30.452404,
+    "lon": 130.49144,
+    "source": "busteins"
+  },
+  "s120": {
+    "confidence": "high",
+    "lat": 30.239946,
+    "lon": 130.450989,
+    "source": "busteins"
+  },
+  "s121": {
+    "confidence": "high",
+    "lat": 30.244015,
+    "lon": 130.438202,
+    "source": "busteins"
+  },
+  "s122": {
+    "confidence": "high",
+    "lat": 30.252951,
+    "lon": 130.431641,
+    "source": "busteins"
+  },
+  "s123": {
+    "confidence": "high",
+    "lat": 30.255379,
+    "lon": 130.430923,
+    "source": "busteins"
+  },
+  "s124": {
+    "confidence": "high",
+    "lat": 30.267454,
+    "lon": 130.422546,
+    "source": "busteins"
+  },
+  "s125": {
+    "confidence": "high",
+    "lat": 30.271095,
+    "lon": 130.424347,
+    "source": "busteins"
+  },
+  "s126": {
+    "confidence": "high",
+    "lat": 30.273514,
+    "lon": 130.424927,
+    "source": "busteins"
+  },
+  "s127": {
+    "confidence": "high",
+    "lat": 30.274969,
+    "lon": 130.423187,
+    "source": "busteins"
+  },
+  "s128": {
+    "confidence": "high",
+    "lat": 30.272772,
+    "lon": 130.417633,
+    "source": "busteins"
+  },
+  "s129": {
+    "confidence": "high",
+    "lat": 30.295988,
+    "lon": 130.414749,
+    "source": "busteins"
+  },
+  "s13": {
+    "confidence": "high",
+    "lat": 30.454317,
+    "lon": 130.496094,
+    "source": "busteins"
+  },
+  "s14": {
+    "confidence": "high",
+    "lat": 30.447449,
+    "lon": 130.519073,
+    "source": "busteins"
+  },
+  "s15": {
+    "confidence": "high",
+    "lat": 30.4409408,
+    "lon": 130.5476045,
+    "source": "osm_ref"
+  },
+  "s16": {
+    "confidence": "high",
+    "lat": 30.439198,
+    "lon": 130.55249,
+    "source": "busteins"
+  },
+  "s17": {
+    "confidence": "high",
+    "lat": 30.435358,
+    "lon": 130.559326,
+    "source": "busteins"
+  },
+  "s18": {
+    "confidence": "high",
+    "lat": 30.4328687,
+    "lon": 130.5643134,
+    "source": "osm_ref"
+  },
+  "s19": {
+    "confidence": "high",
+    "lat": 30.43276,
+    "lon": 130.568802,
+    "source": "busteins"
+  },
+  "s2": {
+    "confidence": "high",
+    "lat": 30.399027,
+    "lon": 130.426178,
+    "source": "busteins"
+  },
+  "s20": {
+    "confidence": "high",
+    "lat": 30.432644,
+    "lon": 130.571548,
+    "source": "busteins"
+  },
+  "s21": {
+    "confidence": "high",
+    "lat": 30.430096,
+    "lon": 130.569183,
+    "source": "busteins"
+  },
+  "s22": {
+    "confidence": "high",
+    "lat": 30.426731,
+    "lon": 130.57074,
+    "source": "busteins"
+  },
+  "s23": {
+    "confidence": "high",
+    "lat": 30.424568,
+    "lon": 130.570251,
+    "source": "busteins"
+  },
+  "s24": {
+    "confidence": "medium",
+    "lat": 30.420948,
+    "lon": 130.569031,
+    "source": "busteins"
+  },
+  "s25": {
+    "confidence": "high",
+    "lat": 30.418615,
+    "lon": 130.567627,
+    "source": "busteins"
+  },
+  "s26": {
+    "confidence": "high",
+    "lat": 30.410246,
+    "lon": 130.567184,
+    "source": "busteins"
+  },
+  "s27": {
+    "confidence": "high",
+    "lat": 30.397142,
+    "lon": 130.561874,
+    "source": "busteins"
+  },
+  "s28": {
+    "confidence": "high",
+    "lat": 30.393969,
+    "lon": 130.567719,
+    "source": "busteins"
+  },
+  "s29": {
+    "confidence": "high",
+    "lat": 30.380386,
+    "lon": 130.574799,
+    "source": "busteins"
+  },
+  "s3": {
+    "confidence": "high",
+    "lat": 30.40196,
+    "lon": 130.426987,
+    "source": "busteins"
+  },
+  "s30": {
+    "confidence": "medium",
+    "lat": 30.419271,
+    "lon": 130.571198,
+    "source": "busteins"
+  },
+  "s31": {
+    "confidence": "high",
+    "lat": 30.421736,
+    "lon": 130.574081,
+    "source": "busteins"
+  },
+  "s32": {
+    "confidence": "high",
+    "lat": 30.420818,
+    "lon": 130.580185,
+    "source": "busteins"
+  },
+  "s33": {
+    "confidence": "high",
+    "lat": 30.419689,
+    "lon": 130.583527,
+    "source": "busteins"
+  },
+  "s34": {
+    "confidence": "high",
+    "lat": 30.418852,
+    "lon": 130.58606,
+    "source": "busteins"
+  },
+  "s35": {
+    "confidence": "high",
+    "lat": 30.41832,
+    "lon": 130.588043,
+    "source": "busteins"
+  },
+  "s36": {
+    "confidence": "high",
+    "lat": 30.4173063,
+    "lon": 130.5915652,
+    "source": "osm_ref"
+  },
+  "s37": {
+    "confidence": "high",
+    "lat": 30.412592,
+    "lon": 130.594803,
+    "source": "busteins"
+  },
+  "s38": {
+    "confidence": "medium",
+    "lat": 30.412592,
+    "lon": 130.594803,
+    "source": "busteins"
+  },
+  "s39": {
+    "confidence": "high",
+    "lat": 30.405407,
+    "lon": 130.613419,
+    "source": "busteins"
+  },
+  "s4": {
+    "confidence": "high",
+    "lat": 30.4049932,
+    "lon": 130.4302894,
+    "source": "osm_ref"
+  },
+  "s40": {
+    "confidence": "high",
+    "lat": 30.40406,
+    "lon": 130.617935,
+    "source": "busteins"
+  },
+  "s41": {
+    "confidence": "high",
+    "lat": 30.401974,
+    "lon": 130.622635,
+    "source": "busteins"
+  },
+  "s42": {
+    "confidence": "high",
+    "lat": 30.40023,
+    "lon": 130.632874,
+    "source": "busteins"
+  },
+  "s43": {
+    "confidence": "high",
+    "lat": 30.398851,
+    "lon": 130.637924,
+    "source": "busteins"
+  },
+  "s44": {
+    "confidence": "high",
+    "lat": 30.39761,
+    "lon": 130.641052,
+    "source": "busteins"
+  },
+  "s45": {
+    "confidence": "high",
+    "lat": 30.393917,
+    "lon": 130.647369,
+    "source": "busteins"
+  },
+  "s46": {
+    "confidence": "medium",
+    "lat": 30.389439,
+    "lon": 130.652573,
+    "source": "busteins"
+  },
+  "s47": {
+    "confidence": "high",
+    "lat": 30.386833,
+    "lon": 130.655182,
+    "source": "busteins"
+  },
+  "s48": {
+    "confidence": "high",
+    "lat": 30.382957,
+    "lon": 130.658493,
+    "source": "busteins"
+  },
+  "s49": {
+    "confidence": "medium",
+    "lat": 30.383293,
+    "lon": 130.658768,
+    "source": "busteins"
+  },
+  "s5": {
+    "confidence": "high",
+    "lat": 30.4072573,
+    "lon": 130.434456,
+    "source": "osm_ref"
+  },
+  "s50": {
+    "confidence": "high",
+    "lat": 30.380098,
+    "lon": 130.661636,
+    "source": "busteins"
+  },
+  "s51": {
+    "confidence": "high",
+    "lat": 30.37834,
+    "lon": 130.663803,
+    "source": "busteins"
+  },
+  "s52": {
+    "confidence": "high",
+    "lat": 30.374029,
+    "lon": 130.663193,
+    "source": "busteins"
+  },
+  "s53": {
+    "confidence": "high",
+    "lat": 30.370577,
+    "lon": 130.661758,
+    "source": "busteins"
+  },
+  "s54": {
+    "confidence": "high",
+    "lat": 30.364605,
+    "lon": 130.663177,
+    "source": "busteins"
+  },
+  "s55": {
+    "confidence": "high",
+    "lat": 30.361948,
+    "lon": 130.663071,
+    "source": "busteins"
+  },
+  "s56": {
+    "confidence": "high",
+    "lat": 30.354683,
+    "lon": 130.661057,
+    "source": "busteins"
+  },
+  "s57": {
+    "confidence": "high",
+    "lat": 30.351866,
+    "lon": 130.659149,
+    "source": "busteins"
+  },
+  "s58": {
+    "confidence": "high",
+    "lat": 30.343233,
+    "lon": 130.654236,
+    "source": "busteins"
+  },
+  "s59": {
+    "confidence": "high",
+    "lat": 30.337749,
+    "lon": 130.657455,
+    "source": "busteins"
+  },
+  "s6": {
+    "confidence": "high",
+    "lat": 30.41144,
+    "lon": 130.437515,
+    "source": "busteins"
+  },
+  "s60": {
+    "confidence": "high",
+    "lat": 30.331348,
+    "lon": 130.659195,
+    "source": "busteins"
+  },
+  "s61": {
+    "confidence": "high",
+    "lat": 30.327509,
+    "lon": 130.658401,
+    "source": "busteins"
+  },
+  "s62": {
+    "confidence": "high",
+    "lat": 30.321604,
+    "lon": 130.655991,
+    "source": "busteins"
+  },
+  "s63": {
+    "confidence": "high",
+    "lat": 30.31638,
+    "lon": 130.65509,
+    "source": "busteins"
+  },
+  "s64": {
+    "confidence": "high",
+    "lat": 30.317377,
+    "lon": 130.659561,
+    "source": "busteins"
+  },
+  "s65": {
+    "confidence": "high",
+    "lat": 30.319237,
+    "lon": 130.657913,
+    "source": "busteins"
+  },
+  "s66": {
+    "confidence": "high",
+    "lat": 30.314905,
+    "lon": 130.655426,
+    "source": "busteins"
+  },
+  "s67": {
+    "confidence": "high",
+    "lat": 30.312338,
+    "lon": 130.649567,
+    "source": "busteins"
+  },
+  "s68": {
+    "confidence": "high",
+    "lat": 30.310726,
+    "lon": 130.631622,
+    "source": "busteins"
+  },
+  "s69": {
+    "confidence": "high",
+    "lat": 30.316769,
+    "lon": 130.586472,
+    "source": "busteins"
+  },
+  "s7": {
+    "confidence": "high",
+    "lat": 30.4186709,
+    "lon": 130.4414424,
+    "source": "osm_ref"
+  },
+  "s70": {
+    "confidence": "high",
+    "lat": 30.340418,
+    "lon": 130.594894,
+    "source": "busteins"
+  },
+  "s71": {
+    "confidence": "high",
+    "lat": 30.304873,
+    "lon": 130.575409,
+    "source": "busteins"
+  },
+  "s72": {
+    "confidence": "high",
+    "lat": 30.302538,
+    "lon": 130.544266,
+    "source": "busteins"
+  },
+  "s73": {
+    "confidence": "high",
+    "lat": 30.311165,
+    "lon": 130.647415,
+    "source": "busteins"
+  },
+  "s74": {
+    "confidence": "high",
+    "lat": 30.307463,
+    "lon": 130.64325,
+    "source": "busteins"
+  },
+  "s75": {
+    "confidence": "high",
+    "lat": 30.304062,
+    "lon": 130.639114,
+    "source": "busteins"
+  },
+  "s76": {
+    "confidence": "high",
+    "lat": 30.300533,
+    "lon": 130.636108,
+    "source": "busteins"
+  },
+  "s77": {
+    "confidence": "high",
+    "lat": 30.296892,
+    "lon": 130.635101,
+    "source": "busteins"
+  },
+  "s78": {
+    "confidence": "high",
+    "lat": 30.289717,
+    "lon": 130.63298,
+    "source": "busteins"
+  },
+  "s79": {
+    "confidence": "high",
+    "lat": 30.285538,
+    "lon": 130.63031,
+    "source": "busteins"
+  },
+  "s8": {
+    "confidence": "high",
+    "lat": 30.432777,
+    "lon": 130.461685,
+    "source": "busteins"
+  },
+  "s80": {
+    "confidence": "high",
+    "lat": 30.280399,
+    "lon": 130.623077,
+    "source": "busteins"
+  },
+  "s801": {
+    "confidence": "medium",
+    "lat": 30.432777,
+    "lon": 130.461685,
+    "source": "busteins"
+  },
+  "s81": {
+    "confidence": "high",
+    "lat": 30.276091,
+    "lon": 130.618057,
+    "source": "busteins"
+  },
+  "s82": {
+    "confidence": "high",
+    "lat": 30.273451,
+    "lon": 130.615326,
+    "source": "busteins"
+  },
+  "s83": {
+    "confidence": "high",
+    "lat": 30.2691,
+    "lon": 130.61235,
+    "source": "busteins"
+  },
+  "s84": {
+    "confidence": "high",
+    "lat": 30.263929,
+    "lon": 130.606049,
+    "source": "busteins"
+  },
+  "s85": {
+    "confidence": "high",
+    "lat": 30.256145,
+    "lon": 130.599823,
+    "source": "busteins"
+  },
+  "s86": {
+    "confidence": "high",
+    "lat": 30.251886,
+    "lon": 130.593124,
+    "source": "busteins"
+  },
+  "s87": {
+    "confidence": "high",
+    "lat": 30.251125,
+    "lon": 130.590469,
+    "source": "busteins"
+  },
+  "s88": {
+    "confidence": "high",
+    "lat": 30.248751,
+    "lon": 130.584641,
+    "source": "busteins"
+  },
+  "s89": {
+    "confidence": "high",
+    "lat": 30.244913,
+    "lon": 130.581619,
+    "source": "busteins"
+  },
+  "s9": {
+    "confidence": "high",
+    "lat": 30.447163,
+    "lon": 130.47049,
+    "source": "busteins"
+  },
+  "s90": {
+    "confidence": "high",
+    "lat": 30.244127,
+    "lon": 130.579208,
+    "source": "busteins"
+  },
+  "s91": {
+    "confidence": "high",
+    "lat": 30.243788,
+    "lon": 130.576416,
+    "source": "busteins"
+  },
+  "s92": {
+    "confidence": "high",
+    "lat": 30.241711,
+    "lon": 130.563599,
+    "source": "busteins"
+  },
+  "s93": {
+    "confidence": "high",
+    "lat": 30.239902,
+    "lon": 130.55928,
+    "source": "busteins"
+  },
+  "s94": {
+    "confidence": "high",
+    "lat": 30.238077,
+    "lon": 130.556671,
+    "source": "busteins"
+  },
+  "s95": {
+    "confidence": "high",
+    "lat": 30.236938,
+    "lon": 130.555969,
+    "source": "busteins"
+  },
+  "s96": {
+    "confidence": "high",
+    "lat": 30.234396,
+    "lon": 130.556564,
+    "source": "busteins"
+  },
+  "s97": {
+    "confidence": "high",
+    "lat": 30.2338307,
+    "lon": 130.5561368,
+    "source": "osm_ref"
+  },
+  "s98": {
+    "confidence": "high",
+    "lat": 30.238869,
+    "lon": 130.552826,
+    "source": "busteins"
+  },
+  "s99": {
+    "confidence": "high",
+    "lat": 30.239059,
+    "lon": 130.546036,
+    "source": "busteins"
+  }
+}
