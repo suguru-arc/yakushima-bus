@@ -463,13 +463,16 @@ function journeys(from,to,date,after){
 function combobox(inputEl,listEl,onPick){
   let picked=null,cursor=-1,shown=[];
   const match=q=>{ q=q.trim().toLowerCase().replace(/^\d+\s+/,""); if(!q) return STOPS.slice();
-    // score: 3=en/roma word starts with q, 2=ja starts with q, 1=any substring
+    // score: 4=停留所番号が完全一致, 3=en/roma word starts with q, 2=ja/番号が前方一致, 1=any substring
+    const qIsNum=/^\d+$/.test(q);
     const scored=[];
     for(const s of STOPS){
+      const num=s.id.slice(1);
       const en=s.en.toLowerCase(), ja=s.ja, romaWords=s.roma.toLowerCase().split(" ");
       let sc=0;
-      if(en.startsWith(q)||romaWords.some(w=>w.startsWith(q))) sc=3;
-      else if(ja.startsWith(q)) sc=2;
+      if(qIsNum&&num===q) sc=4;
+      else if(en.startsWith(q)||romaWords.some(w=>w.startsWith(q))) sc=3;
+      else if(ja.startsWith(q)||(qIsNum&&num.startsWith(q))) sc=2;
       else if(ja.includes(q)||en.includes(q)||s.roma.toLowerCase().includes(q)) sc=1;
       if(sc) scored.push([sc,s]);
     }
