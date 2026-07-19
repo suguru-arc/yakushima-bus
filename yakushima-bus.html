@@ -38,9 +38,9 @@
   .swap { font-family:var(--mono); font-size:11px; letter-spacing:.06em; background:var(--paper);
     border:1px solid var(--line); border-radius:2px; color:var(--rain); padding:3px 12px; cursor:pointer; }
   .swap:hover { color:var(--moss); border-color:var(--moss); }
-  .when { display:flex; gap:8px; align-items:flex-end; }
-  .when .field { flex:1; margin-bottom:0; }
-  .now-btn { font-family:var(--mono); font-size:11px; letter-spacing:.06em; padding:11px 12px;
+  .when { display:flex; flex-wrap:wrap; gap:8px; align-items:flex-end; }
+  .when .field { flex:1 1 132px; min-width:132px; margin-bottom:0; }
+  .now-btn { flex:0 0 auto; font-family:var(--mono); font-size:11px; letter-spacing:.06em; padding:11px 12px;
     background:var(--paper); border:1px solid var(--line); border-radius:2px; color:var(--rain);
     cursor:pointer; white-space:nowrap; }
   .now-btn:hover { color:var(--moss); border-color:var(--moss); }
