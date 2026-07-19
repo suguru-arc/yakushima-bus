@@ -126,8 +126,8 @@
     background:repeating-linear-gradient(var(--line) 0 2px, transparent 2px 4px); }
   .empty { background:var(--paper); border:1px dashed var(--line); border-radius:2px; padding:26px 16px;
     text-align:center; color:var(--rain); font-size:13.5px; }
-  footer { margin-top:26px; padding-top:14px; border-top:1px solid var(--line); font-size:13px;
-    color:var(--granite); line-height:1.7; }
+  footer { margin-top:26px; padding-top:14px; border-top:1px solid var(--line); font-size:15px;
+    color:#000; line-height:1.7; }
   footer .credit { margin-top:8px; font-family:var(--mono); font-size:10.5px; letter-spacing:.03em; }
   @media (max-width:560px) { .ribbon { flex:0 0 78px; } .dep { font-size:11px; padding:1px 3px; } .board { gap:10px; } }
   @media (prefers-reduced-motion:reduce) { * { animation:none !important; transition:none !important; } }
@@ -378,7 +378,7 @@ const TRIPS = [
 ];
 
 
-const CONFIG = { minTransfer:5, dayStart:5*60, dayEnd:20*60, maxResults:6, updated:"2026-03-01" };
+const CONFIG = { minTransfer:5, dayStart:5*60, dayEnd:20*60, maxResults:6 };
 function fareFor(a,b){
   if(a===b) return null;
   // 1) direct sub-table fare (mountain spurs: Shiratani, Yakusugi Land, Kigensugi, Arakawa)
@@ -402,8 +402,8 @@ const UI = {
     emptyPick:"乗車地と降車地を選んでください。",
     emptyNone:"この区間を結ぶ便が見つかりませんでした。日付を変えてお試しください。",
     ribbon:"本日の便", min:"分", est:"(目安)", mapBtn:"マップからバス停を探す",
-    foot:"このツールは屋久島におけるバス情報がめっちゃ分かりづらいというツーリストの悩みを解消するため、Årc yakushimaにて勝手に開発したものです。公式情報を元にしていますが、バス会社による公式情報が反映されていない場合や、検証不十分のため、実際の情報と異なる場合やエラーがあるかもしれません。より確実な情報が必要な場合は、公式の時刻表等を確認ください。まちがっていても責任はとれませんが、間違いを教えてもらえたら、本ツールの今後の改善に活かさせていただきます！ - 更新日：2026-07-19",
-    updated:"データ改正日" },
+    foot:"このツールは屋久島におけるバス情報がめっちゃ分かりづらいというツーリストの悩みを解消するため、Årc yakushimaにて勝手に開発したものです。公式情報を元にしていますが、<b>バス会社による公式情報が反映されていない場合や、検証不十分のため、実際の情報と異なる場合やエラーがあるかもしれません。</b>より確実な情報が必要な場合は、公式の時刻表等を確認ください。まちがっていても責任はとれませんが、間違いを教えてもらえたら、本ツールの今後の改善に活かさせていただきます！ - 更新日：2026-07-19",
+  },
   en:{ title:"Yakushima Bus", from:"From", to:"To", date:"Date", time:"Departing after",
     now:"Current time", go:"Find buses", noStop:"No matching stop",
     direct:"Direct", transfer:"change", change:"Change at", last:"Last", lastBadge:"Last",
@@ -413,8 +413,8 @@ const UI = {
     emptyPick:"Choose where you\'re starting and where you\'re going.",
     emptyNone:"No bus connects these stops. Try another date.",
     ribbon:"Today", min:"min", est:"(est)", mapBtn:"Find stops on the map",
-    foot:"This tool was put together independently by \u00c5rc yakushima to fix how confusing Yakushima's bus information is for tourists. It's based on official sources, but updates from the bus company aren't always reflected here and it hasn't been fully verified, so it may differ from the real timetable or contain errors. For anything important, please check the official timetable. We can't take responsibility for mistakes, but if you spot one, please let us know \u2014 it'll help us improve this tool! - Last updated: 2026-07-19",
-    updated:"Timetable revised" }
+    foot:"This tool was put together independently by \u00c5rc yakushima to fix how confusing Yakushima's bus information is for tourists. It's based on official sources, but <b>updates from the bus company aren't always reflected here and it hasn't been fully verified, so it may differ from the real timetable or contain errors.</b> For anything important, please check the official timetable. We can't take responsibility for mistakes, but if you spot one, please let us know \u2014 it'll help us improve this tool! - Last updated: 2026-07-19",
+  }
 };
 let LANG = (navigator.language||"").toLowerCase().startsWith("ja") ? "ja" : "en";
 const T = () => UI[LANG];
@@ -509,7 +509,7 @@ function labels(){ const t=T(); document.documentElement.lang=LANG;
   $("title").textContent=t.title; $("lblFrom").textContent=t.from; $("lblTo").textContent=t.to;
   $("lblDate").textContent=t.date; $("lblTime").textContent=t.time; $("nowBtn").textContent=t.now;
   $("goBtn").textContent=t.go; $("ribbonHead").textContent=t.ribbon; $("mapBtnText").textContent=t.mapBtn;
-  $("footer").innerHTML=`<div>${t.foot}  ${t.updated}: ${CONFIG.updated}</div><div class="credit">Made by Årc yakushima</div>`;
+  $("footer").innerHTML=`<div>${t.foot}</div><div class="credit">Made by Årc yakushima</div>`;
   $("langJa").ariaPressed=LANG==="ja"; $("langEn").ariaPressed=LANG==="en"; }
 function setNow(){ const d=new Date(); $("dateInput").value=d.toISOString().slice(0,10);
   $("timeInput").value=String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0"); }
