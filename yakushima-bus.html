@@ -561,6 +561,18 @@ $("langEn").onclick=()=>{LANG="en";labels();fromBox.refresh();toBox.refresh();ru
 $("swapBtn").onclick=()=>{const a=fromBox.get(),b=toBox.get();fromBox.set(b);toBox.set(a);run();};
 $("nowBtn").onclick=()=>{setNow();run();};
 $("goBtn").onclick=run; $("dateInput").onchange=run; $("timeInput").onchange=run;
+// AndroidはGoogleマップアプリを直接起動させる(未インストール時はPlayストアへ)。
+// iOSはUniversal Linksの仕組み上OSが自動判定するため、ここでは何もしない
+// (マイマップはiOS版Googleマップアプリの対応対象外のことがあり、その場合は
+// ブラウザで開かれる。アプリ側の制約でありJS側からは強制できない)。
+if(/Android/i.test(navigator.userAgent)){
+  $("mapBtn").addEventListener("click",e=>{
+    e.preventDefault();
+    const url=$("mapBtn").href;
+    const intent=`intent://${url.replace(/^https?:\/\//,"")}#Intent;scheme=https;package=com.google.android.apps.maps;S.browser_fallback_url=${encodeURIComponent(url)};end`;
+    location.href=intent;
+  });
+}
 labels(); setNow(); fromBox.set("s20"); toBox.set("s129"); run();
 
 // オフライン対応: 一度開けば電波の入らない山間部でもそのまま使えるようにする。
