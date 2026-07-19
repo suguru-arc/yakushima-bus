@@ -36,6 +36,11 @@ CONFIDENCE_LABEL = {
     "very_low": "最低精度(近隣停留所からの補間・目安)",
 }
 
+# Googleのkml/shapes/にホストされている標準アイコンセット(Google Earth/マイマップが
+# 昔から参照可能な既定URL)。バス停アイコンを薄いグレーで着色する。
+ICON_URL = "http://maps.google.com/mapfiles/kml/shapes/bus.png"
+ICON_COLOR = "ffcccccc"  # KML色形式(aabbggrr)。ccccccは薄いグレー
+
 
 def js_to_json(text):
     return re.sub(r"([{,]\s*)([A-Za-z_][A-Za-z0-9_]*)\s*:", r'\1"\2":', text)
@@ -65,6 +70,7 @@ def main():
         placemarks.append(f"""  <Placemark>
     <name>{escape(name)}</name>
     <description>{escape(desc)}</description>
+    <styleUrl>#busStop</styleUrl>
     <Point><coordinates>{c['lon']},{c['lat']},0</coordinates></Point>
   </Placemark>""")
 
@@ -72,6 +78,12 @@ def main():
 <kml xmlns="http://www.opengis.net/kml/2.2">
 <Document>
   <name>屋久島バス停 / Yakushima Bus Stops</name>
+  <Style id="busStop">
+    <IconStyle>
+      <color>{ICON_COLOR}</color>
+      <Icon><href>{ICON_URL}</href></Icon>
+    </IconStyle>
+  </Style>
 {chr(10).join(placemarks)}
 </Document>
 </kml>
