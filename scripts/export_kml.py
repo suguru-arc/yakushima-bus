@@ -56,7 +56,8 @@ def main():
         c = coords.get(s["id"])
         if not c:
             continue
-        name = f"{s['ja']} / {s['en']}"
+        num = s["id"][1:]  # "s20" -> "20"(公式路線図・時刻表に印字されている停留所番号)
+        name = f"{num} {s['ja']} / {s['en']}"
         conf_label = CONFIDENCE_LABEL.get(c["confidence"], c["confidence"])
         desc = f"{conf_label}"
         if c.get("nominatim_label"):
