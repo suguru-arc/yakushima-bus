@@ -1,0 +1,553 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>屋久島バス乗換 / Yakushima Bus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+JP:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fog:#E4E8E4; --paper:#F7F9F6; --granite:#232A26; --rain:#78867F;
+    --moss:#2F6B45; --moss-soft:#DDE9E0; --alert:#A5382A; --alert-soft:#F7E4E0;
+    --amber:#8A5A0B; --amber-soft:#F7EEDC; --line:#CAD2CC;
+    --sans:"IBM Plex Sans JP","Hiragino Sans","Yu Gothic UI",system-ui,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",monospace;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--fog); color:var(--granite); font-family:var(--sans);
+    font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:760px; margin:0 auto; padding:0 14px 64px; }
+  header { display:flex; align-items:baseline; justify-content:space-between; gap:12px;
+    padding:26px 0 18px; border-bottom:1px solid var(--line); flex-wrap:wrap; }
+  h1 { margin:0; font-size:19px; font-weight:600; letter-spacing:-.01em; }
+  h1 small { display:block; font-family:var(--mono); font-size:11px; font-weight:400;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--rain); margin-top:3px; }
+  .langs { display:flex; border:1px solid var(--line); border-radius:2px; overflow:hidden; }
+  .langs button { font-family:var(--mono); font-size:11px; letter-spacing:.08em; padding:5px 11px;
+    border:0; background:transparent; color:var(--rain); cursor:pointer; }
+  .langs button[aria-pressed="true"] { background:var(--granite); color:var(--paper); }
+  .panel { padding:20px 0 22px; border-bottom:1px solid var(--line); }
+  .field { position:relative; margin-bottom:10px; }
+  .field > label { display:block; font-family:var(--mono); font-size:10px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--rain); margin-bottom:5px; }
+  .field input { width:100%; padding:11px 12px; font-family:var(--sans); font-size:16px;
+    color:var(--granite); background:var(--paper); border:1px solid var(--line); border-radius:2px; }
+  .field input:focus-visible, button:focus-visible, li:focus-visible { outline:2px solid var(--moss); outline-offset:1px; }
+  .swap-row { display:flex; justify-content:center; margin:-3px 0 5px; }
+  .swap { font-family:var(--mono); font-size:11px; letter-spacing:.06em; background:var(--paper);
+    border:1px solid var(--line); border-radius:2px; color:var(--rain); padding:3px 12px; cursor:pointer; }
+  .swap:hover { color:var(--moss); border-color:var(--moss); }
+  .when { display:flex; gap:8px; align-items:flex-end; }
+  .when .field { flex:1; margin-bottom:0; }
+  .now-btn { font-family:var(--mono); font-size:11px; letter-spacing:.06em; padding:11px 12px;
+    background:var(--paper); border:1px solid var(--line); border-radius:2px; color:var(--rain);
+    cursor:pointer; white-space:nowrap; }
+  .now-btn:hover { color:var(--moss); border-color:var(--moss); }
+  .go { width:100%; margin-top:14px; padding:13px; font-family:var(--sans); font-size:15px;
+    font-weight:500; background:var(--granite); color:var(--paper); border:0; border-radius:2px; cursor:pointer; }
+  .go:hover { background:var(--moss); }
+  .options { position:absolute; z-index:30; top:100%; left:0; right:0; margin:3px 0 0; padding:0;
+    list-style:none; max-height:264px; overflow-y:auto; background:var(--paper);
+    border:1px solid var(--granite); border-radius:2px; box-shadow:0 8px 22px rgba(35,42,38,.13); }
+  .options[hidden] { display:none; }
+  .options li { padding:8px 12px; cursor:pointer; border-bottom:1px solid var(--fog); }
+  .options li:last-child { border-bottom:0; }
+  .options li[aria-selected="true"], .options li:hover { background:var(--moss-soft); }
+  .options .en { font-family:var(--mono); font-size:11px; color:var(--rain); display:block; }
+  .options .none { color:var(--rain); cursor:default; }
+  .options .none:hover { background:transparent; }
+  .status { display:flex; align-items:baseline; gap:9px; flex-wrap:wrap; padding:11px 13px;
+    margin:18px 0 4px; border-radius:2px; font-size:13.5px; }
+  .status .tag { font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase;
+    padding:2px 6px; border-radius:2px; }
+  .status.ok { background:var(--moss-soft); } .status.ok .tag { background:var(--moss); color:#fff; }
+  .status.warn { background:var(--amber-soft); } .status.warn .tag { background:var(--amber); color:#fff; }
+  .status.stop { background:var(--alert-soft); } .status.stop .tag { background:var(--alert); color:#fff; }
+  .status b { font-family:var(--mono); font-weight:600; }
+  .board { display:flex; gap:16px; padding-top:14px; align-items:stretch; }
+  .ribbon { position:relative; flex:0 0 88px; min-height:460px; border-left:1px solid var(--line);
+    border-right:1px solid var(--line); background:var(--paper); }
+  .ribbon-head { font-family:var(--mono); font-size:9px; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--rain); text-align:center; padding:5px 0; border-bottom:1px solid var(--line); }
+  .track { position:relative; height:460px; }
+  .hour { position:absolute; left:0; right:0; border-top:1px dashed var(--line); }
+  .hour span { position:absolute; left:3px; top:-7px; font-family:var(--mono); font-size:9px;
+    color:var(--rain); background:var(--paper); padding:0 1px; }
+  .nowline { position:absolute; left:0; right:0; border-top:1.5px solid var(--alert); }
+  .nowline span { position:absolute; right:2px; top:-7px; font-family:var(--mono); font-size:8.5px;
+    letter-spacing:.06em; color:#fff; background:var(--alert); padding:0 3px; border-radius:1px; }
+  .dep { position:absolute; right:4px; font-family:var(--mono); font-size:12px; font-weight:500;
+    padding:1px 5px; border:1px solid var(--granite); border-radius:2px; background:var(--paper);
+    color:var(--granite); cursor:pointer; transform:translateY(-50%); }
+  .dep.past { opacity:.32; border-style:dotted; }
+  .dep.last { background:var(--alert); border-color:var(--alert); color:#fff; }
+  .dep.last.past { background:var(--paper); color:var(--alert); }
+  .results { flex:1; min-width:0; }
+  .card { background:var(--paper); border:1px solid var(--line); border-radius:2px; padding:13px 14px;
+    margin-bottom:9px; animation:rise .22s ease-out both; }
+  @keyframes rise { from { opacity:0; transform:translateY(5px); } }
+  .card.spot { border-color:var(--moss); box-shadow:0 0 0 1px var(--moss); }
+  .card.is-last { border-color:var(--alert); }
+  .card-top { display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; margin-bottom:9px; }
+  .clock { font-family:var(--mono); font-size:19px; font-weight:600; letter-spacing:-.01em; }
+  .arrow { color:var(--rain); font-family:var(--mono); }
+  .meta { margin-left:auto; font-family:var(--mono); font-size:11px; color:var(--rain); }
+  .badge { font-family:var(--mono); font-size:9.5px; letter-spacing:.08em; text-transform:uppercase;
+    padding:2px 5px; border-radius:2px; background:var(--alert); color:#fff; }
+  .leg { display:flex; gap:9px; padding:3px 0; }
+  .leg-bar { flex:0 0 3px; background:var(--moss); border-radius:2px; }
+  .leg-body { flex:1; min-width:0; font-size:13px; }
+  .leg-body .route { font-weight:500; }
+  .leg-body .path { color:var(--rain); font-size:12.5px; }
+  .leg-body .path b { font-family:var(--mono); font-weight:400; color:var(--granite); }
+  .est { font-family:var(--mono); font-size:10px; color:var(--amber); }
+  .leg-note { font-size:11.5px; color:var(--amber); background:var(--amber-soft); padding:3px 6px;
+    border-radius:2px; margin-top:3px; display:inline-block; }
+  .change { display:flex; gap:9px; align-items:center; padding:3px 0; font-family:var(--mono);
+    font-size:11px; color:var(--rain); }
+  .change::before { content:""; flex:0 0 3px; height:14px;
+    background:repeating-linear-gradient(var(--line) 0 2px, transparent 2px 4px); }
+  .empty { background:var(--paper); border:1px dashed var(--line); border-radius:2px; padding:26px 16px;
+    text-align:center; color:var(--rain); font-size:13.5px; }
+  footer { margin-top:26px; padding-top:14px; border-top:1px solid var(--line); font-size:11.5px;
+    color:var(--rain); line-height:1.7; }
+  @media (max-width:560px) { .ribbon { flex:0 0 78px; } .dep { font-size:11px; padding:1px 3px; } .board { gap:10px; } }
+  @media (prefers-reduced-motion:reduce) { * { animation:none !important; transition:none !important; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1><span id="title">屋久島バス乗換</span>
+      <small>Yakushima Bus · Route Finder</small></h1>
+    <div class="langs">
+      <button id="langJa" aria-pressed="true">日本語</button>
+      <button id="langEn" aria-pressed="false">EN</button>
+    </div>
+  </header>
+  <section class="panel">
+    <div class="field">
+      <label for="fromInput" id="lblFrom">FROM</label>
+      <input type="text" id="fromInput" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="fromList">
+      <ul class="options" id="fromList" role="listbox" hidden></ul>
+    </div>
+    <div class="swap-row"><button class="swap" id="swapBtn">&#8645;</button></div>
+    <div class="field">
+      <label for="toInput" id="lblTo">TO</label>
+      <input type="text" id="toInput" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="toList">
+      <ul class="options" id="toList" role="listbox" hidden></ul>
+    </div>
+    <div class="when">
+      <div class="field"><label for="dateInput" id="lblDate">DATE</label><input type="date" id="dateInput"></div>
+      <div class="field"><label for="timeInput" id="lblTime">FROM TIME</label><input type="time" id="timeInput"></div>
+      <button class="now-btn" id="nowBtn">NOW</button>
+    </div>
+    <button class="go" id="goBtn">経路を調べる</button>
+  </section>
+  <div id="status"></div>
+  <div class="board">
+    <aside class="ribbon" aria-hidden="true">
+      <div class="ribbon-head" id="ribbonHead">Today</div>
+      <div class="track" id="track"></div>
+    </aside>
+    <div class="results" id="results"></div>
+  </div>
+  <footer id="footer"></footer>
+</div>
+
+<script>
+const ZONE = {"s1":"s1","s2":"s1","s3":"s1","s4":"s1","s5":"s1","s6":"s1","s7":"s11","s8":"s11","s801":"s11","s9":"s11","s10":"s11","s11":"s11","s12":"s11","s13":"s11","s14":"s11","s15":"s11","s16":"s20","s17":"s20","s18":"s20","s19":"s20","s20":"s20","s21":"s20","s22":"s23","s23":"s23","s24":"s23","s25":"s25","s26":"s25","s27":"s25","s28":"s25","s29":"s25","s30":"s25","s31":"s25","s32":"s25","s33":"s25","s34":"s25","s35":"s25","s36":"s25","s37":"s25","s38":"s25","s39":"s25","s40":"s49","s41":"s49","s42":"s49","s43":"s49","s44":"s49","s45":"s49","s46":"s49","s47":"s49","s48":"s49","s49":"s49","s50":"s49","s51":"s49","s52":"s49","s53":"s49","s54":"s49","s55":"s49","s56":"s62","s57":"s62","s58":"s62","s59":"s62","s60":"s62","s61":"s62","s62":"s62","s63":"s62","s64":"s64","s65":"s64","s66":"s64","s67":"s64","s68":"s68","s69":"s68","s70":"s68","s71":"s68","s72":"s68","s73":"s64","s74":"s64","s75":"s64","s76":"s64","s77":"s64","s78":"s86","s79":"s86","s80":"s86","s81":"s86","s82":"s86","s83":"s86","s84":"s86","s85":"s86","s86":"s86","s87":"s86","s88":"s86","s89":"s86","s90":"s86","s91":"s94","s92":"s94","s93":"s94","s94":"s94","s95":"s94","s96":"s94","s97":"s99","s98":"s99","s99":"s99","s100":"s99","s101":"s99","s102":"s99","s103":"s99","s104":"s99","s105":"s99","s106":"s112","s107":"s112","s108":"s112","s109":"s112","s110":"s112","s111":"s112","s112":"s112","s113":"s112","s114":"s112","s115":"s112","s116":"s112","s117":"s112","s118":"s112","s119":"s112","s120":"s127","s121":"s127","s122":"s127","s123":"s127","s124":"s127","s125":"s127","s126":"s127","s127":"s127","s128":"s127","s129":"s129"};
+const FKEY = {"s1":"1","s11":"11","s20":"20","s23":"23","s25":"25","s49":"49","s62":"62","s64":"64","s68":"68","s86":"86","s94":"94","s99":"99","s112":"112","s127":"127","s129":"129"};
+const FARE = {"11_1":530,"1_11":530,"20_11":530,"11_20":530,"20_1":940,"1_20":940,"23_20":140,"20_23":140,"23_11":560,"11_23":560,"23_1":960,"1_23":960,"25_23":140,"23_25":140,"25_20":140,"20_25":140,"25_11":570,"11_25":570,"25_1":970,"1_25":970,"49_25":570,"25_49":570,"49_23":570,"23_49":570,"49_20":590,"20_49":590,"49_11":980,"11_49":980,"49_1":1320,"1_49":1320,"62_49":410,"49_62":410,"62_25":850,"25_62":850,"62_23":850,"23_62":850,"62_20":880,"20_62":880,"62_11":1220,"11_62":1220,"62_1":1550,"1_62":1550,"64_62":140,"62_64":140,"64_49":460,"49_64":460,"64_25":910,"25_64":910,"64_23":910,"23_64":910,"64_20":930,"20_64":930,"64_11":1270,"11_64":1270,"64_1":1590,"1_64":1590,"68_64":240,"64_68":240,"68_62":280,"62_68":280,"68_49":580,"49_68":580,"68_25":1000,"25_68":1000,"68_23":1000,"23_68":1000,"68_20":1020,"20_68":1020,"86_68":570,"68_86":570,"86_64":490,"64_86":490,"86_62":590,"62_86":590,"86_49":880,"49_86":880,"86_25":1250,"25_86":1250,"86_23":1250,"23_86":1250,"86_20":1270,"20_86":1270,"86_11":1590,"11_86":1590,"86_1":1910,"1_86":1910,"94_86":270,"86_94":270,"94_68":720,"68_94":720,"94_64":660,"64_94":660,"94_62":750,"62_94":750,"94_49":1030,"49_94":1030,"94_25":1400,"25_94":1400,"94_23":1400,"23_94":1400,"94_20":1410,"20_94":1410,"94_11":1720,"11_94":1720,"94_1":2050,"1_94":2050,"99_94":210,"94_99":210,"99_86":380,"86_99":380,"99_68":830,"68_99":830,"99_64":800,"64_99":800,"99_62":860,"62_99":860,"99_49":1120,"49_99":1120,"99_25":1470,"25_99":1470,"99_23":1470,"23_99":1470,"99_20":1490,"20_99":1490,"99_11":1800,"11_99":1800,"99_1":2130,"1_99":2130,"112_99":350,"99_112":350,"112_94":500,"94_112":500,"112_86":670,"86_112":670,"112_64":1020,"64_112":1020,"112_62":1110,"62_112":1110,"112_49":1340,"49_112":1340,"112_25":1690,"25_112":1690,"112_23":1690,"23_112":1690,"112_20":1710,"20_112":1710,"112_11":2030,"11_112":2030,"112_1":2330,"1_112":2330,"127_112":500,"112_127":500,"127_99":740,"99_127":740,"127_94":880,"94_127":880,"127_86":1030,"86_127":1030,"127_64":1340,"64_127":1340,"127_62":1420,"62_127":1420,"127_49":1650,"49_127":1650,"127_25":1980,"25_127":1980,"127_23":1980,"23_127":1980,"127_20":2010,"20_127":2010,"127_11":2310,"11_127":2310,"127_1":2590,"1_127":2590,"129_127":280,"127_129":280,"129_112":630,"112_129":630,"129_99":870,"99_129":870,"129_94":1000,"94_129":1000,"129_86":1140,"86_129":1140,"129_64":1440,"64_129":1440,"129_62":1510,"62_129":1510,"129_49":1740,"49_129":1740,"129_25":2090,"25_129":2090,"129_23":2090,"23_129":2090,"129_20":2100,"20_129":2100};
+const FSUB = {"s29_s25":500,"s25_s29":500,"s29_s23":530,"s23_s29":530,"s29_s20":560,"s20_s29":560,"s71_s68":920,"s68_s71":920,"s71_s64":1050,"s64_s71":1050,"s71_s62":1070,"s62_s71":1070,"s72_s71":620,"s71_s72":620,"s72_s68":1140,"s68_s72":1140,"s72_s64":1260,"s64_s72":1260,"s72_s62":1290,"s62_s72":1290,"s70_s68":1000,"s68_s70":1000};
+
+const STOPS = [
+  {id:"s1",ja:"永田",en:"Nagata",roma:"nagata"},
+  {id:"s2",ja:"永田入口",en:"Nagata Iriguchi",roma:"nagata iriguchi"},
+  {id:"s3",ja:"エビス町",en:"Ebisumachi",roma:"ebisumachi"},
+  {id:"s4",ja:"いなか浜西",en:"Inakahama-nishi",roma:"inakahama nishi"},
+  {id:"s5",ja:"いなか浜",en:"Inakahama",roma:"inakahama"},
+  {id:"s6",ja:"中野口",en:"Nakanoguchi",roma:"nakanoguchi"},
+  {id:"s7",ja:"一里川展望所",en:"Ichirigawa Tenbozyo",roma:"ichirigawa"},
+  {id:"s8",ja:"吉田",en:"Yoshida",roma:"yoshida"},
+  {id:"s9",ja:"白河",en:"Shirakawa",roma:"shirakawa"},
+  {id:"s10",ja:"大浦",en:"Oura",roma:"oura"},
+  {id:"s11",ja:"一湊",en:"Isso",roma:"isso"},
+  {id:"s12",ja:"一湊入口",en:"Isso Iriguchi",roma:"isso iriguchi"},
+  {id:"s13",ja:"矢筈",en:"Yahazu",roma:"yahazu"},
+  {id:"s14",ja:"志戸子",en:"Shitoko",roma:"shitoko"},
+  {id:"s15",ja:"クリーンセンター入口",en:"Clean Center Iriguchi",roma:"clean center"},
+  {id:"s16",ja:"振腰橋",en:"Furikoshibashi",roma:"furikoshibashi"},
+  {id:"s17",ja:"深川",en:"Fukagawa",roma:"fukagawa"},
+  {id:"s18",ja:"ヤクデン前",en:"Yakuden-mae",roma:"yakuden"},
+  {id:"s19",ja:"シーサイドホテル",en:"Seaside Hotel",roma:"seaside hotel"},
+  {id:"s20",ja:"宮之浦港",en:"Miyanoura Port",roma:"miyanoura port ko"},
+  {id:"s21",ja:"宮之浦港入口",en:"Miyanourako Iriguchi",roma:"miyanoura iriguchi"},
+  {id:"s22",ja:"登上",en:"Noboriagari",roma:"noboriagari"},
+  {id:"s23",ja:"宮之浦",en:"Miyanoura",roma:"miyanoura"},
+  {id:"s24",ja:"宮之浦支所前",en:"Miyanoura Shisho-mae",roma:"miyanoura shisho"},
+  {id:"s25",ja:"小原町",en:"Oharamachi",roma:"oharamachi"},
+  {id:"s26",ja:"牛床公園",en:"Ushitoko Koen",roma:"ushitoko koen"},
+  {id:"s29",ja:"白谷雲水峡",en:"Shiratani Unsuikyo",roma:"shiratani unsuikyo"},
+  {id:"s30",ja:"Ａコープ前",en:"A-coop mae",roma:"a-coop acoop"},
+  {id:"s31",ja:"宮浦小前",en:"Miyaurasho-mae",roma:"miyaurasho"},
+  {id:"s32",ja:"高校前",en:"Koko-mae",roma:"koko"},
+  {id:"s33",ja:"営団",en:"Eidan",roma:"eidan"},
+  {id:"s34",ja:"旭町",en:"Asahimachi",roma:"asahimachi"},
+  {id:"s35",ja:"鳥越",en:"Torigoe",roma:"torigoe"},
+  {id:"s36",ja:"屋久島大社前",en:"Yakushima Taisha-mae",roma:"taisha yakushima"},
+  {id:"s37",ja:"楠川",en:"Kusugawa",roma:"kusugawa"},
+  {id:"s38",ja:"楠川温泉入口",en:"Kusugawa Onsen Iriguchi",roma:"kusugawa onsen"},
+  {id:"s39",ja:"牧ノ川",en:"Makinokawa",roma:"makinokawa"},
+  {id:"s40",ja:"下牧野",en:"Shimomakino",roma:"shimomakino"},
+  {id:"s41",ja:"椨川",en:"Tabugawa",roma:"tabugawa"},
+  {id:"s42",ja:"男川",en:"Otokogawa",roma:"otokogawa"},
+  {id:"s43",ja:"西小瀬田",en:"Nishikoseda",roma:"nishikoseda"},
+  {id:"s44",ja:"小瀬田",en:"Koseda",roma:"koseda"},
+  {id:"s45",ja:"女川",en:"Onnagawa",roma:"onnagawa"},
+  {id:"s46",ja:"小瀬田診療所前",en:"Koseda Shinryojo-mae",roma:"koseda clinic shinryojo"},
+  {id:"s47",ja:"長峰北",en:"Nagamine-kita",roma:"nagamine kita"},
+  {id:"s48",ja:"塩ノ道",en:"Shionomichi",roma:"shionomichi"},
+  {id:"s49",ja:"屋久島空港",en:"Yakushima Airport",roma:"kuko airport kukou"},
+  {id:"s50",ja:"長峰",en:"Nagamine",roma:"nagamine"},
+  {id:"s51",ja:"大川",en:"Okawa",roma:"okawa"},
+  {id:"s52",ja:"早崎",en:"Hayasaki",roma:"hayasaki"},
+  {id:"s53",ja:"高見橋",en:"Takamibashi",roma:"takamibashi"},
+  {id:"s54",ja:"農道入口",en:"Nodo Iriguchi",roma:"nodo iriguchi"},
+  {id:"s55",ja:"大迫",en:"Osako",roma:"osako"},
+  {id:"s56",ja:"永久保",en:"Nagakubo",roma:"nagakubo"},
+  {id:"s57",ja:"桑野",en:"Kuwano",roma:"kuwano"},
+  {id:"s58",ja:"竜天",en:"Ryuten",roma:"ryuten"},
+  {id:"s59",ja:"船行",en:"Funayuki",roma:"funayuki"},
+  {id:"s60",ja:"磯辺",en:"Isobe",roma:"isobe"},
+  {id:"s61",ja:"中央",en:"Chuo",roma:"chuo"},
+  {id:"s62",ja:"合庁前",en:"Gochomae",roma:"gochomae gocho"},
+  {id:"s63",ja:"警察署前",en:"Keisatsusho-mae",roma:"keisatsusho police"},
+  {id:"s64",ja:"安房港",en:"Anbo Port",roma:"anbo port ko"},
+  {id:"s65",ja:"仲医院前",en:"Naka Iin-mae",roma:"naka iin clinic"},
+  {id:"s66",ja:"安房",en:"Anbo",roma:"anbo"},
+  {id:"s67",ja:"牧野",en:"Makino",roma:"makino"},
+  {id:"s68",ja:"屋久杉自然館",en:"Yakusugi Museum",roma:"yakusugi museum shizenkan"},
+  {id:"s69",ja:"荒川三叉路",en:"Arakawa Sansaro",roma:"arakawa sansaro"},
+  {id:"s70",ja:"荒川登山口",en:"Arakawa Trailhead",roma:"arakawa tozanguchi trailhead"},
+  {id:"s71",ja:"ヤクスギランド",en:"Yakusugi Cedar Land",roma:"yakusugi land"},
+  {id:"s72",ja:"紀元杉",en:"Kigensugi Cedar",roma:"kigensugi"},
+  {id:"s73",ja:"盛久神社",en:"Morihisa Jinja",roma:"morihisa jinja shrine"},
+  {id:"s74",ja:"春田",en:"Haruta",roma:"haruta"},
+  {id:"s75",ja:"横峯",en:"Yokomine",roma:"yokomine"},
+  {id:"s76",ja:"中字",en:"Naka-aza",roma:"nakaaza"},
+  {id:"s77",ja:"栄町",en:"Sakaemachi",roma:"sakaemachi"},
+  {id:"s78",ja:"平野",en:"Hirano",roma:"hirano"},
+  {id:"s79",ja:"樋之口",en:"Hinokuchi",roma:"hinokuchi"},
+  {id:"s80",ja:"焼酎川",en:"Shochugawa",roma:"shochugawa"},
+  {id:"s81",ja:"中橋",en:"Nakabashi",roma:"nakabashi"},
+  {id:"s82",ja:"小田汲",en:"Odakumi",roma:"odakumi"},
+  {id:"s83",ja:"高平",en:"Takahira",roma:"takahira"},
+  {id:"s84",ja:"ホトー川",en:"Hotogawa",roma:"hotogawa"},
+  {id:"s85",ja:"麦生",en:"Mugio",roma:"mugio"},
+  {id:"s86",ja:"ボタニカルリサーチパーク",en:"Botanical Research Park",roma:"botanical research park"},
+  {id:"s87",ja:"鯛ノ川",en:"Tainokawa",roma:"tainokawa"},
+  {id:"s88",ja:"原入口",en:"Hara Iriguchi",roma:"hara iriguchi"},
+  {id:"s89",ja:"原",en:"Hara",roma:"hara"},
+  {id:"s90",ja:"神山",en:"Kamiyama",roma:"kamiyama"},
+  {id:"s91",ja:"泥淵川",en:"Dorobuchigawa",roma:"dorobuchigawa"},
+  {id:"s92",ja:"中野",en:"Nakano",roma:"nakano"},
+  {id:"s93",ja:"二又川",en:"Futamatagawa",roma:"futamatagawa"},
+  {id:"s94",ja:"尾之間",en:"Onoaida",roma:"onoaida"},
+  {id:"s95",ja:"尾之間支所前",en:"Onoaida Shisho-mae",roma:"onoaida shisho"},
+  {id:"s96",ja:"尾之間診療所前",en:"Onoaida Shinryojo-mae",roma:"onoaida clinic shinryojo"},
+  {id:"s97",ja:"サマナホテルヤクシマ",en:"samana hotel Yakushima",roma:"samana hotel"},
+  {id:"s98",ja:"尾之間温泉入口",en:"Onoaida Onsen Iriguchi",roma:"onoaida onsen"},
+  {id:"s99",ja:"いわさきホテル",en:"Iwasaki Hotel",roma:"iwasaki hotel"},
+  {id:"s100",ja:"いわさきホテル入口",en:"Hotel Iriguchi",roma:"hotel iriguchi iwasaki"},
+  {id:"s101",ja:"矢石",en:"Yaishi",roma:"yaishi"},
+  {id:"s102",ja:"小島",en:"Koshima",roma:"koshima"},
+  {id:"s103",ja:"岳南中前",en:"Gakunan chu-mae",roma:"gakunan"},
+  {id:"s104",ja:"彼岸野",en:"Higanno",roma:"higanno"},
+  {id:"s105",ja:"恋泊",en:"Koidomari",roma:"koidomari"},
+  {id:"s106",ja:"上ノ牧",en:"Kaminomaki",roma:"kaminomaki"},
+  {id:"s107",ja:"平内入口",en:"Hirauchi Iriguchi",roma:"hirauchi iriguchi"},
+  {id:"s108",ja:"八幡小前",en:"Hachiman sho-mae",roma:"hachiman sho"},
+  {id:"s109",ja:"八幡神社",en:"Hachiman Jinja",roma:"hachiman jinja"},
+  {id:"s110",ja:"平内",en:"Hirauchi",roma:"hirauchi"},
+  {id:"s111",ja:"大崎橋",en:"Osakibashi",roma:"osakibashi"},
+  {id:"s112",ja:"平内海中温泉",en:"Hirauchi Kaichu Onsen",roma:"kaichu onsen hirauchi"},
+  {id:"s113",ja:"西開墾",en:"Nishikaikon",roma:"nishikaikon"},
+  {id:"s114",ja:"湯泊",en:"Yudomari",roma:"yudomari"},
+  {id:"s115",ja:"夕陽ヶ丘",en:"Yuhigaoka",roma:"yuhigaoka"},
+  {id:"s116",ja:"湯泊西",en:"Yudomari-nishi",roma:"yudomari nishi"},
+  {id:"s117",ja:"花揚川",en:"Hanaagegawa",roma:"hanaagegawa"},
+  {id:"s118",ja:"旭",en:"Asahi",roma:"asahi"},
+  {id:"s119",ja:"城下",en:"Shiroshita",roma:"shiroshita"},
+  {id:"s120",ja:"平家ノ城",en:"Heikenojo",roma:"heikenojo"},
+  {id:"s121",ja:"黒崎",en:"Kurosaki",roma:"kurosaki"},
+  {id:"s122",ja:"綱掛橋",en:"Tsunakakebashi",roma:"tsunakakebashi"},
+  {id:"s123",ja:"中間",en:"Nakama",roma:"nakama"},
+  {id:"s124",ja:"栗生入口",en:"Kurio Iriguchi",roma:"kurio iriguchi"},
+  {id:"s125",ja:"栗生",en:"Kurio",roma:"kurio"},
+  {id:"s126",ja:"栗生小前",en:"Kurio sho-mae",roma:"kurio sho"},
+  {id:"s127",ja:"栗生橋",en:"Kuriobashi",roma:"kuriobashi"},
+  {id:"s128",ja:"青少年村",en:"Seishonen mura",roma:"seishonen"},
+  {id:"s129",ja:"大川の滝",en:"Oko-no-taki Waterfall",roma:"oko no taki okonotaki ooko waterfall falls"},
+  {id:"s801",ja:"吉田橋",en:"Yoshida-bashi",roma:"yoshida bashi"}
+];
+
+const ROUTES = [
+  {id:"main",    ja:"主要道路線",         en:"Coastal Line"},
+  {id:"shiratani",ja:"白谷雲水峡線",       en:"Shiratani Line", note_ja:"宮之浦港からの直通線", note_en:"Direct from Miyanoura Port"},
+  {id:"kigensugi",ja:"紀元杉線",           en:"Kigensugi Line", note_ja:"3〜11月運行・合庁前乗換", note_en:"Mar–Nov · change at Gochomae"},
+  {id:"arakawa", ja:"荒川登山バス",         en:"Arakawa Trekking Bus", note_ja:"予約制・季節運行・乗り放題券不可", note_en:"Reservation required · seasonal"}
+];
+
+const TRIPS = [
+  {route:"main",service:"everyday",season:"marNov",head_ja:"屋久杉自然館ゆき",head_en:"For Yakusugi Museum",times:{s19:"4:45", s21:"4:46", s22:"4:47", s23:"4:48", s24:"4:49", s25:"4:50", s30:"4:51", s31:"4:52", s32:"4:53", s33:"4:53", s34:"4:54", s35:"4:54", s36:"4:55", s37:"4:56", s38:"4:57", s39:"4:58", s40:"4:59", s41:"5:00", s42:"5:01", s43:"5:02", s44:"5:03", s45:"5:04", s46:"5:05", s47:"5:06", s48:"5:07", s50:"5:08", s51:"5:08", s52:"5:09", s53:"5:10", s54:"5:10", s55:"5:11", s56:"5:12", s57:"5:13", s58:"5:14", s59:"5:16", s60:"5:17", s61:"5:18", s62:"5:19", s63:"5:21", s66:"5:23", s67:"5:24", s68:"5:29"},est:["s22","s24","s32","s33","s35","s36","s38","s39","s40","s42","s43","s45","s46","s47","s50","s51","s53","s54","s55","s57","s58","s60","s61"],note:"arakawa_am"},
+  {route:"main",service:"everyday",season:"marNov",head_ja:"安房港ゆき",head_en:"For Anbo Port",times:{s20:"5:50", s19:"5:51", s21:"5:52", s22:"5:53", s23:"5:54", s24:"5:55", s25:"5:56", s30:"5:57", s31:"5:58", s32:"5:59", s33:"5:59", s34:"6:00", s35:"6:00", s36:"6:01", s37:"6:02", s38:"6:03", s39:"6:04", s40:"6:05", s41:"6:06", s42:"6:07", s43:"6:08", s44:"6:09", s45:"6:10", s46:"6:11", s47:"6:12", s48:"6:13", s49:"6:14", s50:"6:14", s51:"6:15", s52:"6:16", s53:"6:17", s54:"6:17", s55:"6:18", s56:"6:19", s57:"6:20", s58:"6:21", s59:"6:23", s60:"6:24", s61:"6:25", s62:"6:26", s63:"6:28", s64:"6:32"},est:["s22","s24","s32","s33","s35","s36","s38","s39","s40","s42","s43","s45","s46","s47","s50","s51","s53","s54","s55","s57","s58","s60","s61"],note:"jetfoil_anbo"},
+  {route:"main",service:"weekday",head_ja:"栗生橋ゆき",head_en:"For Kuriobashi",times:{s97:"7:22", s98:"7:23", s99:"7:28", s100:"7:31", s101:"7:32", s102:"7:33", s103:"7:34", s104:"7:35", s105:"7:36", s106:"7:36", s107:"7:37", s108:"7:38", s109:"7:38", s110:"7:39", s111:"7:39", s112:"7:40", s113:"7:40", s114:"7:41", s115:"7:42", s116:"7:43", s117:"7:44", s118:"7:45", s119:"7:45", s120:"7:46", s121:"7:47", s122:"7:48", s123:"7:49", s124:"7:51", s125:"7:52", s126:"7:53", s127:"7:54"},est:["s98","s100","s101","s103","s104","s105","s106","s107","s108","s109","s110","s111","s113","s115","s116","s117","s118","s119","s120","s121","s122","s124","s125","s126"],note:"school"},
+  {route:"main",service:"everyday",head_ja:"栗生橋ゆき",head_en:"For Kuriobashi",times:{s1:"7:26", s2:"7:27", s3:"7:27", s4:"7:28", s5:"7:29", s6:"7:31", s7:"7:33", s8:"7:36", s801:"7:37", s9:"7:38", s10:"7:40", s11:"7:42", s12:"7:43", s13:"7:44", s14:"7:47", s15:"7:51", s16:"7:53", s17:"7:54", s18:"7:56", s20:"8:00", s21:"8:01", s22:"8:02", s23:"8:03", s24:"8:04", s25:"8:05", s30:"8:06", s31:"8:07", s32:"8:08", s33:"8:08", s34:"8:09", s35:"8:09", s36:"8:10", s37:"8:11", s38:"8:12", s39:"8:13", s40:"8:14", s41:"8:15", s42:"8:16", s43:"8:17", s44:"8:18", s45:"8:19", s46:"8:20", s47:"8:21", s48:"8:22", s49:"8:23", s50:"8:23", s51:"8:24", s52:"8:25", s53:"8:26", s54:"8:26", s55:"8:27", s56:"8:28", s57:"8:29", s58:"8:30", s59:"8:32", s60:"8:33", s61:"8:34", s62:"8:35", s63:"8:37", s66:"8:39", s67:"8:40", s73:"8:41", s74:"8:42", s75:"8:42", s76:"8:43", s77:"8:44", s78:"8:45", s79:"8:46", s80:"8:47", s81:"8:48", s82:"8:49", s83:"8:50", s84:"8:51", s85:"8:53", s86:"8:54", s87:"8:55", s88:"8:56", s89:"8:56", s90:"8:57", s91:"8:58", s92:"8:59", s93:"9:00", s94:"9:01", s95:"9:01", s96:"9:01", s97:"9:02", s98:"9:03", s99:"9:08", s100:"9:11", s101:"9:12", s102:"9:13", s103:"9:14", s104:"9:15", s105:"9:16", s106:"9:16", s107:"9:17", s108:"9:18", s109:"9:18", s110:"9:19", s111:"9:19", s112:"9:20", s113:"9:20", s114:"9:21", s115:"9:22", s116:"9:23", s117:"9:24", s118:"9:25", s119:"9:25", s120:"9:26", s121:"9:27", s122:"9:28", s123:"9:29", s124:"9:31", s125:"9:32", s126:"9:33", s127:"9:34"},est:["s2","s3","s4","s6","s7","s801","s9","s10","s12","s13","s15","s16","s18","s22","s24","s32","s33","s35","s36","s38","s39","s40","s42","s43","s45","s46","s47","s50","s51","s53","s54","s55","s57","s58","s60","s61","s74","s75","s76","s77","s79","s80","s81","s82","s83","s84","s87","s88","s90","s91","s92","s93","s95","s96","s98","s100","s101","s103","s104","s105","s106","s107","s108","s109","s110","s111","s113","s115","s116","s117","s118","s119","s120","s121","s122","s124","s125","s126"]},
+  {route:"main",service:"everyday",head_ja:"大川の滝ゆき",head_en:"For Oko-no-taki Falls",times:{s20:"8:40", s21:"8:41", s22:"8:42", s23:"8:43", s24:"8:44", s25:"8:45", s30:"8:46", s31:"8:47", s32:"8:48", s33:"8:48", s34:"8:49", s35:"8:49", s36:"8:50", s37:"8:51", s38:"8:52", s39:"8:53", s40:"8:54", s41:"8:55", s42:"8:56", s43:"8:57", s44:"8:58", s45:"8:59", s46:"9:00", s47:"9:01", s48:"9:02", s49:"9:03", s50:"9:03", s51:"9:04", s52:"9:05", s53:"9:06", s54:"9:06", s55:"9:07", s56:"9:08", s57:"9:09", s58:"9:10", s59:"9:12", s60:"9:13", s61:"9:14", s62:"9:15", s63:"9:17", s64:"9:21", s65:"9:22", s66:"9:23", s67:"9:24", s73:"9:25", s74:"9:26", s75:"9:26", s76:"9:27", s77:"9:28", s78:"9:29", s79:"9:30", s80:"9:31", s81:"9:32", s82:"9:33", s83:"9:34", s84:"9:35", s85:"9:37", s86:"9:38", s87:"9:39", s88:"9:40", s89:"9:40", s90:"9:41", s91:"9:42", s92:"9:43", s93:"9:44", s94:"9:45", s95:"9:45", s96:"9:45", s97:"9:46", s98:"9:47", s99:"9:52", s100:"9:55", s101:"9:56", s102:"9:57", s103:"9:58", s104:"9:59", s105:"10:00", s106:"10:00", s107:"10:01", s108:"10:02", s109:"10:02", s110:"10:03", s111:"10:03", s112:"10:04", s113:"10:04", s114:"10:05", s115:"10:06", s116:"10:07", s117:"10:08", s118:"10:09", s119:"10:09", s120:"10:10", s121:"10:11", s122:"10:12", s123:"10:13", s124:"10:15", s125:"10:16", s126:"10:17", s127:"10:18", s128:"10:21", s129:"10:22"},est:["s22","s24","s32","s33","s35","s36","s38","s39","s40","s42","s43","s45","s46","s47","s50","s51","s53","s54","s55","s57","s58","s60","s61","s65","s74","s75","s76","s77","s79","s80","s81","s82","s83","s84","s87","s88","s90","s91","s92","s93","s95","s96","s98","s100","s101","s103","s104","s105","s106","s107","s108","s109","s110","s111","s113","s115","s116","s117","s118","s119","s120","s121","s122","s124","s125","s126","s128"],note:"kigensugi_conn"},
+  {route:"main",service:"everyday",head_ja:"栗生橋ゆき",head_en:"For Kuriobashi",times:{s1:"9:26", s2:"9:27", s3:"9:27", s4:"9:28", s5:"9:29", s6:"9:31", s7:"9:33", s8:"9:36", s801:"9:37", s9:"9:38", s10:"9:40", s11:"9:42", s12:"9:43", s13:"9:44", s14:"9:47", s15:"9:51", s16:"9:53", s17:"9:54", s18:"9:56", s20:"10:00", s21:"10:01", s22:"10:02", s23:"10:03", s24:"10:04", s25:"10:05", s30:"10:06", s31:"10:07", s32:"10:08", s33:"10:08", s34:"10:09", s35:"10:09", s36:"10:10", s37:"10:11", s38:"10:12", s39:"10:13", s40:"10:14", s41:"10:15", s42:"10:16", s43:"10:17", s44:"10:18", s45:"10:19", s46:"10:20", s47:"10:21", s48:"10:22", s49:"10:23", s50:"10:23", s51:"10:24", s52:"10:25", s53:"10:26", s54:"10:26", s55:"10:27", s56:"10:28", s57:"10:29", s58:"10:30", s59:"10:32", s60:"10:33", s61:"10:34", s62:"10:35", s63:"10:37", s64:"10:41", s65:"10:42", s66:"10:43", s67:"10:44", s73:"10:45", s74:"10:46", s75:"10:46", s76:"10:47", s77:"10:48", s78:"10:49", s79:"10:50", s80:"10:51", s81:"10:52", s82:"10:53", s83:"10:54", s84:"10:55", s85:"10:57", s86:"10:58", s87:"10:59", s88:"11:00", s89:"11:00", s90:"11:01", s91:"11:02", s92:"11:03", s93:"11:04", s94:"11:05", s95:"11:05", s96:"11:05", s97:"11:06", s98:"11:07", s99:"11:12", s100:"11:15", s101:"11:16", s102:"11:17", s103:"11:18", s104:"11:19", s105:"11:20", s106:"11:20", s107:"11:21", s108:"11:22", s109:"11:22", s110:"11:23", s111:"11:23", s112:"11:24", s113:"11:24", s114:"11:25", s115:"11:26", s116:"11:27", s117:"11:28", s118:"11:29", s119:"11:29", s120:"11:30", s121:"11:31", s122:"11:32", s123:"11:33", s124:"11:35", s125:"11:36", s126:"11:37", s127:"11:38"},est:["s2","s3","s4","s6","s7","s801","s9","s10","s12","s13","s15","s16","s18","s22","s24","s32","s33","s35","s36","s38","s39","s40","s42","s43","s45","s46","s47","s50","s51","s53","s54","s55","s57","s58","s60","s61","s65","s74","s75","s76","s77","s79","s80","s81","s82","s83","s84","s87","s88","s90","s91","s92","s93","s95","s96","s98","s100","s101","s103","s104","s105","s106","s107","s108","s109","s110","s111","s113","s115","s116","s117","s118","s119","s120","s121","s122","s124","s125","s126"]},
+  {route:"main",service:"everyday",head_ja:"いわさきホテルゆき",head_en:"For Iwasaki Hotel",times:{s1:"10:01", s2:"10:02", s3:"10:02", s4:"10:03", s5:"10:04", s6:"10:06", s7:"10:08", s8:"10:11", s801:"10:12", s9:"10:13", s10:"10:15", s11:"10:17", s12:"10:18", s13:"10:19", s14:"10:22", s15:"10:26", s16:"10:28", s17:"10:29", s18:"10:31", s20:"10:35", s21:"10:36", s22:"10:37", s23:"10:38", s24:"10:39", s25:"10:40", s30:"10:41", s31:"10:42", s32:"10:43", s33:"10:43", s34:"10:44", s35:"10:44", s36:"10:45", s37:"10:46", s38:"10:47", s39:"10:48", s40:"10:49", s41:"10:50", s42:"10:51", s43:"10:52", s44:"10:53", s45:"10:54", s46:"10:55", s47:"10:56", s48:"10:57", s49:"10:58", s50:"10:58", s51:"10:59", s52:"11:00", s53:"11:01", s54:"11:01", s55:"11:02", s56:"11:03", s57:"11:04", s58:"11:05", s59:"11:07", s60:"11:08", s61:"11:09", s62:"11:10", s63:"11:12", s66:"11:14", s67:"11:15", s73:"11:16", s74:"11:17", s75:"11:17", s76:"11:18", s77:"11:19", s78:"11:20", s79:"11:21", s80:"11:22", s81:"11:23", s82:"11:24", s83:"11:25", s84:"11:26", s85:"11:28", s86:"11:29", s87:"11:30", s88:"11:31", s89:"11:31", s90:"11:32", s91:"11:33", s92:"11:34", s93:"11:35", s94:"11:36", s95:"11:36", s96:"11:36", s97:"11:37", s98:"11:38", s99:"11:43"},est:["s2","s3","s4","s6","s7","s801","s9","s10","s12","s13","s15","s16","s18","s22","s24","s32","s33","s35","s36","s38","s39","s40","s42","s43","s45","s46","s47","s50","s51","s53","s54","s55","s57","s58","s60","s61","s74","s75","s76","s77","s79","s80","s81","s82","s83","s84","s87","s88","s90","s91","s92","s93","s95","s96","s98"]},
+  {route:"main",service:"everyday",head_ja:"栗生橋ゆき",head_en:"For Kuriobashi",times:{s20:"11:15", s21:"11:16", s22:"11:17", s23:"11:18", s24:"11:19", s25:"11:20", s30:"11:21", s31:"11:22", s32:"11:23", s33:"11:23", s34:"11:24", s35:"11:24", s36:"11:25", s37:"11:26", s38:"11:27", s39:"11:28", s40:"11:29", s41:"11:30", s42:"11:31", s43:"11:32", s44:"11:33", s45:"11:34", s46:"11:35", s47:"11:36", s48:"11:37", s49:"11:38", s50:"11:38", s51:"11:39", s52:"11:40", s53:"11:41", s54:"11:41", s55:"11:42", s56:"11:43", s57:"11:44", s58:"11:45", s59:"11:47", s60:"11:48", s61:"11:49", s62:"11:50", s63:"11:52", s64:"11:56", s65:"11:57", s66:"11:58", s67:"11:59", s73:"12:00", s74:"12:01", s75:"12:01", s76:"12:02", s77:"12:03", s78:"12:04", s79:"12:05", s80:"12:06", s81:"12:07", s82:"12:08", s83:"12:09", s84:"12:10", s85:"12:12", s86:"12:13", s87:"12:14", s88:"12:15", s89:"12:15", s90:"12:16", s91:"12:17", s92:"12:18", s93:"12:19", s94:"12:20", s95:"12:20", s96:"12:20", s97:"12:21", s98:"12:22", s99:"12:27", s100:"12:30", s101:"12:31", s102:"12:32", s103:"12:33", s104:"12:34", s105:"12:35", s106:"12:35", s107:"12:36", s108:"12:37", s109:"12:37", s110:"12:38", s111:"12:38", s112:"12:39", s113:"12:39", s114:"12:40", s115:"12:41", s116:"12:42", s117:"12:43", s118:"12:44", s119:"12:44", s120:"12:45", s121:"12:46", s122:"12:47", s123:"12:48", s124:"12:50", s125:"12:51", s126:"12:52", s127:"12:53"},est:["s22","s24","s32","s33","s35","s36","s38","s39","s40","s42","s43","s45","s46","s47","s50","s51","s53","s54","s55","s57","s58","s60","s61","s65","s74","s75","s76","s77","s79","s80","s81","s82","s83","s84","s87","s88","s90","s91","s92","s93","s95","s96","s98","s100","s101","s103","s104","s105","s106","s107","s108","s109","s110","s111","s113","s115","s116","s117","s118","s119","s120","s121","s122","s124","s125","s126"]},
+  {route:"main",service:"everyday",head_ja:"いわさきホテルゆき",head_en:"For Iwasaki Hotel",times:{s1:"11:36", s2:"11:37", s3:"11:37", s4:"11:38", s5:"11:39", s6:"11:41", s7:"11:43", s8:"11:46", s801:"11:47", s9:"11:48", s10:"11:50", s11:"11:52", s12:"11:53", s13:"11:54", s14:"11:57", s15:"12:01", s16:"12:03", s17:"12:04", s18:"12:06", s20:"12:10", s21:"12:11", s22:"12:12", s23:"12:13", s24:"12:14", s25:"12:15", s30:"12:16", s31:"12:17", s32:"12:18", s33:"12:18", s34:"12:19", s35:"12:19", s36:"12:20", s37:"12:21", s38:"12:22", s39:"12:23", s40:"12:24", s41:"12:25", s42:"12:26", s43:"12:27", s44:"12:28", s45:"12:29", s46:"12:30", s47:"12:31", s48:"12:32", s49:"12:33", s50:"12:33", s51:"12:34", s52:"12:35", s53:"12:36", s54:"12:36", s55:"12:37", s56:"12:38", s57:"12:39", s58:"12:40", s59:"12:42", s60:"12:43", s61:"12:44", s62:"12:45", s63:"12:47", s64:"12:51", s65:"12:52", s66:"12:53", s67:"12:54", s73:"12:55", s74:"12:56", s75:"12:56", s76:"12:57", s77:"12:58", s78:"12:59", s79:"13:00", s80:"13:01", s81:"13:02", s82:"13:03", s83:"13:04", s84:"13:05", s85:"13:07", s86:"13:08", s87:"13:09", s88:"13:10", s89:"13:10", s90:"13:11", s91:"13:12", s92:"13:13", s93:"13:14", s94:"13:15", s95:"13:15", s96:"13:15", s97:"13:16", s98:"13:17", s99:"13:22"},est:["s2","s3","s4","s6","s7","s801","s9","s10","s12","s13","s15","s16","s18","s22","s24","s32","s33","s35","s36","s38","s39","s40","s42","s43","s45","s46","s47","s50","s51","s53","s54","s55","s57","s58","s60","s61","s65","s74","s75","s76","s77","s79","s80","s81","s82","s83","s84","s87","s88","s90","s91","s92","s93","s95","s96","s98"]},
+  {route:"main",service:"everyday",head_ja:"大川の滝ゆき",head_en:"For Oko-no-taki Falls",times:{s20:"12:50", s21:"12:51", s22:"12:52", s23:"12:53", s24:"12:54", s25:"12:55", s30:"12:56", s31:"12:57", s32:"12:58", s33:"12:58", s34:"12:59", s35:"12:59", s36:"13:00", s37:"13:01", s38:"13:02", s39:"13:03", s40:"13:04", s41:"13:05", s42:"13:06", s43:"13:07", s44:"13:08", s45:"13:09", s46:"13:10", s47:"13:11", s48:"13:12", s49:"13:13", s50:"13:13", s51:"13:14", s52:"13:15", s53:"13:16", s54:"13:16", s55:"13:17", s56:"13:18", s57:"13:19", s58:"13:20", s59:"13:22", s60:"13:23", s61:"13:24", s62:"13:25", s63:"13:27", s64:"13:31", s65:"13:32", s66:"13:33", s67:"13:34", s73:"13:35", s74:"13:36", s75:"13:36", s76:"13:37", s77:"13:38", s78:"13:39", s79:"13:40", s80:"13:41", s81:"13:42", s82:"13:43", s83:"13:44", s84:"13:45", s85:"13:47", s86:"13:48", s87:"13:49", s88:"13:50", s89:"13:50", s90:"13:51", s91:"13:52", s92:"13:53", s93:"13:54", s94:"13:55", s95:"13:55", s96:"13:55", s97:"13:56", s98:"13:57", s99:"14:02", s100:"14:05", s101:"14:06", s102:"14:07", s103:"14:08", s104:"14:09", s105:"14:10", s106:"14:10", s107:"14:11", s108:"14:12", s109:"14:12", s110:"14:13", s111:"14:13", s112:"14:14", s113:"14:14", s114:"14:15", s115:"14:16", s116:"14:17", s117:"14:18", s118:"14:19", s119:"14:19", s120:"14:20", s121:"14:21", s122:"14:22", s123:"14:23", s124:"14:25", s125:"14:26", s126:"14:27", s127:"14:28", s128:"14:31", s129:"14:32"},est:["s22","s24","s32","s33","s35","s36","s38","s39","s40","s42","s43","s45","s46","s47","s50","s51","s53","s54","s55","s57","s58","s60","s61","s65","s74","s75","s76","s77","s79","s80","s81","s82","s83","s84","s87","s88","s90","s91","s92","s93","s95","s96","s98","s100","s101","s103","s104","s105","s106","s107","s108","s109","s110","s111","s113","s115","s116","s117","s118","s119","s120","s121","s122","s124","s125","s126","s128"],note:"kigensugi_conn2"},
+  {route:"main",service:"everyday",head_ja:"栗生橋ゆき",head_en:"For Kuriobashi",times:{s20:"14:10", s21:"14:11", s22:"14:12", s23:"14:13", s24:"14:14", s25:"14:15", s30:"14:16", s31:"14:17", s32:"14:18", s33:"14:18", s34:"14:19", s35:"14:19", s36:"14:20", s37:"14:21", s38:"14:22", s39:"14:23", s40:"14:24", s41:"14:25", s42:"14:26", s43:"14:27", s44:"14:28", s45:"14:29", s46:"14:30", s47:"14:31", s48:"14:32", s49:"14:33", s50:"14:33", s51:"14:34", s52:"14:35", s53:"14:36", s54:"14:36", s55:"14:37", s56:"14:38", s57:"14:39", s58:"14:40", s59:"14:42", s60:"14:43", s61:"14:44", s62:"14:45", s63:"14:47", s64:"14:51", s65:"14:52", s66:"14:53", s67:"14:54", s73:"14:55", s74:"14:56", s75:"14:56", s76:"14:57", s77:"14:58", s78:"14:59", s79:"15:00", s80:"15:01", s81:"15:02", s82:"15:03", s83:"15:04", s84:"15:05", s85:"15:07", s86:"15:08", s87:"15:09", s88:"15:10", s89:"15:10", s90:"15:11", s91:"15:12", s92:"15:13", s93:"15:14", s94:"15:15", s95:"15:15", s96:"15:15", s97:"15:16", s98:"15:17", s99:"15:22", s100:"15:25", s101:"15:26", s102:"15:27", s103:"15:28", s104:"15:29", s105:"15:30", s106:"15:30", s107:"15:31", s108:"15:32", s109:"15:32", s110:"15:33", s111:"15:33", s112:"15:34", s113:"15:34", s114:"15:35", s115:"15:36", s116:"15:37", s117:"15:38", s118:"15:39", s119:"15:39", s120:"15:40", s121:"15:41", s122:"15:42", s123:"15:43", s124:"15:45", s125:"15:46", s126:"15:47", s127:"15:48"},est:["s22","s24","s32","s33","s35","s36","s38","s39","s40","s42","s43","s45","s46","s47","s50","s51","s53","s54","s55","s57","s58","s60","s61","s65","s74","s75","s76","s77","s79","s80","s81","s82","s83","s84","s87","s88","s90","s91","s92","s93","s95","s96","s98","s100","s101","s103","s104","s105","s106","s107","s108","s109","s110","s111","s113","s115","s116","s117","s118","s119","s120","s121","s122","s124","s125","s126"]},
+  {route:"main",service:"everyday",head_ja:"大川の滝ゆき",head_en:"For Oko-no-taki Falls",times:{s20:"15:20", s21:"15:21", s22:"15:22", s23:"15:23", s24:"15:24", s25:"15:25", s30:"15:26", s31:"15:27", s32:"15:28", s33:"15:28", s34:"15:29", s35:"15:29", s36:"15:30", s37:"15:31", s38:"15:32", s39:"15:33", s40:"15:34", s41:"15:35", s42:"15:36", s43:"15:37", s44:"15:38", s45:"15:39", s46:"15:40", s47:"15:41", s48:"15:42", s49:"15:43", s50:"15:43", s51:"15:44", s52:"15:45", s53:"15:46", s54:"15:46", s55:"15:47", s56:"15:48", s57:"15:49", s58:"15:50", s59:"15:52", s60:"15:53", s61:"15:54", s62:"15:55", s63:"15:57", s64:"16:01", s65:"16:02", s66:"16:03", s67:"16:04", s73:"16:05", s74:"16:06", s75:"16:06", s76:"16:07", s77:"16:08", s78:"16:09", s79:"16:10", s80:"16:11", s81:"16:12", s82:"16:13", s83:"16:14", s84:"16:15", s85:"16:17", s86:"16:18", s87:"16:19", s88:"16:20", s89:"16:20", s90:"16:21", s91:"16:22", s92:"16:23", s93:"16:24", s94:"16:25", s95:"16:25", s96:"16:25", s97:"16:26", s98:"16:27", s99:"16:32", s100:"16:35", s101:"16:36", s102:"16:37", s103:"16:38", s104:"16:39", s105:"16:40", s106:"16:40", s107:"16:41", s108:"16:42", s109:"16:42", s110:"16:43", s111:"16:43", s112:"16:44", s113:"16:44", s114:"16:45", s115:"16:46", s116:"16:47", s117:"16:48", s118:"16:49", s119:"16:49", s120:"16:50", s121:"16:51", s122:"16:52", s123:"16:53", s124:"16:55", s125:"16:56", s126:"16:57", s127:"16:58", s128:"17:01", s129:"17:02"},est:["s22","s24","s32","s33","s35","s36","s38","s39","s40","s42","s43","s45","s46","s47","s50","s51","s53","s54","s55","s57","s58","s60","s61","s65","s74","s75","s76","s77","s79","s80","s81","s82","s83","s84","s87","s88","s90","s91","s92","s93","s95","s96","s98","s100","s101","s103","s104","s105","s106","s107","s108","s109","s110","s111","s113","s115","s116","s117","s118","s119","s120","s121","s122","s124","s125","s126","s128"]},
+  {route:"main",service:"everyday",head_ja:"いわさきホテルゆき",head_en:"For Iwasaki Hotel",times:{s1:"15:06", s2:"15:07", s3:"15:07", s4:"15:08", s5:"15:09", s6:"15:11", s7:"15:13", s8:"15:16", s801:"15:17", s9:"15:18", s10:"15:20", s11:"15:22", s12:"15:23", s13:"15:24", s14:"15:27", s15:"15:31", s16:"15:33", s17:"15:34", s18:"15:36", s20:"15:40", s21:"15:41", s22:"15:42", s23:"15:43", s24:"15:44", s25:"15:45", s30:"15:46", s31:"15:47", s32:"15:48", s33:"15:48", s34:"15:49", s35:"15:49", s36:"15:50", s37:"15:51", s38:"15:52", s39:"15:53", s40:"15:54", s41:"15:55", s42:"15:56", s43:"15:57", s44:"15:58", s45:"15:59", s46:"16:00", s47:"16:01", s48:"16:02", s49:"16:03", s50:"16:03", s51:"16:04", s52:"16:05", s53:"16:06", s54:"16:06", s55:"16:07", s56:"16:08", s57:"16:09", s58:"16:10", s59:"16:12", s60:"16:14", s61:"16:15", s62:"16:17", s63:"16:19", s66:"16:21", s67:"16:22", s73:"16:23", s74:"16:24", s75:"16:24", s76:"16:25", s77:"16:26", s78:"16:27", s79:"16:28", s80:"16:29", s81:"16:30", s82:"16:31", s83:"16:32", s84:"16:33", s85:"16:35", s86:"16:36", s87:"16:37", s88:"16:38", s89:"16:38", s90:"16:39", s91:"16:40", s92:"16:41", s93:"16:42", s94:"16:43", s95:"16:43", s96:"16:43", s97:"16:44", s98:"16:45", s99:"16:50"},est:["s2","s3","s4","s6","s7","s801","s9","s10","s12","s13","s15","s16","s18","s22","s24","s32","s33","s35","s36","s38","s39","s40","s42","s43","s45","s46","s47","s50","s51","s53","s54","s55","s57","s58","s60","s61","s74","s75","s76","s77","s79","s80","s81","s82","s83","s84","s87","s88","s90","s91","s92","s93","s95","s96","s98"]},
+  {route:"main",service:"everyday",head_ja:"栗生橋ゆき",head_en:"For Kuriobashi",times:{s20:"16:50", s21:"16:51", s22:"16:52", s23:"16:53", s24:"16:54", s25:"16:55", s30:"16:56", s31:"16:57", s32:"16:58", s33:"16:58", s34:"16:59", s35:"16:59", s36:"17:00", s37:"17:01", s38:"17:02", s39:"17:03", s40:"17:04", s41:"17:05", s42:"17:06", s43:"17:07", s44:"17:08", s45:"17:09", s46:"17:10", s47:"17:11", s48:"17:12", s49:"17:13", s50:"17:13", s51:"17:14", s52:"17:15", s53:"17:16", s54:"17:16", s55:"17:17", s56:"17:18", s57:"17:19", s58:"17:20", s59:"17:22", s60:"17:24", s61:"17:25", s62:"17:27", s63:"17:29", s64:"17:33", s65:"17:34", s66:"17:35", s67:"17:36", s73:"17:37", s74:"17:38", s75:"17:38", s76:"17:39", s77:"17:40", s78:"17:41", s79:"17:42", s80:"17:43", s81:"17:44", s82:"17:45", s83:"17:46", s84:"17:47", s85:"17:49", s86:"17:50", s87:"17:51", s88:"17:52", s89:"17:52", s90:"17:53", s91:"17:54", s92:"17:55", s93:"17:56", s94:"17:57", s95:"17:57", s96:"17:57", s97:"17:58", s98:"17:59", s99:"18:04", s100:"18:07", s101:"18:08", s102:"18:09", s103:"18:10", s104:"18:11", s105:"18:12", s106:"18:12", s107:"18:13", s108:"18:14", s109:"18:14", s110:"18:15", s111:"18:15", s112:"18:16", s113:"18:16", s114:"18:17", s115:"18:18", s116:"18:19", s117:"18:20", s118:"18:21", s119:"18:21", s120:"18:22", s121:"18:23", s122:"18:24", s123:"18:25", s124:"18:27", s125:"18:28", s126:"18:29", s127:"18:30"},est:["s22","s24","s32","s33","s35","s36","s38","s39","s40","s42","s43","s45","s46","s47","s50","s51","s53","s54","s55","s57","s58","s60","s61","s65","s74","s75","s76","s77","s79","s80","s81","s82","s83","s84","s87","s88","s90","s91","s92","s93","s95","s96","s98","s100","s101","s103","s104","s105","s106","s107","s108","s109","s110","s111","s113","s115","s116","s117","s118","s119","s120","s121","s122","s124","s125","s126"]},
+  {route:"main",service:"everyday",season:"marNov",head_ja:"いわさきホテルゆき",head_en:"For Iwasaki Hotel",times:{s68:"17:40", s73:"17:45", s74:"17:46", s75:"17:46", s76:"17:47", s77:"17:48", s78:"17:49", s79:"17:50", s80:"17:51", s81:"17:52", s82:"17:53", s83:"17:54", s84:"17:55", s85:"17:57", s86:"17:58", s87:"17:59", s88:"18:00", s89:"18:00", s90:"18:01", s91:"18:02", s92:"18:03", s93:"18:04", s94:"18:05", s95:"18:05", s96:"18:05", s97:"18:06", s98:"18:07", s99:"18:12"},est:["s74","s75","s76","s77","s79","s80","s81","s82","s83","s84","s87","s88","s90","s91","s92","s93","s95","s96","s98"],note:"arakawa_pm_s"},
+  {route:"main",service:"everyday",head_ja:"栗生橋ゆき",head_en:"For Kuriobashi",times:{s20:"17:25", s21:"17:26", s22:"17:27", s23:"17:28", s24:"17:29", s25:"17:30", s30:"17:31", s31:"17:32", s32:"17:33", s33:"17:33", s34:"17:34", s35:"17:34", s36:"17:35", s37:"17:36", s38:"17:37", s39:"17:38", s40:"17:39", s41:"17:40", s42:"17:41", s43:"17:42", s44:"17:43", s45:"17:44", s46:"17:45", s47:"17:46", s48:"17:47", s49:"17:48", s50:"17:48", s51:"17:49", s52:"17:50", s53:"17:51", s54:"17:51", s55:"17:52", s56:"17:53", s57:"17:54", s58:"17:55", s59:"17:57", s60:"17:59", s61:"18:00", s62:"18:02", s63:"18:04", s64:"18:08", s65:"18:09", s66:"18:10", s67:"18:11", s73:"18:12", s74:"18:13", s75:"18:13", s76:"18:14", s77:"18:15", s78:"18:16", s79:"18:17", s80:"18:18", s81:"18:19", s82:"18:20", s83:"18:21", s84:"18:22", s85:"18:24", s86:"18:25", s87:"18:26", s88:"18:27", s89:"18:27", s90:"18:28", s91:"18:29", s92:"18:30", s93:"18:31", s94:"18:32", s95:"18:32", s96:"18:32", s97:"18:33", s98:"18:34", s99:"18:39", s100:"18:42", s101:"18:43", s102:"18:44", s103:"18:45", s104:"18:46", s105:"18:47", s106:"18:47", s107:"18:48", s108:"18:49", s109:"18:49", s110:"18:50", s111:"18:50", s112:"18:51", s113:"18:51", s114:"18:52", s115:"18:53", s116:"18:54", s117:"18:55", s118:"18:56", s119:"18:56", s120:"18:57", s121:"18:58", s122:"18:59", s123:"19:00", s124:"19:02", s125:"19:03", s126:"19:04", s127:"19:05"},est:["s22","s24","s32","s33","s35","s36","s38","s39","s40","s42","s43","s45","s46","s47","s50","s51","s53","s54","s55","s57","s58","s60","s61","s65","s74","s75","s76","s77","s79","s80","s81","s82","s83","s84","s87","s88","s90","s91","s92","s93","s95","s96","s98","s100","s101","s103","s104","s105","s106","s107","s108","s109","s110","s111","s113","s115","s116","s117","s118","s119","s120","s121","s122","s124","s125","s126"]},
+  {route:"main",service:"everyday",head_ja:"いわさきホテルゆき",head_en:"For Iwasaki Hotel",times:{s1:"17:51", s2:"17:52", s3:"17:52", s4:"17:53", s5:"17:54", s6:"17:56", s7:"17:58", s8:"18:01", s801:"18:02", s9:"18:03", s10:"18:05", s11:"18:07", s12:"18:08", s13:"18:09", s14:"18:12", s15:"18:16", s16:"18:18", s17:"18:19", s18:"18:21", s20:"18:25", s21:"18:26", s22:"18:27", s23:"18:28", s24:"18:29", s25:"18:30", s30:"18:31", s31:"18:32", s32:"18:33", s33:"18:33", s34:"18:34", s35:"18:34", s36:"18:35", s37:"18:36", s38:"18:37", s39:"18:38", s40:"18:39", s41:"18:40", s42:"18:41", s43:"18:42", s44:"18:43", s45:"18:44", s46:"18:45", s47:"18:46", s48:"18:47", s49:"18:48", s50:"18:48", s51:"18:49", s52:"18:50", s53:"18:51", s54:"18:51", s55:"18:52", s56:"18:53", s57:"18:54", s58:"18:55", s59:"18:57", s60:"18:59", s61:"19:00", s62:"19:02", s63:"19:04", s64:"19:08", s65:"19:09", s66:"19:10", s67:"19:11", s73:"19:12", s74:"19:13", s75:"19:13", s76:"19:14", s77:"19:15", s78:"19:16", s79:"19:17", s80:"19:18", s81:"19:19", s82:"19:20", s83:"19:21", s84:"19:22", s85:"19:24", s86:"19:25", s87:"19:26", s88:"19:27", s89:"19:27", s90:"19:28", s91:"19:29", s92:"19:30", s93:"19:31", s94:"19:32", s95:"19:32", s96:"19:32", s97:"19:33", s98:"19:34", s99:"19:39"},est:["s2","s3","s4","s6","s7","s801","s9","s10","s12","s13","s15","s16","s18","s22","s24","s32","s33","s35","s36","s38","s39","s40","s42","s43","s45","s46","s47","s50","s51","s53","s54","s55","s57","s58","s60","s61","s65","s74","s75","s76","s77","s79","s80","s81","s82","s83","s84","s87","s88","s90","s91","s92","s93","s95","s96","s98"]},
+  {route:"main",service:"everyday",season:"marNov",head_ja:"安房港ゆき",head_en:"For Anbo Port",times:{s99:"5:00", s98:"5:05", s97:"5:06", s96:"5:07", s95:"5:07", s94:"5:07", s93:"5:08", s92:"5:09", s91:"5:10", s90:"5:11", s89:"5:12", s88:"5:12", s87:"5:13", s86:"5:14", s85:"5:15", s84:"5:17", s83:"5:18", s82:"5:19", s81:"5:20", s80:"5:21", s79:"5:22", s78:"5:23", s77:"5:24", s76:"5:25", s75:"5:26", s74:"5:26", s73:"5:27", s68:"5:32", s67:"5:38", s66:"5:39", s64:"5:43"},est:["s98","s96","s95","s93","s92","s91","s90","s88","s87","s84","s83","s82","s81","s80","s79","s77","s76","s75","s74"],note:"arakawa_am_n"},
+  {route:"main",service:"everyday",head_ja:"永田ゆき",head_en:"For Nagata",times:{s127:"6:39", s126:"6:40", s125:"6:41", s124:"6:42", s123:"6:44", s122:"6:45", s121:"6:46", s120:"6:47", s119:"6:48", s118:"6:48", s117:"6:49", s116:"6:50", s115:"6:51", s114:"6:52", s113:"6:53", s112:"6:53", s111:"6:54", s110:"6:54", s109:"6:55", s108:"6:55", s107:"6:56", s106:"6:57", s105:"6:57", s104:"6:58", s103:"6:59", s102:"7:00", s101:"7:01", s100:"7:02", s99:"7:05", s98:"7:10", s97:"7:11", s96:"7:12", s95:"7:12", s94:"7:12", s93:"7:13", s92:"7:14", s91:"7:15", s90:"7:16", s89:"7:17", s88:"7:17", s87:"7:18", s86:"7:19", s85:"7:20", s84:"7:22", s83:"7:23", s82:"7:24", s81:"7:25", s80:"7:26", s79:"7:27", s78:"7:28", s77:"7:29", s76:"7:30", s75:"7:31", s74:"7:31", s73:"7:32", s67:"7:33", s66:"7:34", s63:"7:36", s62:"7:38", s61:"7:39", s60:"7:40", s59:"7:41", s58:"7:43", s57:"7:44", s56:"7:45", s55:"7:46", s54:"7:47", s53:"7:47", s52:"7:48", s51:"7:49", s50:"7:50", s49:"7:50", s48:"7:51", s47:"7:52", s46:"7:53", s45:"7:54", s44:"7:55", s43:"7:56", s42:"7:57", s41:"7:58", s40:"7:59", s39:"8:00", s38:"8:01", s37:"8:02", s36:"8:03", s35:"8:04", s34:"8:04", s33:"8:05", s32:"8:05", s31:"8:06", s30:"8:07", s25:"8:08", s24:"8:09", s23:"8:10", s22:"8:11", s21:"8:12", s20:"8:15", s18:"8:18", s17:"8:19", s16:"8:20", s15:"8:22", s14:"8:26", s13:"8:29", s12:"8:30", s11:"8:31", s10:"8:33", s9:"8:35", s801:"8:36", s8:"8:37", s7:"8:40", s6:"8:42", s5:"8:44", s4:"8:45", s3:"8:46", s2:"8:46", s1:"8:47"},est:["s126","s125","s124","s122","s121","s120","s119","s118","s117","s116","s115","s113","s111","s110","s109","s108","s107","s106","s105","s104","s103","s101","s100","s98","s96","s95","s93","s92","s91","s90","s88","s87","s84","s83","s82","s81","s80","s79","s77","s76","s75","s74","s61","s60","s58","s57","s55","s54","s53","s51","s50","s47","s46","s45","s43","s42","s40","s39","s38","s36","s35","s33","s32","s24","s22","s18","s16","s15","s13","s12","s10","s9","s801","s7","s6","s4","s3","s2"]},
+  {route:"main",service:"everyday",head_ja:"永田ゆき",head_en:"For Nagata",times:{s127:"8:04", s126:"8:05", s125:"8:06", s124:"8:07", s123:"8:09", s122:"8:10", s121:"8:11", s120:"8:12", s119:"8:13", s118:"8:13", s117:"8:14", s116:"8:15", s115:"8:16", s114:"8:17", s113:"8:18", s112:"8:18", s111:"8:19", s110:"8:19", s109:"8:20", s108:"8:20", s107:"8:21", s106:"8:22", s105:"8:22", s104:"8:23", s103:"8:24", s102:"8:25", s101:"8:26", s100:"8:27", s99:"8:30", s98:"8:35", s97:"8:36", s96:"8:37", s95:"8:37", s94:"8:37", s93:"8:38", s92:"8:39", s91:"8:40", s90:"8:41", s89:"8:42", s88:"8:42", s87:"8:43", s86:"8:44", s85:"8:45", s84:"8:47", s83:"8:48", s82:"8:49", s81:"8:50", s80:"8:51", s79:"8:52", s78:"8:53", s77:"8:54", s76:"8:55", s75:"8:56", s74:"8:56", s73:"8:57", s67:"8:58", s66:"8:59", s65:"9:01", s64:"9:03", s63:"9:05", s62:"9:07", s61:"9:08", s60:"9:09", s59:"9:10", s58:"9:12", s57:"9:13", s56:"9:14", s55:"9:15", s54:"9:16", s53:"9:16", s52:"9:17", s51:"9:18", s50:"9:19", s49:"9:19", s48:"9:20", s47:"9:21", s46:"9:22", s45:"9:23", s44:"9:24", s43:"9:25", s42:"9:26", s41:"9:27", s40:"9:28", s39:"9:29", s38:"9:30", s37:"9:31", s36:"9:32", s35:"9:33", s34:"9:33", s33:"9:34", s32:"9:34", s31:"9:35", s30:"9:36", s25:"9:37", s24:"9:38", s23:"9:39", s22:"9:40", s21:"9:41", s20:"9:44"},est:["s126","s125","s124","s122","s121","s120","s119","s118","s117","s116","s115","s113","s111","s110","s109","s108","s107","s106","s105","s104","s103","s101","s100","s98","s96","s95","s93","s92","s91","s90","s88","s87","s84","s83","s82","s81","s80","s79","s77","s76","s75","s74","s65","s61","s60","s58","s57","s55","s54","s53","s51","s50","s47","s46","s45","s43","s42","s40","s39","s38","s36","s35","s33","s32","s24","s22"]},
+  {route:"main",service:"everyday",head_ja:"永田ゆき",head_en:"For Nagata",times:{s127:"8:29", s126:"8:30", s125:"8:31", s124:"8:32", s123:"8:34", s122:"8:35", s121:"8:36", s120:"8:37", s119:"8:38", s118:"8:38", s117:"8:39", s116:"8:40", s115:"8:41", s114:"8:42", s113:"8:43", s112:"8:43", s111:"8:44", s110:"8:44", s109:"8:45", s108:"8:45", s107:"8:46", s106:"8:47", s105:"8:47", s104:"8:48", s103:"8:49", s102:"8:50", s101:"8:51", s100:"8:52", s99:"8:55", s98:"9:00", s97:"9:01", s96:"9:02", s95:"9:02", s94:"9:02", s93:"9:03", s92:"9:04", s91:"9:05", s90:"9:06", s89:"9:07", s88:"9:07", s87:"9:08", s86:"9:09", s85:"9:10", s84:"9:12", s83:"9:13", s82:"9:14", s81:"9:15", s80:"9:16", s79:"9:17", s78:"9:18", s77:"9:19", s76:"9:20", s75:"9:21", s74:"9:21", s73:"9:22", s67:"9:23", s66:"9:24", s65:"9:26", s64:"9:28", s63:"9:30", s62:"9:32", s61:"9:33", s60:"9:34", s59:"9:35", s58:"9:37", s57:"9:38", s56:"9:39", s55:"9:40", s54:"9:41", s53:"9:41", s52:"9:42", s51:"9:43", s50:"9:44", s49:"9:44", s48:"9:45", s47:"9:46", s46:"9:47", s45:"9:48", s44:"9:49", s43:"9:50", s42:"9:51", s41:"9:52", s40:"9:53", s39:"9:54", s38:"9:55", s37:"9:56", s36:"9:57", s35:"9:58", s34:"9:58", s33:"9:59", s32:"9:59", s31:"10:00", s30:"10:01", s25:"10:02", s24:"10:03", s23:"10:04", s22:"10:05", s21:"10:06", s20:"10:09"},est:["s126","s125","s124","s122","s121","s120","s119","s118","s117","s116","s115","s113","s111","s110","s109","s108","s107","s106","s105","s104","s103","s101","s100","s98","s96","s95","s93","s92","s91","s90","s88","s87","s84","s83","s82","s81","s80","s79","s77","s76","s75","s74","s65","s61","s60","s58","s57","s55","s54","s53","s51","s50","s47","s46","s45","s43","s42","s40","s39","s38","s36","s35","s33","s32","s24","s22"]},
+  {route:"main",service:"everyday",head_ja:"永田ゆき",head_en:"For Nagata",times:{s20:"9:15", s18:"9:18", s17:"9:19", s16:"9:20", s15:"9:22", s14:"9:26", s13:"9:29", s12:"9:30", s11:"9:31", s10:"9:33", s9:"9:35", s801:"9:36", s8:"9:37", s7:"9:40", s6:"9:42", s5:"9:44", s4:"9:45", s3:"9:46", s2:"9:46", s1:"9:47"},est:["s18","s16","s15","s13","s12","s10","s9","s801","s7","s6","s4","s3","s2"]},
+  {route:"main",service:"everyday",head_ja:"永田ゆき",head_en:"For Nagata",times:{s20:"10:40", s18:"10:43", s17:"10:44", s16:"10:45", s15:"10:47", s14:"10:51", s13:"10:54", s12:"10:55", s11:"10:56", s10:"10:58", s9:"11:00", s801:"11:01", s8:"11:02", s7:"11:05", s6:"11:07", s5:"11:09", s4:"11:10", s3:"11:11", s2:"11:11", s1:"11:12"},est:["s18","s16","s15","s13","s12","s10","s9","s801","s7","s6","s4","s3","s2"]},
+  {route:"main",service:"everyday",head_ja:"宮之浦港ゆき",head_en:"For Miyanoura Port",times:{s127:"9:54", s126:"9:55", s125:"9:56", s124:"9:57", s123:"9:59", s122:"10:00", s121:"10:01", s120:"10:02", s119:"10:03", s118:"10:03", s117:"10:04", s116:"10:05", s115:"10:06", s114:"10:07", s113:"10:08", s112:"10:08", s111:"10:09", s110:"10:09", s109:"10:10", s108:"10:10", s107:"10:11", s106:"10:12", s105:"10:12", s104:"10:13", s103:"10:14", s102:"10:15", s101:"10:16", s100:"10:17", s99:"10:20", s98:"10:25", s97:"10:26", s96:"10:27", s95:"10:27", s94:"10:27", s93:"10:28", s92:"10:29", s91:"10:30", s90:"10:31", s89:"10:32", s88:"10:32", s87:"10:33", s86:"10:34", s85:"10:35", s84:"10:37", s83:"10:38", s82:"10:39", s81:"10:40", s80:"10:41", s79:"10:42", s78:"10:43", s77:"10:44", s76:"10:45", s75:"10:46", s74:"10:46", s73:"10:47", s67:"10:48", s66:"10:49", s65:"10:51", s64:"10:53", s63:"10:55", s62:"10:57", s61:"10:58", s60:"10:59", s59:"11:00", s58:"11:02", s57:"11:03", s56:"11:04", s55:"11:05", s54:"11:06", s53:"11:06", s52:"11:07", s51:"11:08", s50:"11:09", s49:"11:09", s48:"11:10", s47:"11:11", s46:"11:12", s45:"11:13", s44:"11:14", s43:"11:15", s42:"11:16", s41:"11:17", s40:"11:18", s39:"11:19", s38:"11:20", s37:"11:21", s36:"11:22", s35:"11:23", s34:"11:23", s33:"11:24", s32:"11:24", s31:"11:25", s30:"11:26", s25:"11:27", s24:"11:28", s23:"11:29", s22:"11:30", s21:"11:31", s20:"11:34"},est:["s126","s125","s124","s122","s121","s120","s119","s118","s117","s116","s115","s113","s111","s110","s109","s108","s107","s106","s105","s104","s103","s101","s100","s98","s96","s95","s93","s92","s91","s90","s88","s87","s84","s83","s82","s81","s80","s79","s77","s76","s75","s74","s65","s61","s60","s58","s57","s55","s54","s53","s51","s50","s47","s46","s45","s43","s42","s40","s39","s38","s36","s35","s33","s32","s24","s22"]},
+  {route:"main",service:"everyday",head_ja:"永田ゆき",head_en:"For Nagata",times:{s129:"11:00", s128:"11:01", s127:"11:04", s126:"11:05", s125:"11:06", s124:"11:07", s123:"11:09", s122:"11:10", s121:"11:11", s120:"11:12", s119:"11:13", s118:"11:13", s117:"11:14", s116:"11:15", s115:"11:16", s114:"11:17", s113:"11:18", s112:"11:18", s111:"11:19", s110:"11:19", s109:"11:20", s108:"11:20", s107:"11:21", s106:"11:22", s105:"11:22", s104:"11:23", s103:"11:24", s102:"11:25", s101:"11:26", s100:"11:27", s99:"11:30", s98:"11:35", s97:"11:36", s96:"11:37", s95:"11:37", s94:"11:37", s93:"11:38", s92:"11:39", s91:"11:40", s90:"11:41", s89:"11:42", s88:"11:42", s87:"11:43", s86:"11:44", s85:"11:45", s84:"11:47", s83:"11:48", s82:"11:49", s81:"11:50", s80:"11:51", s79:"11:52", s78:"11:53", s77:"11:54", s76:"11:55", s75:"11:56", s74:"11:56", s73:"11:57", s67:"11:58", s66:"11:59", s65:"12:01", s64:"12:03", s63:"12:05", s62:"12:07", s61:"12:08", s60:"12:09", s59:"12:10", s58:"12:12", s57:"12:13", s56:"12:14", s55:"12:15", s54:"12:16", s53:"12:16", s52:"12:17", s51:"12:18", s50:"12:19", s49:"12:19", s48:"12:20", s47:"12:21", s46:"12:22", s45:"12:23", s44:"12:24", s43:"12:25", s42:"12:26", s41:"12:27", s40:"12:28", s39:"12:29", s38:"12:30", s37:"12:31", s36:"12:32", s35:"12:33", s34:"12:33", s33:"12:34", s32:"12:34", s31:"12:35", s30:"12:36", s25:"12:37", s24:"12:38", s23:"12:39", s22:"12:40", s21:"12:41", s20:"12:44"},est:["s128","s126","s125","s124","s122","s121","s120","s119","s118","s117","s116","s115","s113","s111","s110","s109","s108","s107","s106","s105","s104","s103","s101","s100","s98","s96","s95","s93","s92","s91","s90","s88","s87","s84","s83","s82","s81","s80","s79","s77","s76","s75","s74","s65","s61","s60","s58","s57","s55","s54","s53","s51","s50","s47","s46","s45","s43","s42","s40","s39","s38","s36","s35","s33","s32","s24","s22"]},
+  {route:"main",service:"everyday",head_ja:"永田ゆき",head_en:"For Nagata",times:{s99:"12:40", s98:"12:45", s97:"12:46", s96:"12:47", s95:"12:47", s94:"12:47", s93:"12:48", s92:"12:49", s91:"12:50", s90:"12:51", s89:"12:52", s88:"12:52", s87:"12:53", s86:"12:54", s85:"12:55", s84:"12:57", s83:"12:58", s82:"12:59", s81:"13:00", s80:"13:01", s79:"13:02", s78:"13:03", s77:"13:04", s76:"13:05", s75:"13:06", s74:"13:06", s73:"13:07", s67:"13:08", s66:"13:09", s65:"13:11", s64:"13:13", s63:"13:15", s62:"13:17", s61:"13:18", s60:"13:19", s59:"13:20", s58:"13:22", s57:"13:23", s56:"13:24", s55:"13:25", s54:"13:26", s53:"13:26", s52:"13:27", s51:"13:28", s50:"13:29", s49:"13:29", s48:"13:30", s47:"13:31", s46:"13:32", s45:"13:33", s44:"13:34", s43:"13:35", s42:"13:36", s41:"13:37", s40:"13:38", s39:"13:39", s38:"13:40", s37:"13:41", s36:"13:42", s35:"13:43", s34:"13:43", s33:"13:44", s32:"13:44", s31:"13:45", s30:"13:46", s25:"13:47", s24:"13:48", s23:"13:49", s22:"13:50", s21:"13:51", s20:"13:54", s18:"13:57", s17:"13:58", s16:"13:59", s15:"14:01", s14:"14:05", s13:"14:08", s12:"14:09", s11:"14:10", s10:"14:12", s9:"14:14", s801:"14:15", s8:"14:16", s7:"14:19", s6:"14:21", s5:"14:23", s4:"14:24", s3:"14:25", s2:"14:25", s1:"14:26"},est:["s98","s96","s95","s93","s92","s91","s90","s88","s87","s84","s83","s82","s81","s80","s79","s77","s76","s75","s74","s65","s61","s60","s58","s57","s55","s54","s53","s51","s50","s47","s46","s45","s43","s42","s40","s39","s38","s36","s35","s33","s32","s24","s22","s18","s16","s15","s13","s12","s10","s9","s801","s7","s6","s4","s3","s2"]},
+  {route:"main",service:"everyday",head_ja:"宮之浦港ゆき",head_en:"For Miyanoura Port",times:{s127:"13:14", s126:"13:15", s125:"13:16", s124:"13:17", s123:"13:19", s122:"13:20", s121:"13:21", s120:"13:22", s119:"13:23", s118:"13:23", s117:"13:24", s116:"13:25", s115:"13:26", s114:"13:27", s113:"13:28", s112:"13:28", s111:"13:29", s110:"13:29", s109:"13:30", s108:"13:30", s107:"13:31", s106:"13:32", s105:"13:32", s104:"13:33", s103:"13:34", s102:"13:35", s101:"13:36", s100:"13:37", s99:"13:40", s98:"13:45", s97:"13:46", s96:"13:47", s95:"13:47", s94:"13:47", s93:"13:48", s92:"13:49", s91:"13:50", s90:"13:51", s89:"13:52", s88:"13:52", s87:"13:53", s86:"13:54", s85:"13:55", s84:"13:57", s83:"13:58", s82:"13:59", s81:"14:00", s80:"14:01", s79:"14:02", s78:"14:03", s77:"14:04", s76:"14:05", s75:"14:06", s74:"14:06", s73:"14:07", s67:"14:08", s66:"14:09", s65:"14:11", s64:"14:13", s63:"14:15", s62:"14:17", s61:"14:18", s60:"14:19", s59:"14:20", s58:"14:22", s57:"14:23", s56:"14:24", s55:"14:25", s54:"14:26", s53:"14:26", s52:"14:27", s51:"14:28", s50:"14:29", s49:"14:29", s48:"14:30", s47:"14:31", s46:"14:32", s45:"14:33", s44:"14:34", s43:"14:35", s42:"14:36", s41:"14:37", s40:"14:38", s39:"14:39", s38:"14:40", s37:"14:41", s36:"14:42", s35:"14:43", s34:"14:43", s33:"14:44", s32:"14:44", s31:"14:45", s30:"14:46", s25:"14:47", s24:"14:48", s23:"14:49", s22:"14:50", s21:"14:51", s20:"14:54"},est:["s126","s125","s124","s122","s121","s120","s119","s118","s117","s116","s115","s113","s111","s110","s109","s108","s107","s106","s105","s104","s103","s101","s100","s98","s96","s95","s93","s92","s91","s90","s88","s87","s84","s83","s82","s81","s80","s79","s77","s76","s75","s74","s65","s61","s60","s58","s57","s55","s54","s53","s51","s50","s47","s46","s45","s43","s42","s40","s39","s38","s36","s35","s33","s32","s24","s22"]},
+  {route:"main",service:"everyday",head_ja:"宮之浦港ゆき",head_en:"For Miyanoura Port",times:{s127:"13:44", s126:"13:45", s125:"13:46", s124:"13:47", s123:"13:49", s122:"13:50", s121:"13:51", s120:"13:52", s119:"13:53", s118:"13:53", s117:"13:54", s116:"13:55", s115:"13:56", s114:"13:57", s113:"13:58", s112:"13:58", s111:"13:59", s110:"13:59", s109:"14:00", s108:"14:00", s107:"14:01", s106:"14:02", s105:"14:02", s104:"14:03", s103:"14:04", s102:"14:05", s101:"14:06", s100:"14:07", s99:"14:10", s98:"14:15", s97:"14:16", s96:"14:17", s95:"14:17", s94:"14:17", s93:"14:18", s92:"14:19", s91:"14:20", s90:"14:21", s89:"14:22", s88:"14:22", s87:"14:23", s86:"14:24", s85:"14:25", s84:"14:27", s83:"14:28", s82:"14:29", s81:"14:30", s80:"14:31", s79:"14:32", s78:"14:33", s77:"14:34", s76:"14:35", s75:"14:36", s74:"14:36", s73:"14:37", s67:"14:38", s66:"14:39", s65:"14:41", s64:"14:43", s63:"14:45", s62:"14:47", s61:"14:48", s60:"14:49", s59:"14:50", s58:"14:52", s57:"14:53", s56:"14:54", s55:"14:55", s54:"14:56", s53:"14:56", s52:"14:57", s51:"14:58", s50:"14:59", s49:"14:59", s48:"15:00", s47:"15:01", s46:"15:02", s45:"15:03", s44:"15:04", s43:"15:05", s42:"15:06", s41:"15:07", s40:"15:08", s39:"15:09", s38:"15:10", s37:"15:11", s36:"15:12", s35:"15:13", s34:"15:13", s33:"15:14", s32:"15:14", s31:"15:15", s30:"15:16", s25:"15:17", s24:"15:18", s23:"15:19", s22:"15:20", s21:"15:21", s20:"15:24"},est:["s126","s125","s124","s122","s121","s120","s119","s118","s117","s116","s115","s113","s111","s110","s109","s108","s107","s106","s105","s104","s103","s101","s100","s98","s96","s95","s93","s92","s91","s90","s88","s87","s84","s83","s82","s81","s80","s79","s77","s76","s75","s74","s65","s61","s60","s58","s57","s55","s54","s53","s51","s50","s47","s46","s45","s43","s42","s40","s39","s38","s36","s35","s33","s32","s24","s22"]},
+  {route:"main",service:"everyday",head_ja:"永田ゆき",head_en:"For Nagata",times:{s99:"15:00", s98:"15:05", s97:"15:06", s96:"15:07", s95:"15:07", s94:"15:07", s93:"15:08", s92:"15:09", s91:"15:10", s90:"15:11", s89:"15:12", s88:"15:12", s87:"15:13", s86:"15:14", s85:"15:15", s84:"15:17", s83:"15:18", s82:"15:19", s81:"15:20", s80:"15:21", s79:"15:22", s78:"15:23", s77:"15:24", s76:"15:25", s75:"15:26", s74:"15:26", s73:"15:27", s67:"15:28", s66:"15:29", s63:"15:31", s62:"15:33", s61:"15:34", s60:"15:35", s59:"15:36", s58:"15:38", s57:"15:39", s56:"15:40", s55:"15:41", s54:"15:42", s53:"15:42", s52:"15:43", s51:"15:44", s50:"15:45", s49:"15:45", s48:"15:46", s47:"15:47", s46:"15:48", s45:"15:49", s44:"15:50", s43:"15:51", s42:"15:52", s41:"15:53", s40:"15:54", s39:"15:55", s38:"15:56", s37:"15:57", s36:"15:58", s35:"15:59", s34:"15:59", s33:"16:00", s32:"16:00", s31:"16:01", s30:"16:02", s25:"16:03", s24:"16:04", s23:"16:05", s22:"16:06", s21:"16:07", s20:"16:10", s18:"16:13", s17:"16:14", s16:"16:15", s15:"16:17", s14:"16:21", s13:"16:24", s12:"16:25", s11:"16:26", s10:"16:28", s9:"16:30", s801:"16:31", s8:"16:32", s7:"16:35", s6:"16:37", s5:"16:39", s4:"16:40", s3:"16:41", s2:"16:41", s1:"16:42"},est:["s98","s96","s95","s93","s92","s91","s90","s88","s87","s84","s83","s82","s81","s80","s79","s77","s76","s75","s74","s61","s60","s58","s57","s55","s54","s53","s51","s50","s47","s46","s45","s43","s42","s40","s39","s38","s36","s35","s33","s32","s24","s22","s18","s16","s15","s13","s12","s10","s9","s801","s7","s6","s4","s3","s2"]},
+  {route:"main",service:"everyday",head_ja:"永田ゆき",head_en:"For Nagata",times:{s129:"15:25", s128:"15:26", s127:"15:29", s126:"15:30", s125:"15:31", s124:"15:32", s123:"15:34", s122:"15:35", s121:"15:36", s120:"15:37", s119:"15:38", s118:"15:38", s117:"15:39", s116:"15:40", s115:"15:41", s114:"15:42", s113:"15:43", s112:"15:43", s111:"15:44", s110:"15:44", s109:"15:45", s108:"15:45", s107:"15:46", s106:"15:47", s105:"15:47", s104:"15:48", s103:"15:49", s102:"15:50", s101:"15:51", s100:"15:52", s99:"15:55", s98:"16:00", s97:"16:01", s96:"16:02", s95:"16:02", s94:"16:02", s93:"16:03", s92:"16:04", s91:"16:05", s90:"16:06", s89:"16:07", s88:"16:07", s87:"16:08", s86:"16:09", s85:"16:10", s84:"16:12", s83:"16:13", s82:"16:14", s81:"16:15", s80:"16:16", s79:"16:17", s78:"16:18", s77:"16:19", s76:"16:20", s75:"16:21", s74:"16:21", s73:"16:22", s67:"16:23", s66:"16:24", s65:"16:26", s64:"16:28", s63:"16:30", s62:"16:32", s61:"16:33", s60:"16:34", s59:"16:35", s58:"16:37", s57:"16:38", s56:"16:39", s55:"16:40", s54:"16:41", s53:"16:41", s52:"16:42", s51:"16:43", s50:"16:44", s49:"16:44", s48:"16:45", s47:"16:46", s46:"16:47", s45:"16:48", s44:"16:49", s43:"16:50", s42:"16:51", s41:"16:52", s40:"16:53", s39:"16:54", s38:"16:55", s37:"16:56", s36:"16:57", s35:"16:58", s34:"16:58", s33:"16:59", s32:"16:59", s31:"17:00", s30:"17:01", s25:"17:02", s24:"17:03", s23:"17:04", s22:"17:05", s21:"17:06", s20:"17:09"},est:["s128","s126","s125","s124","s122","s121","s120","s119","s118","s117","s116","s115","s113","s111","s110","s109","s108","s107","s106","s105","s104","s103","s101","s100","s98","s96","s95","s93","s92","s91","s90","s88","s87","s84","s83","s82","s81","s80","s79","s77","s76","s75","s74","s65","s61","s60","s58","s57","s55","s54","s53","s51","s50","s47","s46","s45","s43","s42","s40","s39","s38","s36","s35","s33","s32","s24","s22"]},
+  {route:"main",service:"everyday",season:"marNov",head_ja:"宮之浦港ゆき",head_en:"For Miyanoura Port",times:{s68:"17:10", s67:"17:15", s66:"17:16", s63:"17:18", s62:"17:20", s61:"17:21", s60:"17:22", s59:"17:23", s58:"17:25", s57:"17:26", s56:"17:27", s55:"17:28", s54:"17:29", s53:"17:29", s52:"17:30", s51:"17:31", s50:"17:32", s49:"17:32", s48:"17:33", s47:"17:34", s46:"17:35", s45:"17:36", s44:"17:37", s43:"17:38", s42:"17:39", s41:"17:40", s40:"17:41", s39:"17:42", s38:"17:43", s37:"17:44", s36:"17:45", s35:"17:46", s34:"17:46", s33:"17:47", s32:"17:47", s31:"17:48", s30:"17:49", s25:"17:50", s24:"17:51", s23:"17:52", s22:"17:53", s21:"17:54", s19:"17:55"},est:["s61","s60","s58","s57","s55","s54","s53","s51","s50","s47","s46","s45","s43","s42","s40","s39","s38","s36","s35","s33","s32","s24","s22"],note:"arakawa_pm_n"},
+  {route:"main",service:"everyday",head_ja:"永田ゆき",head_en:"For Nagata",times:{s127:"16:29", s126:"16:30", s125:"16:31", s124:"16:32", s123:"16:34", s122:"16:35", s121:"16:36", s120:"16:37", s119:"16:38", s118:"16:38", s117:"16:39", s116:"16:40", s115:"16:41", s114:"16:42", s113:"16:43", s112:"16:43", s111:"16:44", s110:"16:44", s109:"16:45", s108:"16:45", s107:"16:46", s106:"16:47", s105:"16:47", s104:"16:48", s103:"16:49", s102:"16:50", s101:"16:51", s100:"16:52", s99:"16:55", s98:"17:00", s97:"17:01", s96:"17:02", s95:"17:02", s94:"17:02", s93:"17:03", s92:"17:04", s91:"17:05", s90:"17:06", s89:"17:07", s88:"17:07", s87:"17:08", s86:"17:09", s85:"17:10", s84:"17:12", s83:"17:13", s82:"17:14", s81:"17:15", s80:"17:16", s79:"17:17", s78:"17:18", s77:"17:19", s76:"17:20", s75:"17:21", s74:"17:21", s73:"17:22", s67:"17:23", s66:"17:24", s65:"17:26", s64:"17:28", s63:"17:30", s62:"17:34", s61:"17:35", s60:"17:36", s59:"17:37", s58:"17:39", s57:"17:40", s56:"17:41", s55:"17:42", s54:"17:43", s53:"17:43", s52:"17:44", s51:"17:45", s50:"17:46", s49:"17:46", s48:"17:47", s47:"17:48", s46:"17:49", s45:"17:50", s44:"17:51", s43:"17:52", s42:"17:53", s41:"17:54", s40:"17:55", s39:"17:56", s38:"17:57", s37:"17:58", s36:"17:59", s35:"18:00", s34:"18:00", s33:"18:01", s32:"18:01", s31:"18:02", s30:"18:03", s25:"18:04", s24:"18:05", s23:"18:06", s22:"18:07", s21:"18:08", s20:"18:11", s18:"18:14", s17:"18:15", s16:"18:16", s15:"18:18", s14:"18:22", s13:"18:25", s12:"18:26", s11:"18:27", s10:"18:29", s9:"18:31", s801:"18:32", s8:"18:33", s7:"18:36", s6:"18:38", s5:"18:40", s4:"18:41", s3:"18:42", s2:"18:42", s1:"18:43"},est:["s126","s125","s124","s122","s121","s120","s119","s118","s117","s116","s115","s113","s111","s110","s109","s108","s107","s106","s105","s104","s103","s101","s100","s98","s96","s95","s93","s92","s91","s90","s88","s87","s84","s83","s82","s81","s80","s79","s77","s76","s75","s74","s65","s61","s60","s58","s57","s55","s54","s53","s51","s50","s47","s46","s45","s43","s42","s40","s39","s38","s36","s35","s33","s32","s24","s22","s18","s16","s15","s13","s12","s10","s9","s801","s7","s6","s4","s3","s2"]},
+  {route:"main",service:"everyday",head_ja:"永田ゆき",head_en:"For Nagata",times:{s129:"17:45", s128:"17:46", s127:"17:49", s126:"17:50", s125:"17:51", s124:"17:52", s123:"17:54", s122:"17:55", s121:"17:56", s120:"17:57", s119:"17:58", s118:"17:58", s117:"17:59", s116:"18:00", s115:"18:01", s114:"18:02", s113:"18:03", s112:"18:03", s111:"18:04", s110:"18:04", s109:"18:05", s108:"18:05", s107:"18:06", s106:"18:07", s105:"18:07", s104:"18:08", s103:"18:09", s102:"18:10", s101:"18:11", s100:"18:12", s99:"18:15", s98:"18:20", s97:"18:21", s96:"18:22", s95:"18:22", s94:"18:22", s93:"18:23", s92:"18:24", s91:"18:25", s90:"18:26", s89:"18:27", s88:"18:27", s87:"18:28", s86:"18:29", s85:"18:30", s84:"18:32", s83:"18:33", s82:"18:34", s81:"18:35", s80:"18:36", s79:"18:37", s78:"18:38", s77:"18:39", s76:"18:40", s75:"18:41", s74:"18:41", s73:"18:42", s67:"18:43", s66:"18:44", s65:"18:46", s64:"18:48", s63:"18:50", s62:"18:54", s61:"18:55", s60:"18:56", s59:"18:57", s58:"18:59", s57:"19:00", s56:"19:01", s55:"19:02", s54:"19:03", s53:"19:03", s52:"19:04", s51:"19:05", s50:"19:06", s49:"19:06", s48:"19:07", s47:"19:08", s46:"19:09", s45:"19:10", s44:"19:11", s43:"19:12", s42:"19:13", s41:"19:14", s40:"19:15", s39:"19:16", s38:"19:17", s37:"19:18", s36:"19:19", s35:"19:20", s34:"19:20", s33:"19:21", s32:"19:21", s31:"19:22", s30:"19:23", s25:"19:24", s24:"19:25", s23:"19:26", s22:"19:27", s21:"19:28", s20:"19:31"},est:["s128","s126","s125","s124","s122","s121","s120","s119","s118","s117","s116","s115","s113","s111","s110","s109","s108","s107","s106","s105","s104","s103","s101","s100","s98","s96","s95","s93","s92","s91","s90","s88","s87","s84","s83","s82","s81","s80","s79","s77","s76","s75","s74","s65","s61","s60","s58","s57","s55","s54","s53","s51","s50","s47","s46","s45","s43","s42","s40","s39","s38","s36","s35","s33","s32","s24","s22"]},
+  {route:"shiratani",service:"everyday",head_ja:"白谷雲水峡ゆき",head_en:"For Shiratani Unsuikyo",times:{s20:"8:20", s21:"8:21", s23:"8:23", s25:"8:25", s26:"8:27", s29:"8:55"},est:[],note:"shiratani_transfer"},
+  {route:"shiratani",service:"everyday",head_ja:"白谷雲水峡ゆき",head_en:"For Shiratani Unsuikyo",times:{s20:"10:05", s21:"10:06", s23:"10:08", s25:"10:10", s26:"10:12", s29:"10:40"},est:[],note:"shiratani_transfer"},
+  {route:"shiratani",service:"everyday",head_ja:"白谷雲水峡ゆき",head_en:"For Shiratani Unsuikyo",times:{s20:"13:10", s21:"13:11", s23:"13:13", s25:"13:15", s26:"13:17", s29:"13:45"},est:[],note:"shiratani_transfer"},
+  {route:"shiratani",service:"everyday",head_ja:"白谷雲水峡ゆき",head_en:"For Shiratani Unsuikyo",times:{s20:"15:30", s21:"15:31", s23:"15:33", s25:"15:35", s26:"15:37", s29:"16:05"},est:[],note:"shiratani_transfer"},
+  {route:"shiratani",service:"everyday",head_ja:"宮之浦港ゆき",head_en:"For Miyanoura Port",times:{s29:"9:00", s26:"9:23", s25:"9:25", s23:"9:27", s21:"9:29", s20:"9:35"},est:[],note:"shiratani_transfer"},
+  {route:"shiratani",service:"everyday",head_ja:"宮之浦港ゆき",head_en:"For Miyanoura Port",times:{s29:"10:40", s26:"11:03", s25:"11:05", s23:"11:07", s21:"11:09", s20:"11:15"},est:[],note:"shiratani_transfer"},
+  {route:"shiratani",service:"everyday",head_ja:"宮之浦港ゆき",head_en:"For Miyanoura Port",times:{s29:"13:45", s26:"14:08", s25:"14:10", s23:"14:12", s21:"14:14", s20:"14:20"},est:[],note:"shiratani_transfer"},
+  {route:"shiratani",service:"everyday",head_ja:"宮之浦港ゆき",head_en:"For Miyanoura Port",times:{s29:"16:10", s26:"16:33", s25:"16:35", s23:"16:37", s21:"16:39", s20:"16:45"},est:[],note:"shiratani_transfer"},
+  {route:"kigensugi",service:"everyday",head_ja:"紀元杉ゆき",head_en:"For Kigensugi Cedar",times:{s62:"9:20", s64:"9:26", s66:"9:28", s67:"9:29", s68:"9:34", s69:"10:01", s71:"10:07", s72:"10:27"},est:[],note:"kigensugi_transfer"},
+  {route:"kigensugi",service:"everyday",head_ja:"紀元杉ゆき",head_en:"For Kigensugi Cedar",times:{s62:"13:30", s64:"13:36", s66:"13:38", s67:"13:39", s68:"13:44", s69:"14:11", s71:"14:17", s72:"14:37"},est:[],note:"kigensugi_transfer"},
+  {route:"kigensugi",service:"everyday",head_ja:"合庁前ゆき",head_en:"For Gochomae",times:{s72:"10:45", s71:"11:05", s69:"11:11", s68:"11:38", s67:"11:43", s66:"11:44", s62:"11:48"},est:[],note:"kigensugi_transfer"},
+  {route:"kigensugi",service:"everyday",head_ja:"合庁前ゆき",head_en:"For Gochomae",times:{s72:"14:55", s71:"15:15", s69:"15:21", s68:"15:48", s67:"15:53", s66:"15:54", s62:"15:58"},est:[],note:"kigensugi_transfer"},
+  {route:"arakawa",service:"everyday",head_ja:"荒川登山口ゆき",head_en:"For Arakawa Trailhead",times:{s68:"5:00", s70:"5:35"},est:[],note:"arakawa_reserve"},
+  {route:"arakawa",service:"everyday",head_ja:"荒川登山口ゆき",head_en:"For Arakawa Trailhead",times:{s68:"5:20", s70:"5:55"},est:[],note:"arakawa_reserve"},
+  {route:"arakawa",service:"everyday",head_ja:"荒川登山口ゆき",head_en:"For Arakawa Trailhead",times:{s68:"5:40", s70:"6:15"},est:[],note:"arakawa_reserve"},
+  {route:"arakawa",service:"everyday",head_ja:"荒川登山口ゆき",head_en:"For Arakawa Trailhead",times:{s68:"14:00", s70:"14:35"},est:[],note:"arakawa_reserve"},
+  {route:"arakawa",service:"everyday",head_ja:"屋久杉自然館ゆき",head_en:"For Yakusugi Museum",times:{s70:"6:20", s68:"6:55"},est:[],note:"arakawa_reserve"},
+  {route:"arakawa",service:"everyday",head_ja:"屋久杉自然館ゆき",head_en:"For Yakusugi Museum",times:{s70:"15:00", s68:"15:35"},est:[],note:"arakawa_reserve"},
+  {route:"arakawa",service:"everyday",head_ja:"屋久杉自然館ゆき",head_en:"For Yakusugi Museum",times:{s70:"16:00", s68:"16:35"},est:[],note:"arakawa_reserve"},
+  {route:"arakawa",service:"everyday",head_ja:"屋久杉自然館ゆき",head_en:"For Yakusugi Museum",times:{s70:"16:30", s68:"17:05"},est:[],note:"arakawa_reserve"},
+  {route:"arakawa",service:"everyday",head_ja:"屋久杉自然館ゆき",head_en:"For Yakusugi Museum",times:{s70:"17:00", s68:"17:35"},est:[],note:"arakawa_reserve"},
+  {route:"arakawa",service:"everyday",head_ja:"屋久杉自然館ゆき",head_en:"For Yakusugi Museum",times:{s70:"17:45", s68:"18:20"},est:[],note:"arakawa_reserve"}
+];
+
+
+const CONFIG = { minTransfer:5, dayStart:5*60, dayEnd:20*60, maxResults:6, updated:"2026-03-01" };
+function fareFor(a,b){
+  if(a===b) return null;
+  // 1) direct sub-table fare (mountain spurs: Shiratani, Yakusugi Land, Kigensugi, Arakawa)
+  const sd = FSUB[a+"_"+b]; if(sd!=null) return sd;
+  // 2) zone-based main-matrix fare
+  const za=ZONE[a], zb=ZONE[b];
+  if(!za||!zb||za===zb) return null;
+  const v = FARE[FKEY[za]+"_"+FKEY[zb]];
+  return v!=null ? v : null;
+}
+
+const CAL = { everyday:[0,1,2,3,4,5,6], weekday:[1,2,3,4,5], weekend:[0,6] };
+
+const UI = {
+  ja:{ title:"屋久島バス乗換", from:"乗車地", to:"降車地", date:"日付", time:"出発時刻以降",
+    now:"現在", go:"経路を調べる", noStop:"該当する停留所がありません",
+    direct:"直通", transfer:"乗換", change:"乗換", last:"最終", lastBadge:"最終",
+    okTag:"運行中", warnTag:"残りわずか", stopTag:"終了",
+    lastOf:"この区間の最終は", few:"本日この区間はあと", fewAfter:"本。乗り遅れにご注意ください。",
+    none:"本日この区間のバスは終了しました。", nextDay:"翌日の始発は", nextDayAfter:"発です。",
+    emptyPick:"乗車地と降車地を選んでください。",
+    emptyNone:"この区間を結ぶ便が見つかりませんでした。日付を変えてお試しください。",
+    ribbon:"本日の便", min:"分", est:"(目安)",
+    foot:"※公式時刻表に基づく非公式ツールです。ダイヤは変更される場合があります。（目安）表示の時刻は、公式時刻表に記載のない停留所を所要時間表から推計したものです。運賃（≈）は公式運賃表の主要区間から推計した目安で、乗換時は各乗車分を合算しています（大人片道）。乗車前に必ず公式時刻表・運賃表でご確認ください。",
+    updated:"データ改正日" },
+  en:{ title:"Yakushima Bus", from:"From", to:"To", date:"Date", time:"Departing after",
+    now:"Now", go:"Find buses", noStop:"No matching stop",
+    direct:"Direct", transfer:"change", change:"Change at", last:"Last", lastBadge:"Last",
+    okTag:"Running", warnTag:"Few left", stopTag:"Finished",
+    lastOf:"Last bus departs", few:"Only", fewAfter:"left today. Don\'t miss it.",
+    none:"No more buses today on this route.", nextDay:"First bus tomorrow", nextDayAfter:".",
+    emptyPick:"Choose where you\'re starting and where you\'re going.",
+    emptyNone:"No bus connects these stops. Try another date.",
+    ribbon:"Today", min:"min", est:"(est)",
+    foot:"Unofficial tool based on the official timetable. Schedules may change. Times marked (est) are estimated for stops not printed in the official timetable, using published inter-stop durations. Fares (\u2248) are estimated from the official fare chart\u2019s major sections and summed per boarding for transfers (adult, one way). Always confirm with the official timetable and fare chart before you travel.",
+    updated:"Timetable revised" }
+};
+let LANG = (navigator.language||"").toLowerCase().startsWith("ja") ? "ja" : "en";
+const T = () => UI[LANG];
+const S = {}; STOPS.forEach(s => S[s.id]=s);
+const nameOf = id => S[id] ? (LANG==="ja"?S[id].ja:S[id].en) : id;
+const routeOf = id => ROUTES.find(r=>r.id===id) || {ja:id,en:id};
+const routeName = id => LANG==="ja"?routeOf(id).ja:routeOf(id).en;
+const routeNote = id => LANG==="ja"?routeOf(id).note_ja:routeOf(id).note_en;
+const headOf = t => LANG==="ja"?t.head_ja:t.head_en;
+const t2m = s => { const [h,m]=s.split(":").map(Number); return h*60+m; };
+const fmt = m => String(Math.floor((m%1440)/60)).padStart(2,"0")+":"+String(m%60).padStart(2,"0");
+
+TRIPS.forEach(t => { t.seq=Object.keys(t.times); t.idx={}; t.seq.forEach((s,i)=>t.idx[s]=i); t.estSet=new Set(t.est); });
+const routesAtStop={};
+TRIPS.forEach(t=>t.seq.forEach(s=>{(routesAtStop[s]=routesAtStop[s]||new Set()).add(t.route);}));
+const HUBS=Object.keys(routesAtStop).filter(s=>routesAtStop[s].size>1);
+const runsOn=(t,d)=>(CAL[t.service]||[]).includes(d.getDay());
+const legOf=(t,i,j)=>({route:t.route,trip:t,from:t.seq[i],to:t.seq[j],
+  dep:t2m(t.times[t.seq[i]]),arr:t2m(t.times[t.seq[j]]),depEst:t.estSet.has(t.seq[i]),arrEst:t.estSet.has(t.seq[j])});
+
+function journeys(from,to,date,after){
+  const active=TRIPS.filter(t=>runsOn(t,date)); const out=[];
+  for(const t of active){ const i=t.idx[from],j=t.idx[to];
+    if(i===undefined||j===undefined||j<=i) continue;
+    const dep=t2m(t.times[t.seq[i]]); if(dep<after) continue;
+    out.push({legs:[legOf(t,i,j)],dep,arr:t2m(t.times[t.seq[j]])}); }
+  for(const hub of HUBS){ if(hub===from||hub===to) continue;
+    for(const a of active){ const i=a.idx[from],h=a.idx[hub];
+      if(i===undefined||h===undefined||h<=i) continue;
+      const dep=t2m(a.times[a.seq[i]]); if(dep<after) continue;
+      const arrH=t2m(a.times[a.seq[h]]);
+      for(const b of active){ if(b===a) continue;
+        const h2=b.idx[hub],j=b.idx[to];
+        if(h2===undefined||j===undefined||j<=h2) continue;
+        const depH=t2m(b.times[b.seq[h2]]); if(depH<arrH+CONFIG.minTransfer) continue;
+        out.push({legs:[legOf(a,i,h),legOf(b,h2,j)],dep,arr:t2m(b.times[b.seq[j]])}); } } }
+  out.sort((x,y)=>x.dep-y.dep||x.arr-y.arr||x.legs.length-y.legs.length);
+  const keep=[]; let best=Infinity;
+  for(let k=out.length-1;k>=0;k--){ if(out[k].arr<best){keep.unshift(out[k]);best=out[k].arr;} }
+  return keep;
+}
+
+function combobox(inputEl,listEl,onPick){
+  let picked=null,cursor=-1,shown=[];
+  const match=q=>{ q=q.trim().toLowerCase(); if(!q) return STOPS.slice();
+    // score: 3=en/roma word starts with q, 2=ja starts with q, 1=any substring
+    const scored=[];
+    for(const s of STOPS){
+      const en=s.en.toLowerCase(), ja=s.ja, romaWords=s.roma.toLowerCase().split(" ");
+      let sc=0;
+      if(en.startsWith(q)||romaWords.some(w=>w.startsWith(q))) sc=3;
+      else if(ja.startsWith(q)) sc=2;
+      else if(ja.includes(q)||en.includes(q)||s.roma.toLowerCase().includes(q)) sc=1;
+      if(sc) scored.push([sc,s]);
+    }
+    scored.sort((a,b)=>b[0]-a[0]);
+    return scored.map(x=>x[1]); };
+  const render=()=>{ listEl.innerHTML="";
+    if(!shown.length){ const li=document.createElement("li"); li.className="none"; li.textContent=T().noStop; listEl.appendChild(li); return; }
+    shown.forEach((s,i)=>{ const li=document.createElement("li"); li.role="option";
+      li.setAttribute("aria-selected",i===cursor);
+      li.innerHTML=`${LANG==="ja"?s.ja:s.en}<span class="en">${LANG==="ja"?s.en:s.ja}</span>`;
+      li.onmousedown=e=>{e.preventDefault();choose(s);}; listEl.appendChild(li); }); };
+  const open=()=>{ shown=match(inputEl.value); cursor=-1; render(); listEl.hidden=false; inputEl.ariaExpanded="true"; };
+  const close=()=>{ listEl.hidden=true; inputEl.ariaExpanded="false"; };
+  const choose=s=>{ picked=s.id; inputEl.value=LANG==="ja"?s.ja:s.en; close(); onPick&&onPick(); };
+  inputEl.addEventListener("focus",open);
+  inputEl.addEventListener("input",()=>{picked=null;open();});
+  inputEl.addEventListener("blur",()=>setTimeout(close,120));
+  inputEl.addEventListener("keydown",e=>{
+    if(listEl.hidden&&(e.key==="ArrowDown"||e.key==="ArrowUp")){open();return;}
+    if(e.key==="ArrowDown"){e.preventDefault();cursor=Math.min(cursor+1,shown.length-1);render();}
+    else if(e.key==="ArrowUp"){e.preventDefault();cursor=Math.max(cursor-1,0);render();}
+    else if(e.key==="Enter"&&cursor>=0&&shown[cursor]){e.preventDefault();choose(shown[cursor]);}
+    else if(e.key==="Escape")close(); });
+  return { get:()=>picked,
+    set:id=>{const s=S[id]; if(s){picked=id;inputEl.value=LANG==="ja"?s.ja:s.en;}},
+    refresh:()=>{if(picked){const s=S[picked];inputEl.value=LANG==="ja"?s.ja:s.en;}} };
+}
+
+const $=id=>document.getElementById(id);
+const fromBox=combobox($("fromInput"),$("fromList"),()=>run());
+const toBox=combobox($("toInput"),$("toList"),()=>run());
+
+function labels(){ const t=T(); document.documentElement.lang=LANG;
+  $("title").textContent=t.title; $("lblFrom").textContent=t.from; $("lblTo").textContent=t.to;
+  $("lblDate").textContent=t.date; $("lblTime").textContent=t.time; $("nowBtn").textContent=t.now;
+  $("goBtn").textContent=t.go; $("ribbonHead").textContent=t.ribbon;
+  $("footer").textContent=`${t.foot}  ${t.updated}: ${CONFIG.updated}`;
+  $("langJa").ariaPressed=LANG==="ja"; $("langEn").ariaPressed=LANG==="en"; }
+function setNow(){ const d=new Date(); $("dateInput").value=d.toISOString().slice(0,10);
+  $("timeInput").value=String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0"); }
+
+function run(){
+  const from=fromBox.get(),to=toBox.get(),t=T();
+  const res=$("results"),track=$("track"),status=$("status");
+  status.innerHTML=""; track.innerHTML="";
+  if(!from||!to||from===to){ res.innerHTML=`<div class="empty">${t.emptyPick}</div>`; return; }
+  const date=new Date($("dateInput").value+"T00:00:00"); if(isNaN(date)){setNow();return;}
+  const after=t2m($("timeInput").value||"00:00");
+  const all=journeys(from,to,date,-1);
+  if(!all.length){ res.innerHTML=`<div class="empty">${t.emptyNone}</div>`; return; }
+  const upcoming=all.filter(j=>j.dep>=after); const lastJ=all[all.length-1];
+  const strip=document.createElement("div");
+  if(!upcoming.length){ const tmr=new Date(date); tmr.setDate(tmr.getDate()+1);
+    const first=journeys(from,to,tmr,-1)[0]; strip.className="status stop";
+    strip.innerHTML=`<span class="tag">${t.stopTag}</span><span>${t.none}`+(first?` ${t.nextDay} <b>${fmt(first.dep)}</b>${t.nextDayAfter}`:"")+`</span>`;
+  } else if(upcoming.length<=2){ strip.className="status warn";
+    strip.innerHTML=`<span class="tag">${t.warnTag}</span><span>${t.few} <b>${upcoming.length}</b>${LANG==="ja"?t.min:" bus"} ${t.fewAfter}</span><span class="meta">${t.lastOf} <b>${fmt(lastJ.dep)}</b></span>`;
+  } else { strip.className="status ok";
+    strip.innerHTML=`<span class="tag">${t.okTag}</span><span>${t.lastOf} <b>${fmt(lastJ.dep)}</b></span>`; }
+  status.appendChild(strip);
+  const H=460,span=CONFIG.dayEnd-CONFIG.dayStart;
+  const y=m=>Math.max(6,Math.min(H-6,(m-CONFIG.dayStart)/span*H));
+  for(let h=Math.ceil(CONFIG.dayStart/60);h<=CONFIG.dayEnd/60;h+=2){
+    const g=document.createElement("div"); g.className="hour"; g.style.top=y(h*60)+"px";
+    g.innerHTML=`<span>${String(h).padStart(2,"0")}</span>`; track.appendChild(g); }
+  const today=new Date();
+  if(today.toISOString().slice(0,10)===$("dateInput").value){
+    const nm=today.getHours()*60+today.getMinutes();
+    if(nm>=CONFIG.dayStart&&nm<=CONFIG.dayEnd){ const n=document.createElement("div");
+      n.className="nowline"; n.style.top=y(nm)+"px"; n.innerHTML=`<span>NOW</span>`; track.appendChild(n); } }
+  let lastY=-99;
+  all.forEach((j,i)=>{ const chip=document.createElement("button"); const isLast=j===lastJ;
+    chip.className="dep"+(j.dep<after?" past":"")+(isLast?" last":""); chip.textContent=fmt(j.dep);
+    let py=y(j.dep); if(py-lastY<20)py=lastY+20; lastY=py; chip.style.top=py+"px"; chip.dataset.i=i;
+    chip.onclick=()=>{ const card=res.querySelector(`[data-i="${i}"]`);
+      if(card){ res.querySelectorAll(".card").forEach(c=>c.classList.remove("spot"));
+        card.classList.add("spot"); card.scrollIntoView({behavior:"smooth",block:"center"}); } };
+    track.appendChild(chip); });
+  res.innerHTML="";
+  const list=(upcoming.length?upcoming:[]).slice(0,CONFIG.maxResults);
+  if(!list.length){ res.innerHTML=`<div class="empty">${t.none}</div>`; return; }
+  const est=b=>b?`<span class="est">${t.est}</span>`:"";
+  list.forEach(j=>{ const i=all.indexOf(j); const card=document.createElement("div");
+    card.className="card"+(j===lastJ?" is-last":""); card.dataset.i=i;
+    const dur=j.arr-j.dep;
+    // fare = sum of each leg (each boarding is charged separately on Yakushima)
+    let fare=0, fareOk=true;
+    j.legs.forEach(l=>{ const fv=fareFor(l.from,l.to); if(fv==null) fareOk=false; else fare+=fv; });
+    const fareStr = (fareOk && fare>0) ? " · &#8776;&yen;"+fare : "";
+    let html=`<div class="card-top"><span class="clock">${fmt(j.dep)}</span>${est(j.legs[0].depEst)}<span class="arrow">&#8594;</span><span class="clock">${fmt(j.arr)}</span>${est(j.legs[j.legs.length-1].arrEst)}${j===lastJ?`<span class="badge">${t.lastBadge}</span>`:""}<span class="meta">${dur}${LANG==="ja"?t.min:" "+t.min} · ${j.legs.length===1?t.direct:"1 "+t.transfer}${fareStr}</span></div>`;
+    j.legs.forEach((leg,k)=>{ if(k>0){ const wait=leg.dep-j.legs[k-1].arr;
+        html+=`<div class="change">${t.change} ${nameOf(leg.from)} · ${wait}${LANG==="ja"?t.min:" "+t.min}</div>`; }
+      const note=routeNote(leg.route);
+      const lf=fareFor(leg.from,leg.to);
+      const lfStr = lf ? ` <span style="color:var(--rain);font-family:var(--mono);font-size:11px">&#8776;&yen;${lf}</span>` : "";
+      html+=`<div class="leg"><div class="leg-bar"></div><div class="leg-body"><div class="route">${routeName(leg.route)} <span style="color:var(--rain);font-weight:400">${headOf(leg.trip)}</span>${lfStr}</div><div class="path"><b>${fmt(leg.dep)}</b>${est(leg.depEst)} ${nameOf(leg.from)} &#8594; <b>${fmt(leg.arr)}</b>${est(leg.arrEst)} ${nameOf(leg.to)}</div>${note?`<div class="leg-note">${note}</div>`:""}</div></div>`; });
+    card.innerHTML=html; res.appendChild(card); });
+}
+
+$("langJa").onclick=()=>{LANG="ja";labels();fromBox.refresh();toBox.refresh();run();};
+$("langEn").onclick=()=>{LANG="en";labels();fromBox.refresh();toBox.refresh();run();};
+$("swapBtn").onclick=()=>{const a=fromBox.get(),b=toBox.get();fromBox.set(b);toBox.set(a);run();};
+$("nowBtn").onclick=()=>{setNow();run();};
+$("goBtn").onclick=run; $("dateInput").onchange=run; $("timeInput").onchange=run;
+labels(); setNow(); fromBox.set("s20"); toBox.set("s129"); run();
+</script>
