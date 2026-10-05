@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>屋久島バス乗換 / Yakushima Bus</title>
+<title>Yakushima Bus Finder</title>
 <link rel="manifest" href="./manifest.json">
 <meta name="theme-color" content="#232A26">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -128,15 +128,20 @@
     text-align:center; color:var(--rain); font-size:13.5px; }
   footer { margin-top:26px; padding-top:14px; border-top:1px solid var(--line); font-size:15px;
     color:#000; line-height:1.7; }
-  footer .credit { margin-top:8px; font-family:var(--mono); font-size:10.5px; letter-spacing:.03em; }
+  footer #footNote a { color:var(--moss); font-weight:600; }
+  footer .updated { margin-top:8px; font-family:var(--mono); font-size:12px; }
+  footer .credit { display:flex; justify-content:flex-end; align-items:center; gap:8px; margin-top:48px;
+    font-family:var(--mono); font-size:11px; letter-spacing:.03em; }
+  footer .credit a { display:inline-flex; color:inherit; }
+  footer .credit .arc-logo { height:20px; width:auto; }
   @media (max-width:560px) { .ribbon { flex:0 0 78px; } .dep { font-size:11px; padding:1px 3px; } .board { gap:10px; } }
   @media (prefers-reduced-motion:reduce) { * { animation:none !important; transition:none !important; } }
 </style>
 
 <div class="wrap">
   <header>
-    <h1><span id="title">屋久島バス乗換</span><span class="beta-tag">BETA</span>
-      <small>Yakushima Bus · Route Finder</small></h1>
+    <h1><span id="title">Yakushima Bus Finder</span><span class="beta-tag">BETA</span>
+      <small id="subtitle">屋久島のバス乗換検索</small></h1>
     <div class="langs">
       <button id="langJa" aria-pressed="true">日本語</button>
       <button id="langEn" aria-pressed="false">EN</button>
@@ -170,7 +175,12 @@
     </aside>
     <div class="results" id="results"></div>
   </div>
-  <footer id="footer"></footer>
+  <footer id="footer">
+    <a class="map-btn" id="officialBtn" href="https://yakukan.jp/on-island.html" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M7 13h4M7 17h7"/></svg><span id="officialBtnText">公式時刻表を確認する</span></a>
+    <div id="footNote"></div>
+    <div class="updated" id="footUpdated"></div>
+    <div class="credit"><span>Made by</span><a id="arcLink" href="https://www.arc-yakushima.com/" target="_blank" rel="noopener"><svg class="arc-logo" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Årc yakushima" fill="currentColor" viewBox="0 0 1700 420"><path d="m154.9,80.3c0-8.9,3.1-16.4,9.2-22.5,6.1-6.2,13.6-9.3,22.5-9.3s16.3,3.1,22.5,9.3c6.2,6.2,9.3,13.7,9.3,22.5s-3.1,16.3-9.2,22.5c-6.1,6.1-13.7,9.2-22.6,9.2s-16.5-3-22.5-9.1c-6.1-6.1-9.1-13.6-9.1-22.5Zm16.5,0c0,4.3,1.5,7.9,4.4,10.8,3,2.9,6.6,4.4,10.8,4.4s7.7-1.5,10.7-4.4c3-3,4.5-6.5,4.5-10.7s-1.5-7.8-4.4-10.8c-3-3-6.6-4.5-10.8-4.5s-7.8,1.5-10.8,4.5c-3,3-4.4,6.6-4.4,10.8Zm62.1,151.7l-47.9-113.3-85.6,201.6h21.9l.7-1.7c9.7-21.4,29.7-28.7,50.6-36.2,24.1-8.8,49.4-18,60.3-50.4Zm-46.7-56.7l24.8,57.4-.5.7c-8.8,16.1-26.5,22.9-45.5,29.9-6.8,2.7-13.9,5.4-20.4,8.5l-1.7-1.7,42.1-97.8,1.2,2.9Zm84.4,145l-28.2-66.4c-1.9,3.4-4.1,6.6-6.3,9.5-2.4,3.2-5.4,6.1-8.3,8.5l20.9,48.4h21.9Zm1308.4-98.9l20,16.1c.2.2.4.5.4.8v75.8c0,.6-.5,1-1,1h-20c-.6,0-1-.5-1-1v-6.7c0-.9-1-1.3-1.7-.7-8.6,7.4-17.7,11.2-27.5,11.2s-24-4.7-32.6-14.2c-8.5-9.7-12.8-21.8-12.8-36.3s4.3-26.1,12.8-35.6c8.5-9.5,19.2-14.2,32-14.2s19.7,4,28,11.9c.6.6,1.7.2,1.7-.7v-6.5c0-.8,1-1.3,1.6-.8Zm-53.7,45.9c0,9.1,2.4,16.5,7.3,22.2,5,5.8,11.3,8.7,18.9,8.7s14.7-2.8,19.7-8.4c5-5.8,7.5-13.1,7.5-22s-2.5-16.3-7.5-22c-5-5.7-11.5-8.5-19.5-8.5s-13.8,2.9-18.9,8.6c-5,5.8-7.5,12.9-7.5,21.5Zm-772.4-45.9l20,16.1c.2.2.4.5.4.8v75.8c0,.6-.5,1-1,1h-20c-.6,0-1-.5-1-1v-6.7c0-.9-1-1.3-1.7-.7-8.6,7.4-17.7,11.2-27.5,11.2s-24-4.7-32.6-14.2c-8.5-9.7-12.8-21.8-12.8-36.3s4.3-26.1,12.8-35.6c8.5-9.5,19.2-14.2,32-14.2s19.7,4,28,11.9c.6.6,1.7.2,1.7-.7v-6.5c0-.8,1-1.3,1.6-.8Zm-53.7,45.9c0,9.1,2.4,16.5,7.3,22.2,5,5.8,11.3,8.7,18.9,8.7s14.7-2.8,19.7-8.4c5-5.8,7.5-13.1,7.5-22s-2.5-16.3-7.5-22c-5-5.7-11.5-8.5-19.5-8.5s-13.8,2.9-18.9,8.6c-5,5.8-7.5,12.9-7.5,21.5Zm-245.3-43.1c-2,2.9-8.6,12.3-10.7,14.8s-.9.5-1.3.2c-3.2-2.1-6.9-3.2-11.2-3.2-7.2-.1-13.2,2.7-18,8.4-4.8,5.7-7.3,12.9-7.4,21.6-.1,8.9,2,16.3,6.5,22,4.5,5.8,10.4,8.7,17.6,8.9,4.2,0,8-.8,11.4-2.8.4-.3,1-.2,1.3.3,1.9,2.7,8.4,11.7,10.5,14.6s.2,1.2-.4,1.5c-7.5,4.1-14.9,6.1-22.3,6-12.7-.2-23.3-5.1-31.8-14.7-8.4-9.7-12.5-21.6-12.3-35.8.2-14.2,4.7-26.1,13.6-35.7,8.8-9.6,19.6-14.3,32.2-14.1,7.8.1,15.1,2.3,22,6.5.5.3.7,1,.3,1.5Zm694.3-69.7l19.9,16.1c.2.2.4.5.4.8v57.3c0,.9,1,1.3,1.7.7,7.4-6.1,15.4-9.1,24.2-9.1s19.3,3.5,25.7,10.4c5.5,6,8.2,15.7,8.2,29v57.2c0,.6-.5,1-1,1h-19.9c-.6,0-1-.5-1-1v-55.2c0-7.6-1.4-13.1-4-16.5-2.7-3.4-7-5.1-13-5.1s-13.1,2.4-16.2,7.1c-3.1,4.8-4.6,13.1-4.6,24.8v44.9c0,.6-.5,1-1,1h-19.9c-.6,0-1-.5-1-1v-161.6c0-.8,1-1.3,1.6-.8Zm123,28.9c0-3.8,1.4-7.2,4.2-9.9,2.8-2.8,6.1-4.2,10-4.2s7.3,1.4,10.1,4.2c2.8,2.7,4.2,6.1,4.2,10s-1.4,7.3-4.2,10.1c-2.6,2.7-5.8,4.1-9.5,4.2-4.1.1-8.1-1.5-10.9-4.5-2.6-2.7-3.9-6.1-3.9-10Zm25.3,57.7v75.8c0,.6-.5,1-1,1h-19.9c-.6,0-1-.5-1-1v-91.9c0-.8,1-1.3,1.6-.8l19.9,16.1c.2.2.4.5.4.8Zm-458.6-69.7v79.8c0,.9,1.1,1.4,1.7.7l28.9-28.7c.2-.2.4-.3.7-.3h26.5c.9,0,1.4,1.1.7,1.7l-38.8,37.5c-.4.4-.4,1,0,1.4l42.4,52.7c.5.7,0,1.6-.8,1.6h-25.9c-.3,0-.6-.1-.8-.4l-30.4-38.8c-.4-.5-1.1-.5-1.5,0l-2.4,2.4c-.2.2-.3.4-.3.7v35.1c0,.6-.5,1-1,1h-19.9c-.6,0-1-.5-1-1v-161.6c0-.8,1-1.3,1.6-.8l19.9,16.1c.2.2.4.5.4.8Zm502,51.6h19.9c.6,0,1,.5,1,1v5.3c0,.9,1.1,1.3,1.7.7,3.5-3.5,6.5-5.9,9.1-7.2,3.2-1.6,7.2-2.4,12-2.4,10.3,0,18.5,4.3,24.7,12.9.4.5,1.2.6,1.6,0,6.8-8.6,15.9-13,27.2-13,21.4,0,32.1,13,32.1,38.9v57.7c0,.6-.5,1-1,1h-20c-.6,0-1-.5-1-1v-51.7c0-9.1-1.1-15.5-3.3-19.3-2.3-3.8-6-5.8-11.2-5.8s-10.5,2.3-13.2,6.8c-2.8,4.6-4.1,11.9-4.1,21.9v48c0,.6-.5,1-1,1h-20c-.6,0-1-.5-1-1v-51.4c0-16.9-4.9-25.4-14.6-25.4s-10.7,2.3-13.5,6.9c-2.8,4.6-4.2,11.9-4.2,21.8v48c0,.6-.5,1-1,1h-19.9c-.6,0-1-.5-1-1v-93c0-.6.5-1,1-1Zm-1035,2.7h19.9c.6,0,1,.5,1,1v5c0,.9,1.1,1.3,1.7.7,3.3-3.3,6.3-5.6,9-6.9,3.2-1.6,7-2.4,11.3-2.4s11.3,1.7,17.3,5.2c.5.3.7.9.4,1.4l-9.1,18.2c-.3.5-1,.7-1.5.4-3.8-2.6-7.6-3.8-11.2-3.8-12,0-17.9,9-18,27.1v48.2c0,.6-.5,1-1,1h-19.9c-.6,0-1-.5-1-1v-93c0-.6.5-1,1.1-1Zm796.8,11.2l-16.4,8.7c-.5.3-1.1,0-1.4-.4-2.8-5.2-6.2-7.9-10.2-7.9s-3.7.7-5.2,2c-1.4,1.3-2.1,3-2.1,5.1,0,3.6,4.2,7.2,12.7,10.8,11.6,5,19.5,9.6,23.5,13.8,4,4.2,6,9.9,6,17.1s-3.4,16.8-10.1,23c-6.6,5.9-14.5,8.8-23.8,8.8-15.6,0-26.7-7.5-33.4-22.4-.2-.5,0-1.1.5-1.4l17-7.9c.5-.2,1,0,1.3.4,2.4,4.1,4.2,6.7,5.5,7.9,2.7,2.5,5.8,3.7,9.6,3.7,7.4,0,11.1-3.4,11.1-10.1s-2.9-7.5-8.6-10.9c-2.2-1.1-4.4-2.2-6.6-3.2-2.2-1-4.5-2.1-6.7-3.2-6.4-3.1-10.9-6.2-13.5-9.4-3.3-4-5-9.1-5-15.3s2.8-15.1,8.5-20.5c5.8-5.4,12.8-8.1,21.1-8.1,11.9,0,20.7,6,26.7,17.9.2.5,0,1.1-.4,1.4Zm-153-16.7c.6,0,1,.5,1,1v53.5c0,15.7,6.2,23.6,18.6,23.6s18.6-7.9,18.6-23.6v-53.5c0-.6.5-1,1-1h19.9c.6,0,1,.5,1,1v54c0,7.6-.9,14.2-2.8,19.7-1.8,4.9-5,9.4-9.5,13.4-7.4,6.4-16.8,9.7-28.3,9.7s-20.8-3.2-28.2-9.7c-4.6-4-7.8-8.4-9.7-13.4-1.8-4.4-2.7-11-2.7-19.7v-54c0-.6.5-1,1-1h19.9Zm-322.3,57l26.2-50.7c.3-.7-.1-1.5-.9-1.5h-22.5c-.4,0-.7.2-.9.6l-14.8,29.7c-.1.3-.1.6,0,.9l11.1,21c.4.7,1.4.7,1.8,0Zm-24.9,2.3h0c0,.1-28.8-54-28.8-54-.2-.3-.5-.5-.9-.5h-23.1c-.8,0-1.3.8-.9,1.5l41.6,75.3c.2.3.2.7,0,1l-36,67.4c-.4.7.1,1.5.9,1.5h22.8c.4,0,.7-.2.9-.5l35.4-68.5c.2-.3.1-.6,0-.9l-11.8-22.1Z"/></svg></a></div>
+  </footer>
 </div>
 
 <script>
@@ -284,7 +294,7 @@ const STOPS = [
   {id:"s102",ja:"小島",en:"Koshima",roma:"koshima"},
   {id:"s103",ja:"岳南中前",en:"Gakunan chu-mae",roma:"gakunan"},
   {id:"s104",ja:"彼岸野",en:"Higanno",roma:"higanno"},
-  {id:"s105",ja:"恋泊",en:"Koidomari",roma:"koidomari"},
+  {id:"s105",ja:"恋泊 / Årc 最寄",en:"Koidomari / Nearest stop to Årc",roma:"koidomari arc"},
   {id:"s106",ja:"上ノ牧",en:"Kaminomaki",roma:"kaminomaki"},
   {id:"s107",ja:"平内入口",en:"Hirauchi Iriguchi",roma:"hirauchi iriguchi"},
   {id:"s108",ja:"八幡小前",en:"Hachiman sho-mae",roma:"hachiman sho"},
@@ -378,7 +388,11 @@ const TRIPS = [
 ];
 
 
-const CONFIG = { minTransfer:5, dayStart:5*60, dayEnd:20*60, maxResults:6 };
+const CONFIG = { minTransfer:5, dayStart:5*60, dayEnd:20*60, maxResults:6, updated:"2026-10-05" };
+const LINKS = {
+  official: "https://yakukan.jp/on-island.html",
+  form: "https://docs.google.com/forms/d/e/1FAIpQLSegsYD-lIqd2Xo013SEU0ovHwPAqzM39S_TIdP7db4_EZ0Pbg/viewform?usp=dialog",
+};
 function fareFor(a,b){
   if(a===b) return null;
   // 1) direct sub-table fare (mountain spurs: Shiratani, Yakusugi Land, Kigensugi, Arakawa)
@@ -393,7 +407,7 @@ function fareFor(a,b){
 const CAL = { everyday:[0,1,2,3,4,5,6], weekday:[1,2,3,4,5], weekend:[0,6] };
 
 const UI = {
-  ja:{ title:"屋久島バス乗換", from:"乗車地", to:"降車地", date:"日付", time:"出発時刻以降",
+  ja:{ title:"Yakushima Bus Finder", subtitle:"屋久島のバス乗換検索", from:"乗車地", to:"降車地", date:"日付", time:"出発時刻以降",
     now:"現在時刻", go:"経路を調べる", noStop:"該当する停留所がありません",
     direct:"直通", transfer:"乗換", change:"乗換", last:"最終", lastBadge:"最終",
     okTag:"運行中", warnTag:"残りわずか", stopTag:"終了",
@@ -402,9 +416,11 @@ const UI = {
     emptyPick:"乗車地と降車地を選んでください。",
     emptyNone:"この区間を結ぶ便が見つかりませんでした。日付を変えてお試しください。",
     ribbon:"本日の便", min:"分", est:"(目安)", mapBtn:"マップからバス停を探す",
-    foot:"このツールは屋久島におけるバス情報がめっちゃ分かりづらいというツーリストの悩みを解消するため、Årc yakushimaにて勝手に開発したものです。公式情報を元にしていますが、<b>バス会社による更新情報が反映されていない場合や、検証不十分のため、実際の情報と異なる場合やエラーがあるかもしれません。</b>より確実な情報が必要な場合は、公式の時刻表等を確認ください。まちがっていても責任はとれませんが、間違いを教えてもらえたら、本ツールの今後の改善に活かさせていただきます！ - 更新日：2026-07-19",
+    officialBtn:"公式時刻表を確認する",
+    foot:`このツールは屋久島におけるバス情報が分かりづらいというツーリストの困りごとを解消するために、バス会社とは関係なく、非公式に開発したものです。公式時刻表を元にしていますが、<b>バス会社による更新情報が反映されていない場合や、検証が不十分のため、実際の時間やバス停位置と異なる場合があるかもしれません。</b>より確実な情報を必要とされる場合は、公式情報を確認してください。<br>まちがっていた場合には責任をとることはできませんが、間違いを教えてもらえたら、今後の改善に活用させていただきます。エラーに気づいた方は<a href="${LINKS.form}" target="_blank" rel="noopener">コチラ</a>へ改善情報をお寄せください。`,
+    updated:"更新日", arcUrl:"https://www.arc-yakushima.com/",
   },
-  en:{ title:"Yakushima Bus", from:"From", to:"To", date:"Date", time:"Departing after",
+  en:{ title:"Yakushima Bus Finder", subtitle:"Bus route search for Yakushima", from:"From", to:"To", date:"Date", time:"Departing after",
     now:"Current time", go:"Find buses", noStop:"No matching stop",
     direct:"Direct", transfer:"change", change:"Change at", last:"Last", lastBadge:"Last",
     okTag:"Running", warnTag:"Few left", stopTag:"Finished",
@@ -413,7 +429,9 @@ const UI = {
     emptyPick:"Choose where you\'re starting and where you\'re going.",
     emptyNone:"No bus connects these stops. Try another date.",
     ribbon:"Today", min:"min", est:"(est)", mapBtn:"Find stops on the map",
-    foot:"This tool was put together independently by \u00c5rc yakushima to fix how confusing Yakushima's bus information is for tourists. It's based on official sources, but <b>updates from the bus company aren't always reflected here and it hasn't been fully verified, so it may differ from the real timetable or contain errors.</b> For anything important, please check the official timetable. We can't take responsibility for mistakes, but if you spot one, please let us know \u2014 it'll help us improve this tool! - Last updated: 2026-07-19",
+    officialBtn:"Check the official timetable",
+    foot:`This tool was developed unofficially, with no connection to the bus company, to help tourists who find Yakushima's bus information hard to follow. It is based on the official timetable, but <b>updates from the bus company may not be reflected yet, and because it has not been fully verified, actual times or bus stop locations may differ.</b> If you need more reliable information, please check the official sources.<br>We cannot take responsibility for any mistakes, but if you let us know about one, we will use it to improve the tool. If you notice an error, please report it <a href="${LINKS.form}" target="_blank" rel="noopener">here</a>.`,
+    updated:"Last updated", arcUrl:"https://www.arc-yakushima.com/en/",
   }
 };
 let LANG = (navigator.language||"").toLowerCase().startsWith("ja") ? "ja" : "en";
@@ -454,7 +472,9 @@ function journeys(from,to,date,after){
         if(h2===undefined||j===undefined||j<=h2) continue;
         const depH=t2m(b.times[b.seq[h2]]); if(depH<arrH+CONFIG.minTransfer) continue;
         out.push({legs:[legOf(a,i,h),legOf(b,h2,j)],dep,arr:t2m(b.times[b.seq[j]])}); } } }
-  out.sort((x,y)=>x.dep-y.dep||x.arr-y.arr||x.legs.length-y.legs.length);
+  // 下のループは後ろから走査するので、同じ出発時刻の中では「到着が早い・乗換が少ない」候補が
+  // 先に見えるよう到着・乗換回数は降順に並べる(昇順だと劣る候補から先に見えて全部残ってしまう)
+  out.sort((x,y)=>x.dep-y.dep||y.arr-x.arr||y.legs.length-x.legs.length);
   const keep=[]; let best=Infinity;
   for(let k=out.length-1;k>=0;k--){ if(out[k].arr<best){keep.unshift(out[k]);best=out[k].arr;} }
   return keep;
@@ -509,7 +529,10 @@ function labels(){ const t=T(); document.documentElement.lang=LANG;
   $("title").textContent=t.title; $("lblFrom").textContent=t.from; $("lblTo").textContent=t.to;
   $("lblDate").textContent=t.date; $("lblTime").textContent=t.time; $("nowBtn").textContent=t.now;
   $("goBtn").textContent=t.go; $("ribbonHead").textContent=t.ribbon; $("mapBtnText").textContent=t.mapBtn;
-  $("footer").innerHTML=`<div>${t.foot}</div><div class="credit">Made by Årc yakushima</div>`;
+  $("subtitle").textContent=t.subtitle; $("officialBtnText").textContent=t.officialBtn;
+  $("footNote").innerHTML=t.foot;
+  $("footUpdated").textContent=`${t.updated}${LANG==="ja"?"：":": "}${CONFIG.updated}`;
+  $("arcLink").href=t.arcUrl;
   $("langJa").ariaPressed=LANG==="ja"; $("langEn").ariaPressed=LANG==="en"; }
 function setNow(){ const d=new Date(); $("dateInput").value=d.toISOString().slice(0,10);
   $("timeInput").value=String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0"); }
@@ -589,7 +612,7 @@ if(/Android/i.test(navigator.userAgent)){
     location.href=intent;
   });
 }
-labels(); setNow(); fromBox.set("s20"); toBox.set("s129"); run();
+labels(); setNow(); fromBox.set("s105"); toBox.set("s20"); run();
 
 // オフライン対応: 一度開けば電波の入らない山間部でもそのまま使えるようにする。
 // file://で開いた場合やhttpの非localhostではService Workerは動作しないため、

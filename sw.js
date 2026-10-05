@@ -7,7 +7,7 @@
 // 更新運用: 時刻表・運賃データを更新してyakushima-bus.htmlを差し替えたときは、
 // 必ず CACHE_NAME のバージョン番号を上げること。上げないと、既にオフライン
 // 利用者の端末にキャッシュされた古いデータがいつまでも使われ続けてしまう。
-const CACHE_NAME = "yakushima-bus-v1";
+const CACHE_NAME = "yakushima-bus-v2";
 const PRECACHE_URLS = ["./", "./yakushima-bus.html", "./manifest.json"];
 
 self.addEventListener("install", (event) => {
