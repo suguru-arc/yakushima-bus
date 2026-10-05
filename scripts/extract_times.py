@@ -135,6 +135,11 @@ def extract_rows(pdf_path=PDF_PATH):
 
 def main():
     rows = extract_rows()
+    if not rows:
+        # 2026-10-01改正版以降のPDFは文字がアウトライン化されていてテキストが取れない
+        print(f"{PDF_PATH} から時刻テキストを抽出できません(文字がアウトライン化されたPDF)。")
+        print("新旧PDFの比較には scripts/timetable_diff/diff_timetables.py を使ってください。")
+        return 1
     serializable = {
         f"{top:.1f}": v for top, v in sorted(rows.items())
     }
