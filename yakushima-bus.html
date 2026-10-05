@@ -130,10 +130,12 @@
     color:#000; line-height:1.7; }
   footer #footNote a { color:var(--moss); font-weight:600; }
   footer .updated { margin-top:8px; font-family:var(--mono); font-size:12px; }
-  footer .credit { display:flex; justify-content:flex-end; align-items:center; gap:8px; margin-top:48px;
+  footer .credit { display:flex; justify-content:flex-end; align-items:baseline; gap:8px; margin-top:48px;
     font-family:var(--mono); font-size:11px; letter-spacing:.03em; }
   footer .credit a { display:inline-flex; color:inherit; }
-  footer .credit .arc-logo { height:40px; width:auto; }
+  /* baseline揃えではロゴ下端が「Made by」のベースラインに来るので、ロゴの文字の底辺
+     (ロゴ下端から高さの23.8%上、yの下に伸びる部分を除く)が揃うよう下へずらす */
+  footer .credit .arc-logo { height:40px; width:auto; transform:translateY(23.8%); }
   @media (max-width:560px) { .ribbon { flex:0 0 78px; } .dep { font-size:11px; padding:1px 3px; } .board { gap:10px; } }
   @media (prefers-reduced-motion:reduce) { * { animation:none !important; transition:none !important; } }
 </style>
